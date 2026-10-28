@@ -19,6 +19,17 @@ Ouvrir `index.html` dans un navigateur récent (ou le servir en HTTPS, voir plus
 | Ouvrir/fermer une porte, ordre aux alliés à moins de 3 cases | `E` |
 | Recommencer / changer de mode (hôte ou solo) | `Entrée` / `M` |
 | Retour au menu | `Échap` |
+| Couper / remettre le son | `N` (ou le bouton « Son » du menu) |
+
+### Son
+Musique et bruitages sont synthétisés en direct (WebAudio), sans aucun fichier audio : un morceau pour le menu et un par monde,
+qui devient plus intense quand les aliens approchent. Le son démarre au premier clic ou à la première touche (règle des navigateurs).
+En coop, l'invité entend les bruitages de l'hôte.
+
+### Sur mobile
+Les commandes tactiles apparaissent automatiquement (écran tactile) : joystick gauche pour se déplacer, joystick droit pour
+orienter, boutons **TIRER**, **GREN.** (grenade) et **E** (porte / ordres aux alliés), et **☰** pour revenir au menu.
+Mieux vaut jouer en mode paysage. Ajouter `?touch=1` à l'adresse force l'affichage des commandes tactiles.
 
 ### Modes
 - **Chasse à la reine** : tuer la reine des aliens dans son nid.
