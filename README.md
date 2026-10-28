@@ -60,6 +60,12 @@ Menu **Multi** → *Créer une partie* (code à 5 caractères) ou *Rejoindre une
 - Pour jouer à distance, la page doit être servie en **HTTPS** (GitHub Pages, Netlify, Cloudflare Pages…).
 - Certains réseaux (Wi-Fi d'entreprise, certaines 4G) bloquent la connexion directe : il faudrait alors un relais TURN.
 
+## Mises à jour et cache
+Pour que les joueurs chargent toujours la dernière version : la page demande au navigateur de ne pas la mettre en cache, et au chargement
+elle compare son code avec la version en ligne (récupérée sans cache) ; si elles diffèrent, elle se recharge une fois avec une adresse neuve.
+Le fichier `_headers` demande en plus `Cache-Control: no-cache` sur Netlify et Cloudflare Pages (GitHub Pages l'ignore : c'est la vérification
+au chargement qui garantit la mise à jour, avec au pire un rechargement automatique).
+
 ## État du projet
 
 Prototype. La campagne n'est pas encore implémentée (bouton grisé).

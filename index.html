@@ -2,6 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Nidus Breach</title>
 <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
@@ -157,6 +160,28 @@
   <button class="tbtn" id="tRestart">REJOUER</button>
 </div>
 <script>
+// ============ Toujours la dernière version ============
+// Le navigateur ou l'hébergeur (GitHub Pages garde les pages ~10 min) peut servir une ancienne copie.
+// Au chargement, on récupère la page sans cache et on compare son script avec celui qui tourne : s'il diffère, on recharge
+// via une adresse neuve (?v=...), ce qui force la version à jour. Garde-fou : au plus un rechargement toutes les 20 s.
+async function checkForUpdate(){
+  try{
+    if(!/^https?:$/.test(location.protocol))return;                 // en fichier local, rien à vérifier
+    const norm=t=>t.replace(/\r\n?/g,'\n');
+    const mine=norm(document.querySelector('script:not([src])').textContent);
+    const res=await fetch(location.pathname+'?nocache='+Date.now(),{cache:'no-store'});
+    if(!res.ok)return;
+    const txt=norm(await res.text()),i=txt.indexOf('<script>'),j=txt.lastIndexOf('<'+'/script>');
+    if(i<0||j<i||txt.slice(i+8,j)===mine)return;
+    const last=+sessionStorage.getItem('nb_upd')||0;
+    if(Date.now()-last<20000)return;
+    sessionStorage.setItem('nb_upd',Date.now());
+    const u=new URLSearchParams(location.search);u.set('v',Date.now());
+    location.replace(location.pathname+'?'+u+location.hash);
+  }catch(e){}
+}
+checkForUpdate();
+
 // ============ Config ============
 const TS = 32, MW = 80, MH = 60;
 const params = new URLSearchParams(location.search);
