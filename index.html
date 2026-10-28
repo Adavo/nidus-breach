@@ -11,6 +11,7 @@
   #menu{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 60%,rgba(6,9,18,.5),rgba(2,3,8,.9));font-family:'Segoe UI',system-ui,sans-serif;z-index:10;overflow:auto}
   #menu .box{width:min(460px,calc(100vw - 28px));margin:14px;padding:22px 24px 18px;border-radius:16px;background:rgba(10,15,28,.86);border:1px solid rgba(140,170,220,.28);box-shadow:0 24px 70px rgba(0,0,0,.65),0 0 60px rgba(150,60,200,.12);text-align:center;backdrop-filter:blur(3px)}
   #menu .box{position:relative}
+  #menu .logo{margin-top:22px}   /* laisse la place au bouton Son en haut à droite */
   #menu button.mute{position:absolute;top:10px;right:10px;width:auto;margin:0;padding:6px 10px;font-size:11px;letter-spacing:1px;font-weight:600;background:transparent;border-color:rgba(140,170,220,.3);color:#9fb2d6}
   #menu .logo{font-weight:800;font-size:clamp(32px,9vw,48px);letter-spacing:7px;line-height:1;background:linear-gradient(180deg,#e8ffd0,#8fe05a 45%,#b04cd8);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(160,70,210,.55))}
   #menu .logo span{display:block;font-size:.62em;letter-spacing:15px;margin-top:6px;padding-left:15px}
@@ -47,6 +48,9 @@
   #touch .stick i{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(200,220,255,.35);border:2px solid rgba(220,235,255,.6)}
   #stickL{left:max(14px,env(safe-area-inset-left))}
   #stickR{right:max(14px,env(safe-area-inset-right))}
+  #touch #stickR,#touch #stickL{pointer-events:none;opacity:.45;transition:opacity .15s}
+  #zoneR{position:absolute;right:0;bottom:0;width:52%;height:62%;pointer-events:auto;touch-action:none}
+  #zoneL{position:absolute;left:0;bottom:0;width:48%;height:62%;pointer-events:auto;touch-action:none}
   #touch .tbtn{position:absolute;pointer-events:auto;touch-action:none;border-radius:50%;border:2px solid rgba(255,255,255,.4);background:rgba(20,30,50,.55);color:#fff;font:800 12px 'Segoe UI',system-ui,sans-serif;letter-spacing:1px;padding:0}
   #touch .tbtn:active{background:rgba(255,255,255,.3)}
   #tFire{width:78px;height:78px;right:max(150px,calc(env(safe-area-inset-right) + 150px));bottom:max(24px,env(safe-area-inset-bottom));background:rgba(220,70,50,.5);border-color:rgba(255,160,140,.75);font-size:14px}
@@ -55,6 +59,16 @@
   #tMute{width:40px;height:40px;left:calc(max(18px,env(safe-area-inset-left) + 18px) + 50px);bottom:152px;font-size:17px;border-radius:11px}
   #tMenu{width:40px;height:40px;left:max(18px,calc(env(safe-area-inset-left) + 18px));bottom:152px;font-size:17px;border-radius:11px}
   #tRestart{display:none;border-radius:12px;left:50%;top:60%;transform:translateX(-50%);padding:14px 28px;font-size:16px;width:auto;height:auto;background:rgba(60,110,60,.7)}
+  #pause{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,4,10,.62);font-family:'Segoe UI',system-ui,sans-serif;z-index:11;overflow:auto;-webkit-user-select:none;user-select:none}
+  #pause .box{width:min(380px,calc(100vw - 28px));margin:14px;padding:20px 24px 16px;border-radius:16px;background:rgba(10,15,28,.94);border:1px solid rgba(140,170,220,.3);box-shadow:0 24px 70px rgba(0,0,0,.65);text-align:center}
+  #pause h2{margin:2px 0 6px;font-size:20px;letter-spacing:6px;color:#e8f0ff;font-weight:800}
+  #pause .note{color:#ffd27a;font-size:12.5px;min-height:18px;margin-bottom:10px}
+  #pause .lbl{margin:12px 0 4px;font-size:11px;letter-spacing:2px;color:#7e90b3;text-transform:uppercase;text-align:left;display:flex;justify-content:space-between}
+  #pause input[type=range]{width:100%;accent-color:#8fe05a;margin:2px 0 4px;height:28px}
+  #pause button{display:block;width:100%;margin:9px 0;padding:13px;border-radius:9px;border:1px solid #3d5486;background:linear-gradient(180deg,#2a3a5e,#1e2b48);color:#eaf1ff;font:700 15px 'Segoe UI',system-ui,sans-serif;letter-spacing:1px;cursor:pointer}
+  #pause button:hover{background:linear-gradient(180deg,#36497a,#273659);border-color:#6a86c8}
+  #pause button.small{padding:9px;font-size:13px;font-weight:600;background:transparent;border-color:rgba(140,170,220,.3);color:#b8c8e8}
+  #pause button.ghost{background:transparent;border-color:rgba(255,130,130,.4);color:#ff9d9d;font-weight:600;padding:10px}
 </style>
 </head>
 <body>
@@ -117,10 +131,23 @@
   </div>
 
   <div id="status"></div>
-  <div class="keys">ZQSD bouger · Souris viser · Clic gauche tirer · Clic droit grenade<br>E : porte / ordre aux alliés · Échap : retour au menu</div>
+  <div class="keys">ZQSD bouger · Souris viser · Clic gauche tirer · Clic droit grenade<br>E : porte / ordre aux alliés · Échap : pause</div>
+</div></div>
+<div id="pause"><div class="box">
+  <h2 id="pauseTitle">PAUSE</h2>
+  <div class="note" id="pauseNote"></div>
+  <div class="lbl"><span>Musique</span><span id="volMusV">100%</span></div>
+  <input type="range" id="volMus" min="0" max="100" step="1" value="100">
+  <div class="lbl"><span>Effets sonores</span><span id="volSfxV">100%</span></div>
+  <input type="range" id="volSfx" min="0" max="100" step="1" value="100">
+  <button class="small" id="pMute">Son : activé</button>
+  <button id="pResume">Reprendre</button>
+  <button class="ghost" id="pQuit">Quitter la partie</button>
 </div></div>
 <div id="touch">
+  <div id="zoneL"></div>
   <div class="stick" id="stickL"><i></i></div>
+  <div id="zoneR"></div>
   <div class="stick" id="stickR"><i></i></div>
   <button class="tbtn" id="tFire">TIRER</button>
   <button class="tbtn" id="tG">GREN.</button>
@@ -719,12 +746,14 @@ function shoot(s,aim,dmg,team,spread,o){
 const keys={},mouse={x:0,y:0,down:false};
 const cam={x:0,y:0};
 function humanInput(p){ // entrée locale (clavier + souris, ou commandes tactiles) pour le soldat p
+  if(paused)return {mx:0,my:0,aim:p.face,fire:false};   // menu ouvert : le soldat reste immobile
   let mx=(keys.d||keys.arrowright?1:0)-(keys.q||keys.a||keys.arrowleft?1:0),
       my=(keys.s||keys.arrowdown?1:0)-(keys.z||keys.w||keys.arrowup?1:0),
       aim=Math.atan2(mouse.y+cam.y-p.y,mouse.x+cam.x-p.x),fire=mouse.down;
   if(TOUCH.on){
     if(TOUCH.mx||TOUCH.my){mx=TOUCH.mx;my=TOUCH.my}
     if(!TOUCH.aimSet&&(mx||my))TOUCH.aim=Math.atan2(my,mx);   // tant qu'on n'a pas utilisé le joystick de visée : on regarde où l'on marche
+    if(TOUCH.aimSet)TOUCH.aim=angLerp(TOUCH.aim,TOUCH.aimTarget,.4);
     aim=TOUCH.aim;fire=fire||TOUCH.fire;
   }
   return {mx,my,aim,fire};
@@ -1352,7 +1381,7 @@ function hud(){
   for(const hh of [player,player2])if(hh&&hh.hp>0){g.fillStyle=hh===me?((time*4|0)%2?'#fff':'#7fe3ff'):'#ffb15c';g.fillRect(mx+hh.x*sx-2.5,my+hh.y*sy-2.5,5,5)}
   g.strokeStyle='rgba(255,255,255,.55)';g.lineWidth=1;g.strokeRect(mx+cam.x*sx,my+cam.y*sy,cv.width*sx,cv.height*sy);
   // aide
-  const help=['ZQSD bouger · Souris viser · Clic gauche tirer · Clic droit grenade','E porte / ordre aux alliés (3 cases) · Passe sur un frère tombé : munitions','Échap menu · Entrée rejouer · N son · M mode ('+(MODE==='queen'?'reine':'survie')+')'];
+  const help=['ZQSD bouger · Souris viser · Clic gauche tirer · Clic droit grenade','E porte / ordre aux alliés (3 cases) · Passe sur un frère tombé : munitions','Échap pause · Entrée rejouer · N son · M mode ('+(MODE==='queen'?'reine':'survie')+')'];
   if(!TOUCH.on){   // l'aide clavier n'a pas de sens sur mobile (et gênerait les joysticks)
     g.font="11px 'Segoe UI',sans-serif";g.textAlign='left';
     const hw=Math.max(...help.map(s=>g.measureText(s).width))+20;
@@ -1371,6 +1400,12 @@ function hud(){
 // ============ Audio : musique et bruitages synthétisés (WebAudio), aucun fichier ============
 const AUD={ctx:null,muted:false,master:null,mus:null,sfx:null,verb:null,delay:null,noise:null,last:{},voices:0,trk:null,cur:undefined,int:0};
 try{AUD.muted=localStorage.getItem('nb_mute')==='1'}catch(e){}
+const VOL={mus:1,sfx:1};   // réglages du menu pause (0..1), appliqués sur les gains de base (musique .5, effets .9)
+try{const m=localStorage.getItem('nb_vol_mus'),f=localStorage.getItem('nb_vol_sfx');if(m!==null)VOL.mus=Math.max(0,Math.min(1,+m));if(f!==null)VOL.sfx=Math.max(0,Math.min(1,+f))}catch(e){}
+function applyVolumes(){
+  if(!AUD.ctx)return;const t=AUD.ctx.currentTime;
+  for(const [node,v] of [[AUD.mus,.5*VOL.mus],[AUD.sfx,.9*VOL.sfx]]){node.gain.cancelScheduledValues(t);node.gain.setValueAtTime(v,t)}   // valeur directe : un setTarget* sur un noeud au repos ne rattrape pas son retard
+}
 
 function audioInit(){ // appelé à chaque geste utilisateur : crée le contexte la 1re fois, le relance s'il est suspendu
   if(AUD.ctx){if(AUD.ctx.state==='suspended')AUD.ctx.resume();return}
@@ -1390,19 +1425,21 @@ function audioInit(){ // appelé à chaque geste utilisateur : crée le contexte
   AUD.delay=c.createDelay(1);AUD.delay.delayTime.value=.375;                         // écho
   const fb=c.createGain();fb.gain.value=.38;AUD.delay.connect(fb);fb.connect(AUD.delay);
   const dg=c.createGain();dg.gain.value=.5;AUD.delay.connect(dg);dg.connect(AUD.mus);
+  applyVolumes();
   setInterval(musicTick,50);
   if(AUD.ctx.state==='suspended')AUD.ctx.resume();
 }
 function setMute(m){
   AUD.muted=m;
   try{localStorage.setItem('nb_mute',m?'1':'0')}catch(e){}
-  if(AUD.ctx)AUD.master.gain.setTargetAtTime(m?0:.9,AUD.ctx.currentTime,.05);
+  if(AUD.ctx){const t=AUD.ctx.currentTime;AUD.master.gain.cancelScheduledValues(t);AUD.master.gain.setValueAtTime(m?0:.9,t)}
   updateMuteUI();
 }
 function updateMuteUI(){
   const a=document.getElementById('mMute'),b=document.getElementById('tMute');
   if(a)a.textContent=AUD.muted?'Son : coupé':'Son : activé';
   if(b)b.textContent=AUD.muted?'✖':'♪';
+  const pm=document.getElementById('pMute');if(pm)pm.textContent=AUD.muted?'Son : coupé':'Son : activé';
 }
 
 // ---- briques de synthèse ----
@@ -1597,6 +1634,7 @@ function audioTick(dt){ // choix du morceau (menu / monde) et intensité selon l
 
 // ============ Entrées ============
 let running=false;   // false tant que le menu est affiché
+let paused=false;    // menu pause ouvert (en solo : le jeu est figé ; en ligne : il continue)
 function netSend(o){try{NET.conn&&NET.conn.send(o)}catch(e){}}
 function interact(){ // E : porte / ordre aux alliés proches
   if(NET.mode==='guest')netSend({t:'e'});else tryDoor(player);
@@ -1608,12 +1646,13 @@ function restart(){
 addEventListener('keydown',e=>{
   const k=e.key.toLowerCase();
   if(!running)return;
+  if(paused){if(e.key==='Escape')togglePause(false);else if(k==='n'&&!e.repeat)setMute(!AUD.muted);return}
   keys[k]=true;
   if(k==='n'&&!e.repeat)setMute(!AUD.muted);
   if(e.key==='Enter'&&NET.mode!=='guest')restart();
   if(k==='m'&&!e.repeat&&NET.mode!=='guest'){MODE=MODE==='queen'?'survive':'queen';restart()}
   if(k==='e'&&!e.repeat)interact();
-  if(e.key==='Escape')toMenu();
+  if(e.key==='Escape')togglePause(true);
   if(e.key.startsWith('Arrow')||e.key===' ')e.preventDefault();
 });
 addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false});
@@ -1835,11 +1874,11 @@ function showScreen(id,msg){
   document.querySelectorAll('#menu .screen').forEach(e=>e.classList.toggle('on',e.id===id));
   setStatus(msg);
 }
-function startGame(){menuEl.style.display='none';running=true}
+function startGame(){menuEl.style.display='none';running=true;paused=false;document.getElementById('pause').style.display='none'}
 const dropPeer=()=>{try{peer&&peer.destroy()}catch(e){}peer=null};
 function bgScene(){setWorld('kappa');MODE='queen';NET.mode='solo';init()}   // décor du titre : le nid
 function toMenu(msg){
-  running=false;
+  running=false;paused=false;document.getElementById('pause').style.display='none';
   try{NET.conn&&NET.conn.close()}catch(e){}
   dropPeer();NET.conn=null;
   bgScene();
@@ -1901,39 +1940,50 @@ bgScene();   // décor du titre
 
 // ============ Commandes tactiles (mobile) ============
 // Joystick gauche = se déplacer, joystick droit = orienter, boutons : TIRER, GRENADE, E (porte / ordres).
-const TOUCH={on:matchMedia('(pointer:coarse)').matches||params.get('touch')==='1',mx:0,my:0,aim:-0.8,aimSet:false,fire:false,t:-1e9};
+const TOUCH={on:matchMedia('(pointer:coarse)').matches||params.get('touch')==='1',mx:0,my:0,aim:-0.8,aimTarget:-0.8,aimSet:false,fire:false,t:-1e9};
 addEventListener('touchstart',()=>{TOUCH.t=performance.now()},{passive:true});
-function stick(id,onMove,onEnd){
-  const el=$(id),knob=el.querySelector('i');let pid=null,cx=0,cy=0,R=1;
-  const set=e=>{
-    let dx=e.clientX-cx,dy=e.clientY-cy;const d=Math.hypot(dx,dy),k=d>R?R/d:1;dx*=k;dy*=k;
-    knob.style.transform='translate('+dx+'px,'+dy+'px)';onMove(dx/R,dy/R);
-  };
-  el.addEventListener('pointerdown',e=>{
-    if(pid!==null)return;pid=e.pointerId;try{el.setPointerCapture(pid)}catch(_){}
-    const r=el.getBoundingClientRect();cx=r.left+r.width/2;cy=r.top+r.height/2;R=r.width/2*.7;
-    set(e);e.preventDefault();
-  });
-  el.addEventListener('pointermove',e=>{if(e.pointerId===pid)set(e)});
-  const end=e=>{if(e.pointerId!==pid)return;pid=null;knob.style.transform='';onEnd()};
-  el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);
-}
 function press(id,down,up){
   const el=$(id);
   el.addEventListener('pointerdown',e=>{try{el.setPointerCapture(e.pointerId)}catch(_){}down();e.preventDefault()});
   const end=()=>{if(up)up()};
   el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);
 }
-stick('stickL',(x,y)=>{
+function dynStick(zoneId,baseId,onMove,onEnd){
+  const zone=$(zoneId),base=$(baseId),knob=base.querySelector('i'),HALF=62,R=50;
+  let pid=null,ox=0,oy=0;
+  const place=()=>{
+    ox=Math.max(HALF,Math.min(innerWidth-HALF,ox));oy=Math.max(HALF,Math.min(innerHeight-HALF,oy));
+    base.style.left=(ox-HALF)+'px';base.style.top=(oy-HALF)+'px';
+  };
+  zone.addEventListener('pointerdown',e=>{
+    if(pid!==null)return;pid=e.pointerId;try{zone.setPointerCapture(pid)}catch(_){}
+    ox=e.clientX;oy=e.clientY;
+    base.style.right='auto';base.style.bottom='auto';base.style.opacity='1';place();
+    knob.style.transform='';onMove(0,0);e.preventDefault();
+  });
+  zone.addEventListener('pointermove',e=>{
+    if(e.pointerId!==pid)return;
+    let dx=e.clientX-ox,dy=e.clientY-oy;const d=Math.hypot(dx,dy);
+    if(d>R){const k=(d-R)/d;ox+=dx*k;oy+=dy*k;place();dx=e.clientX-ox;dy=e.clientY-oy}   // le socle suit le doigt
+    knob.style.transform='translate('+dx+'px,'+dy+'px)';
+    onMove(dx/R,dy/R);
+  });
+  const end=e=>{
+    if(e.pointerId!==pid)return;pid=null;
+    base.removeAttribute('style');knob.style.transform='';onEnd();   // le socle retourne à sa place de repos
+  };
+  zone.addEventListener('pointerup',end);zone.addEventListener('pointercancel',end);
+}
+dynStick('zoneL','stickL',(x,y)=>{
   const m=Math.hypot(x,y);
   if(m<.15){TOUCH.mx=0;TOUCH.my=0}
   else{const k=Math.min(1,(m-.15)/.6)/m;TOUCH.mx=x*k;TOUCH.my=y*k}   // zone morte + vitesse proportionnelle
 },()=>{TOUCH.mx=0;TOUCH.my=0});
-stick('stickR',(x,y)=>{if(Math.hypot(x,y)>.25){TOUCH.aim=Math.atan2(y,x);TOUCH.aimSet=true}},()=>{});
+dynStick('zoneR','stickR',(x,y)=>{if(Math.hypot(x,y)>.3){TOUCH.aimTarget=Math.atan2(y,x);TOUCH.aimSet=true}},()=>{});
 press('tFire',()=>{TOUCH.fire=true},()=>{TOUCH.fire=false});
 press('tE',()=>{if(running)interact()});
 press('tG',()=>{if(running){if(NET.mode==='guest')netSend({t:'g'});else throwGrenade(player)}});
-press('tMenu',()=>{TOUCH.fire=false;TOUCH.mx=TOUCH.my=0;toMenu()});
+press('tMenu',()=>togglePause());
 press('tRestart',()=>{if(running&&over&&NET.mode!=='guest')restart()});
 addEventListener('blur',()=>{TOUCH.fire=false;TOUCH.mx=0;TOUCH.my=0});
 function touchUI(){
@@ -1941,7 +1991,7 @@ function touchUI(){
   $('touch').style.display=running?'block':'none';
   $('tRestart').style.display=(running&&over&&NET.mode!=='guest')?'block':'none';
 }
-if(TOUCH.on){const k=document.querySelector('#menu .keys');if(k)k.innerHTML='Joystick gauche : bouger · Joystick droit : viser<br>TIRER · GREN. (grenade) · E : porte / ordres aux alliés · ☰ : menu'}
+if(TOUCH.on){const k=document.querySelector('#menu .keys');if(k)k.innerHTML='Joystick gauche : bouger · Joystick droit : viser<br>TIRER · GREN. (grenade) · E : porte / ordres aux alliés · ☰ : pause'}
 
 // ---- son : premier geste = démarrage de l'audio (les navigateurs l'exigent) ----
 ['pointerdown','keydown','touchend','click'].forEach(n=>addEventListener(n,audioInit,true));
@@ -1949,6 +1999,31 @@ $('mMute').onclick=()=>{audioInit();setMute(!AUD.muted)};
 press('tMute',()=>{audioInit();setMute(!AUD.muted)});
 menuEl.addEventListener('click',e=>{if(e.target.closest('button')&&e.target.id!=='mMute')playSfx('ui')});
 updateMuteUI();
+
+// ---- menu pause : réglages du son, reprendre, quitter ----
+function togglePause(force){
+  if(!running)return;
+  paused=force!==undefined?force:!paused;
+  $('pause').style.display=paused?'flex':'none';
+  if(paused){
+    mouse.down=false;TOUCH.fire=false;TOUCH.mx=0;TOUCH.my=0;
+    const solo=NET.mode==='solo';
+    $('pauseTitle').textContent=solo?'PAUSE':'MENU';
+    $('pauseNote').textContent=solo?'La partie est en pause.':'En ligne : la partie continue pendant que ce menu est ouvert.';
+  }
+}
+function syncVolUI(){
+  $('volMus').value=Math.round(VOL.mus*100);$('volMusV').textContent=Math.round(VOL.mus*100)+'%';
+  $('volSfx').value=Math.round(VOL.sfx*100);$('volSfxV').textContent=Math.round(VOL.sfx*100)+'%';
+}
+function saveVol(){try{localStorage.setItem('nb_vol_mus',VOL.mus);localStorage.setItem('nb_vol_sfx',VOL.sfx)}catch(e){}}
+$('volMus').addEventListener('input',e=>{VOL.mus=e.target.value/100;$('volMusV').textContent=e.target.value+'%';saveVol();applyVolumes()});
+$('volSfx').addEventListener('input',e=>{VOL.sfx=e.target.value/100;$('volSfxV').textContent=e.target.value+'%';saveVol();applyVolumes()});
+$('volSfx').addEventListener('change',()=>playSfx('pickup'));   // aperçu du volume des effets
+$('pMute').onclick=()=>{audioInit();setMute(!AUD.muted)};
+$('pResume').onclick=()=>togglePause(false);
+$('pQuit').onclick=()=>toMenu();
+syncVolUI();
 
 // ============ Boucle ============
 init();
@@ -1959,7 +2034,8 @@ function loop(now){
   if(NET.mode==='guest')updateGuest(dt);
   else{
     if(!running)time+=dt;
-    if(running&&!over)update(dt);else{fx.forEach(e=>e.t-=dt);fx=fx.filter(e=>e.t>0);updateParts(dt)}
+    const frozen=paused&&NET.mode==='solo';   // pause : seulement en solo, en ligne la partie continue
+    if(running&&!over&&!frozen)update(dt);else if(!frozen){fx.forEach(e=>e.t-=dt);fx=fx.filter(e=>e.t>0);updateParts(dt)}
     if(NET.mode==='host')netHostTick(dt);
   }
   touchUI();

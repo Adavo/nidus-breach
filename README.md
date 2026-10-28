@@ -18,7 +18,7 @@ Ouvrir `index.html` dans un navigateur récent (ou le servir en HTTPS, voir plus
 | Grenade (zone) | clic droit |
 | Ouvrir/fermer une porte, ordre aux alliés à moins de 3 cases | `E` |
 | Recommencer / changer de mode (hôte ou solo) | `Entrée` / `M` |
-| Retour au menu | `Échap` |
+| Pause (volumes, quitter la partie) | `Échap` |
 | Couper / remettre le son | `N` (ou le bouton « Son » du menu) |
 
 ### Son
@@ -27,13 +27,17 @@ qui devient plus intense quand les aliens approchent. Le son démarre au premier
 En coop, l'invité entend les bruitages de l'hôte.
 
 ### Sur mobile
-Les commandes tactiles apparaissent automatiquement (écran tactile) : joystick gauche pour se déplacer, joystick droit pour
-orienter, boutons **TIRER**, **GREN.** (grenade) et **E** (porte / ordres aux alliés), et **☰** pour revenir au menu.
+Les commandes tactiles apparaissent automatiquement (écran tactile) : joysticks flottants (le socle apparaît sous le doigt) : à gauche pour se déplacer, à droite pour
+orienter, boutons **TIRER**, **GREN.** (grenade) et **E** (porte / ordres aux alliés), et **☰** pour ouvrir le menu pause.
 Mieux vaut jouer en mode paysage. Ajouter `?touch=1` à l'adresse force l'affichage des commandes tactiles.
 
 ### Modes
 - **Chasse à la reine** : tuer la reine des aliens dans son nid.
 - **Survie** : tenir la forteresse 150 secondes.
+
+### Pause
+`Échap` (ou ☰ sur mobile) ouvre le menu pause : volume de la musique et des effets (mémorisés), son coupé/activé, reprendre ou quitter la partie.
+En solo le jeu est figé ; en multijoueur la partie **continue** pendant que le menu est ouvert (votre soldat reste immobile).
 
 ### Mondes
 Avant-poste Kappa, Marais de Vesper, Canyon Rouge, Ruines du Givre.
