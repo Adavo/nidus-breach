@@ -37,6 +37,10 @@
   #menu button.sel{border-color:#8fe05a;box-shadow:0 0 0 1px #8fe05a inset,0 0 14px rgba(143,224,90,.25)}
   #menu .modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   #menu button.opt{margin:0;padding:11px 8px;font-size:13px}
+  #menu .code{cursor:pointer;display:inline-block;padding:4px 14px;border-radius:10px;border:1px dashed rgba(255,226,138,.35);transition:background .15s,border-color .15s;-webkit-tap-highlight-color:transparent}
+  #menu .code:hover{background:rgba(255,226,138,.08);border-color:rgba(255,226,138,.7)}
+  #menu .code.copied{background:rgba(143,224,90,.18);border-color:#8fe05a;color:#c8ffa8}
+  #menu .copyhint{color:#7e90b3;font-size:11.5px;letter-spacing:1px;margin-bottom:8px;min-height:15px}
   #menu .code{font:800 34px monospace;letter-spacing:10px;color:#ffe28a;margin:6px 0 4px;text-shadow:0 0 14px rgba(255,200,80,.4)}
   #menu .hint{color:#8fa3c8;font-size:13px;margin-bottom:10px}
   #menu .row{display:flex;gap:8px;margin:8px 0}
@@ -122,7 +126,8 @@
 
   <div class="screen" id="s-host">
     <h2>Partie en ligne</h2>
-    <div class="code" id="hostCode">…</div>
+    <div class="code" id="hostCode" role="button" tabindex="0" title="Toucher pour copier">…</div>
+    <div class="copyhint" id="copyHint">Touche le code pour le copier</div>
     <div class="hint">Donne ce code à ton partenaire.<br>La partie démarre dès qu'il te rejoint.</div>
     <button class="ghost" id="bCancelHost">Annuler</button>
   </div>
@@ -1945,6 +1950,29 @@ function hostGame(){ // partie en ligne : on attend qu'un partenaire se connecte
     err=>setStatus('Erreur : '+err));
 }
 $('bCancelHost').onclick=()=>{dropPeer();showScreen('s-create')};
+// toucher / cliquer le code de la partie le copie dans le presse-papiers (pour l'envoyer à l'autre joueur)
+function copyText(t){
+  if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t);
+  return new Promise((ok,ko)=>{   // repli (page non sécurisée, anciens navigateurs)
+    const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');
+    ta.style.cssText='position:fixed;left:-999px;top:0;opacity:0';document.body.appendChild(ta);
+    ta.select();ta.setSelectionRange(0,t.length);
+    let r=false;try{r=document.execCommand('copy')}catch(e){}
+    ta.remove();r?ok():ko(new Error('copie refusée'));
+  });
+}
+let copyT=0;
+function copyHostCode(){
+  const el=$('hostCode'),code=el.textContent.trim();
+  if(!/^[A-Z0-9]{5}$/.test(code))return;   // le code n'est pas encore là
+  clearTimeout(copyT);
+  copyText(code).then(()=>{
+    el.classList.add('copied');$('copyHint').textContent='Code copié !';playSfx('pickup');
+  }).catch(()=>{$('copyHint').textContent='Copie impossible : note le code '+code});
+  copyT=setTimeout(()=>{el.classList.remove('copied');$('copyHint').textContent='Touche le code pour le copier'},2200);
+}
+$('hostCode').addEventListener('click',copyHostCode);
+$('hostCode').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();copyHostCode()}});
 $('bJoin').onclick=()=>{
   const code=$('code').value.trim().toUpperCase();
   if(!code){setStatus('Entre le code de la partie');return}

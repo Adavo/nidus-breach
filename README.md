@@ -56,6 +56,7 @@ Menu **Multi** → *Créer une partie* (code à 5 caractères) ou *Rejoindre une
 
 - Connexion navigateur à navigateur (WebRTC) via [PeerJS](https://peerjs.com/) ; le service public de PeerJS
   ne sert qu'à la mise en relation. **Internet est nécessaire** pour le multi.
+- Sur l'écran d'attente, **toucher ou cliquer le code le copie** dans le presse-papiers pour l'envoyer à l'autre joueur.
 - L'hôte fait tourner toute la simulation ; l'invité envoie ses touches et reçoit l'état du jeu.
 - Pour jouer à distance, la page doit être servie en **HTTPS** (GitHub Pages, Netlify, Cloudflare Pages…).
 - Certains réseaux (Wi-Fi d'entreprise, certaines 4G) bloquent la connexion directe : il faudrait alors un relais TURN.
