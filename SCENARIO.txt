@@ -1,0 +1,156 @@
+NIDUS BREACH - SCENARIO DE LA CAMPAGNE (version de travail)
+============================================================
+
+DECOR
+-----
+Une seule planete, quatre regions, qui sont les quatre mondes du jeu.
+
+- Kappa  (Avant-poste Kappa) : la colonie miniere de la societe Helix. Elle ne repond plus.
+- Vesper (Marais de Vesper)  : les marais, avec le laboratoire d'Helix.
+- Canyon (Canyon Rouge)      : le site d'extraction ou Helix a deterre les graines aliens.
+- Givre  (Ruines du Givre)   : les glaces ou dort la reine supreme, sous une forteresse de glace
+                               batie par le Nidus au milieu de ruines anciennes.
+
+Deplacements : navette militaire jusqu'a Vesper (abattue a l'arrivee), puis le vehicule tout-terrain
+du labo jusqu'au Canyon, puis l'helico Helix des survivants jusqu'au Givre. Chaque saut de region a
+une raison et un moyen.
+
+PERSONNAGES
+-----------
+- Rook et Wren : les deux soldats (indicatifs, sans genre ni visage). En solo, Wren est le
+  lieutenant IA.
+- Colonel Hale : le commandement, qui parle par radio. Helix travaille pour l'armee sous ses ordres.
+  Il ment depuis le debut : il veut une graine intacte pour faire eclore une reine qu'il pense
+  pouvoir controler, et en faire une arme. Il se sert de l'escadron pour rassembler les graines.
+- Dr Ilya Marsh : ingenieur civil d'Helix, blesse, seul contact fiable. Il porte un detecteur de
+  pulsation et connait les systemes d'Helix (labo, satellites).
+- Le Nidus : l'esprit collectif des aliens.
+- La reine supreme : le coeur du Nidus, endormie sous les glaces du Givre depuis toujours.
+
+REGLES DU MONDE (tout le scenario en decoule)
+---------------------------------------------
+- La pulsation : une onde emise par la reine supreme et relayee par les nids. Elle fait pondre les
+  nids, rend les aliens agressifs et leur indique ou sont les humains. Elle brouille aussi la radio
+  et les signaux autour des nids. Marsh la mesure avec son detecteur.
+- Les graines : des oeufs de reine, noirs, qui battent au rythme de la pulsation et l'amplifient.
+  Une graine qui eclot donne une nouvelle reine. Le Nidus protege ses graines et les cache dans ses
+  nids. Elles sont presque indestructibles : seul le four d'incineration du labo de Vesper,
+  alimente par son reacteur, peut les bruler.
+- Attaquer une graine ou une reine fait vriller la pulsation : tous les aliens du secteur convergent.
+
+L'HISTOIRE EN UNE PHRASE
+------------------------
+En deterrant les graines, Helix a reveille le Nidus ; on les brule au labo, Hale en vole une pour
+faire naitre une reine a lui, on la tue, et quand Hale veut tout effacer par une frappe orbitale,
+on retourne sa frappe contre la reine supreme.
+
+LES 10 MISSIONS
+---------------
+
+Mission 1 - Atterrissage                         [Kappa, jour - Nids - ensemble]
+  Pourquoi on y va : la colonie Helix ne repond plus, la navette nous depose devant.
+  Ce qu'on fait    : detruire 3 nids autour de la colonie.
+  Ce qu'on apprend : la colonie est vide, les colons ont fui vers le labo de Vesper. Les nids
+                     encerclaient la colonie et sa pulsation brouillait la radio : c'est pour ca
+                     qu'elle ne repondait plus. Il faut relancer le relais.
+
+Mission 2 - Relais radio                         [Kappa, jour - Proteger une zone - ensemble]
+  Pourquoi on y va : les nids detruits, la radio peut repartir, mais le relais doit chauffer.
+  Ce qu'on fait    : tenir le relais 4 minutes pendant qu'il emet.
+  Ce qu'on apprend : une voix repond, celle du Dr Marsh, refugie dans un abri du marais de Vesper.
+                     Hale ordonne de le rejoindre "pour secourir un civil". En realite, Marsh a la
+                     cle du labo ou sont les graines.
+
+Mission 3 - Chute ratee                          [Vesper, nuit - Rejoindre - separes puis reunis]
+  Pourquoi on y va : on decolle de Kappa vers Marsh.
+  Ce qu'on fait    : la navette est abattue par des cracheurs. Rook et Wren sont separes et se
+                     retrouvent par radio en s'ouvrant des passages.
+  Ce qu'on apprend : on est a pied dans le marais. Dans un nid, premiere graine trouvee : un oeuf
+                     noir qui bat. Le detecteur de Marsh confirme : elle amplifie la pulsation.
+
+Mission 4 - L'escorte                            [Vesper, nuit - Proteger quelqu'un - ensemble]
+  Pourquoi on y va : Marsh est blesse, dans son abri. Il a la cle du labo et sait comment detruire
+                     les graines.
+  Ce qu'on fait    : escorter Marsh de l'abri jusqu'au labo, envahi par les nids.
+  Ce qu'on apprend : Marsh explique : Helix a deterre les graines au Canyon, et leur pulsation a
+                     reveille la reine supreme. Ce sont des oeufs de reine. Quand le labo a ete
+                     envahi, les aliens les ont emportees et cachees dans les nids du marais. Le four
+                     est la, mais le reacteur est eteint.
+
+Mission 5 - Les graines                          [Vesper, jour - Artefacts - separes dans 2 zones]
+  Pourquoi on y va : les graines vont eclore. Chaque graine eclose, c'est une nouvelle reine.
+  Ce qu'on fait    : recuperer 4 graines cachees dans les nids (on est ralenti en en portant une,
+                     pistolet seulement) et les ramener au labo.
+  Ce qu'on apprend : Hale ordonne d'en garder une "pour analyse". Marsh dit que c'est un mensonge :
+                     une graine intacte, c'est une reine, donc une arme. On refuse.
+
+Mission 6 - Le reacteur                          [Vesper, nuit - Survie / defendre - ensemble]
+  Pourquoi on y va : Marsh relance le reacteur et lance le four. Les graines brulent lentement et
+                     la pulsation vrille : tous les aliens du marais convergent vers le labo.
+  Ce qu'on fait    : defendre le labo jusqu'a l'aube. A mi-parcours, le courant saute : Hale l'a
+                     coupe a distance par le reseau militaire auquel le labo est relie. Le four
+                     s'arrete, il faut rallumer un generateur annexe.
+  Ce qu'on apprend : pendant la coupure, un drone de Hale a force la trappe du four et emporte une
+                     graine. Les trois autres sont detruites. Au matin, la pulsation baisse a Vesper
+                     et explose au Canyon : Hale y a replante la graine, dans le gisement d'origine.
+
+Mission 7 - La Tenaille                          [Canyon, jour - Reine, objectif asymetrique - separes avec roles]
+  Pourquoi on y va : la graine volee a eclos. Une jeune reine grandit au Canyon et Hale croit
+                     pouvoir la dresser. Il faut la tuer avant qu'elle soit adulte. On y va avec
+                     le vehicule tout-terrain du labo.
+  Ce qu'on fait    : Rook attaque la reine par la falaise ; Wren sabote les nids et tient deux
+                     interrupteurs pour ouvrir l'acces.
+  Ce qu'on apprend : la jeune reine meurt. Dans le journal d'Helix, on lit que Hale a ordonne
+                     l'exploitation des graines des le premier jour : tout etait prevu.
+
+Mission 8 - Evacuation                           [Canyon, nuit - Sauvetage + chrono - ensemble ou separes]
+  Pourquoi on y va : son arme est morte, Hale veut effacer les traces. Il ordonne a l'escadron de
+                     rentrer seul. Mais 5 survivants Helix sont caches dans le Canyon : des temoins.
+  Ce qu'on fait    : les retrouver et les amener au dernier helico Helix avant que son pilote
+                     decolle (les aliens convergent depuis la mort de la reine).
+  Ce qu'on apprend : Marsh intercepte un ordre de Hale : frappe orbitale sur le Canyon a l'aube,
+                     pour effacer le site, les temoins et nous. Il peut detourner le ciblage, mais
+                     il lui faut une balise posee sur une nouvelle cible. Son detecteur est clair :
+                     la pulsation vient du Givre, de la reine supreme. On s'y envole.
+
+Mission 9 - Bombardement                         [Givre, jour - Nids + temps - ensemble]
+  Pourquoi on y va : on pose la balise au-dessus de la forteresse de glace de la reine supreme.
+                     Mais les nids autour brouillent son signal. Si la balise n'accroche pas avant
+                     l'heure de la frappe, celle-ci tombe sur sa cible d'origine : le Canyon, ou
+                     attendent Marsh et les survivants.
+  Ce qu'on fait    : detruire tous les nids qui brouillent la balise dans le temps imparti, puis se
+                     replier avant l'impact.
+  Ce qu'on apprend : la balise accroche, la frappe est detournee sur le Givre. Hale comprend et
+                     tente d'annuler la frappe, sans succes : Marsh a verrouille le ciblage.
+
+Mission 10 - La reine supreme                    [Givre, nuit - Boss - ensemble]
+  Pourquoi on y va : la frappe tombe en plusieurs salves. Elle fend la carapace de glace, mais la
+                     reine est trop profonde pour en mourir. Il faut que la balise tienne jusqu'a la
+                     derniere salve, puis descendre l'achever.
+  Ce qu'on fait    : defendre la balise contre les aliens et les drones de Hale, qui tente de la
+                     detruire. Puis percer la forteresse dans un mecha minier d'Helix recupere au
+                     Canyon, et tuer la reine supreme en 3 phases.
+  Fin              : la pulsation s'eteint. Hale arrive avec ses troupes "pour recuperer ce qui
+                     reste". Mais sous la glace, le detecteur de Marsh capte un dernier battement :
+                     une graine a survecu. Radio de Hale : "Ne bougez pas. On arrive."
+
+MISE EN SCENE
+-------------
+- Avant et apres chaque mission : une carte texte avec 3 ou 4 lignes de briefing / debriefing.
+- Pendant : lignes de radio scriptees aux moments cles, affichees comme sous-titres.
+- Marsh a un detecteur de pulsation : chaque debriefing indique ou la pulsation baisse et ou elle
+  monte, ce qui justifie le saut de region.
+- Les graines (missions 3 et 5) et la balise (missions 9 et 10) sont des objets du jeu qui servent a
+  la fois d'objectif et de decor narratif.
+- Les drones de Hale apparaissent en mission 6 (vol de la graine) et reviennent en mission 10.
+
+QUESTIONS OUVERTES
+------------------
+- Solo : Wren (lieutenant IA) joue sa moitie dans les missions separees (3, 5, 7, 8) avec un delai
+  raisonnable.
+- Reapparition : une regle par mission (reacteur, temps, ou aucune sur le boss).
+- Bonus de rang (mecha, helico, convoi) : les garder tels quels ou en faire des recompenses. Le mecha
+  serait reserve aux missions 7 (on le trouve au Canyon) et 10. Le convoi colle au vehicule du labo
+  (Vesper -> Canyon), l'helico a la mission 8.
+- Fin ouverte : prepare une suite (Hale et la derniere graine), peut etre refermee.
+- Noms (Rook, Wren, Hale, Marsh, Helix) : faciles a changer.
