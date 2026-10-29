@@ -80,7 +80,7 @@
   #menu button.lang{left:10px;right:auto}
   #menu .designs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   #menu button.dsg{text-align:center;padding:8px;margin:0}
-  #menu button.dsg canvas{display:block;margin:0 auto 4px;width:64px;height:75px;image-rendering:pixelated;border:1px solid rgba(140,170,220,.3);border-radius:3px}
+  #menu button.dsg canvas{display:block;margin:0 auto;width:86px;height:100px;image-rendering:pixelated;border:1px solid rgba(140,170,220,.3);border-radius:3px}
   #menu button.dsg b{font-size:13px;color:#eaf1ff}
   #menu .mlist{display:flex;flex-direction:column;gap:6px;max-height:min(50vh,430px);overflow:auto;margin-bottom:6px;padding-right:2px;text-align:left}
   #menu button.mrow{display:flex;align-items:center;gap:10px;margin:0;padding:8px 10px;text-align:left;letter-spacing:0;font-weight:600;background:#142036;border-color:rgba(140,170,220,.25)}
@@ -349,12 +349,14 @@ fr:{
   'tx.allyDown':`Un frère d'armes est tombé`,'tx.selfDown':`Soldat tombé`,'tx.partnerDown':`Partenaire tombé`,
   'tx.nestDown':`Nid détruit !`,'tx.reactorHit':`Le réacteur est attaqué !`,'tx.reactorDown':`RÉACTEUR DÉTRUIT : plus de réapparition !`,
   'tx.drop':`Largage !`,'tx.acid':`Acide !`,'tx.partnerLeft':`Partenaire déconnecté`,
+  'tx.recruit':`Un soldat rejoint l'escouade`,
   'tx.relayHit':`Le relais est attaqué !`,'tx.relayZone':`Retournez dans la zone du relais !`,'tx.relayDown':`RELAIS DÉTRUIT !`,
   // interface en jeu
   'h.hp':`PV`,'h.mech':`MÉCHA`,'h.cannons':`CANONS`,'h.arms':`ARMES`,'h.grenades':`GRENADES`,'h.rockets':`Roquettes {0}/5 (clic droit)`,
   'h.allies':`ALLIÉS`,'h.partner':`PARTENAIRE`,'h.time':`TEMPS`,'h.reactor':`RÉACTEUR`,
   'h.objQueen':`OBJECTIF : TUER LA REINE`,'h.objSurvive':`OBJECTIF : TENIR LA FORTERESSE`,
   'h.objNests':`OBJECTIF : DÉTRUIRE LES NIDS`,'h.nests':`NIDS`,
+  'h.objExplore':`OBJECTIF : EXPLORER LA COLONIE`,'h.exploreHint':`Trouvez un terminal d'accès`,'h.terminal':`[E] Utiliser le terminal`,
   'h.objRelay':`OBJECTIF : TENIR LE RELAIS`,'h.transmit':`TRANSMISSION`,'h.relay':`RELAIS`,'h.outZone':`⚠ HORS ZONE : retourne au relais`,
   'h.exitMech':`E : descendre du mécha`,'h.respawnIn':`RÉAPPARITION DANS {0} s`,'h.noRespawn':`PLUS DE RENFORTS : RÉACTEUR DÉTRUIT`,
   'h.nestsLeft':`Nids : {0}`,'h.boardMech':`[E] Monter dans le mécha`,'h.armory':`ARMURERIE · {0} (reste dessus pour recharger)`,
@@ -387,13 +389,15 @@ fr:{
   'cine.2':`Un escadron de reconnaissance est envoyé rétablir le contact.`,
   'cine.3':`Aucune réponse radio. Les capteurs de bord détectent d'étranges signaux autour de la colonie.`,
   // mission 1 : atterrissage
-  'c.b1.1':`Escadron, ici le Colonel Hale. La colonie Helix ne répond plus depuis six jours. La navette vous dépose juste devant.`,
-  'c.b1.2':`Reçu, Colonel. Je ne vois personne... mais il y a d'étranges dômes bruns tout autour de la colonie.`,
-  'c.b1.3':`Ce sont des nids. Ils encerclent le périmètre, ce n'est pas un hasard. Mes capteurs saturent dès qu'on s'en approche.`,
-  'c.b1.4':`Alors détruisez-les. Trois nids autour de la colonie. Ensuite, on s'occupera de la radio. Hale, terminé.`,
-  'c.r1.start':`Zone d'atterrissage sécurisée. Trois signaux sur le radar : ce sont les nids.`,
+  'c.b1.1':`Escadron, ici le Colonel Hale. La colonie Helix ne répond plus depuis six jours. La navette vous dépose à l'entrée de la base.`,
+  'c.b1.2':`Reçu, Colonel. Tout est calme... trop calme. On entre.`,
+  'c.b1.3':`Aucune lumière, aucun mouvement. Je cherche un terminal d'accès pour comprendre ce qui s'est passé ici.`,
+  'c.b1.4':`Faites vite. Trouvez la cause de ce silence radio, et tenez-moi informé. Hale, terminé.`,
+  'c.r1.start':`Base déserte. L'antenne radio est dans l'enceinte à l'est, et ses portes sont fermées : approche-toi d'une porte et appuie sur E pour l'ouvrir.`,
+  'c.r1.pc1':`Le journal du terminal est clair : le brouillage vient de nids construits tout autour de la colonie !`,
+  'c.r1.pc2':`Les capteurs s'affolent, ça bouge de partout ! Il faut détruire ces nids, tous.`,
   'c.r1.one':`Un de moins. Le brouillage faiblit.`,
-  'c.r1.two':`Plus qu'un. J'aperçois les toits de la colonie derrière la crête.`,
+  'c.r1.two':`Plus qu'un nid, mais ça bouge sur la crête : des gros ! Soyez prêts.`,
   'c.d1.1':`Les nids sont tombés et le brouillage a cessé... Colonel, la colonie est vide. Aucune trace des colons.`,
   'c.d1.2':`Des indices sur leur direction ?`,
   'c.d1.3':`Des empreintes vers le sud, du côté du laboratoire de Vesper. Le relais radio de la colonie est endommagé, mais réparable.`,
@@ -401,12 +405,12 @@ fr:{
   // mission 2 : relais radio
   'c.b2.1':`Le relais est réparé, mais il lui faut quatre minutes d'émission continue pour caler son signal.`,
   'c.b2.2':`Quatre minutes... Les nids sont détruits, mais le bruit va attirer tout ce qui rampe dans le secteur.`,
-  'c.b2.3':`Sans radio, personne ne peut vous aider. Tenez le relais, soldats, et restez dans la zone.`,
+  'c.b2.3':`Sans radio, personne ne peut vous aider. Défendez le relais, soldats !`,
   'c.b2.4':`Compris. On le tient.`,
-  'c.r2.start':`Émission lancée. Tant que l'un de nous reste dans la zone, le compteur tourne.`,
+  'c.r2.start':`Émission lancée. Tant que le relais tient, le compteur tourne : ils vont s'acharner dessus.`,
   'c.r2.q1':`Un quart de la transmission. Ils arrivent de plus en plus nombreux !`,
   'c.r2.half':`Mi-parcours. Plus que deux minutes.`,
-  'c.r2.q3':`Encore une minute, ne lâchez rien !`,
+  'c.r2.q3':`Hélicoptère de renfort en approche. Tenez encore une minute !`,
   'c.r2.low':`Le relais est en mauvais état ! Protégez-le !`,
   'c.d2.1':`...Ici le Dr Ilya Marsh, ingénieur Helix. Y a-t-il quelqu'un ? Je suis blessé, réfugié dans un abri, dans les marais de Vesper.`,
   'c.d2.2':`On vous reçoit, Docteur. Que s'est-il passé à la colonie ?`,
@@ -448,11 +452,13 @@ en:{
   'tx.allyDown':`A comrade has fallen`,'tx.selfDown':`Soldier down`,'tx.partnerDown':`Partner down`,
   'tx.nestDown':`Nest destroyed!`,'tx.reactorHit':`The reactor is under attack!`,'tx.reactorDown':`REACTOR DESTROYED: no more respawns!`,
   'tx.drop':`Drop!`,'tx.acid':`Acid!`,'tx.partnerLeft':`Partner disconnected`,
+  'tx.recruit':`A soldier joins the squad`,
   'tx.relayHit':`The relay is under attack!`,'tx.relayZone':`Get back to the relay zone!`,'tx.relayDown':`RELAY DESTROYED!`,
   'h.hp':`HP`,'h.mech':`MECH`,'h.cannons':`CANNONS`,'h.arms':`WEAPONS`,'h.grenades':`GRENADES`,'h.rockets':`Rockets {0}/5 (right click)`,
   'h.allies':`ALLIES`,'h.partner':`PARTNER`,'h.time':`TIME`,'h.reactor':`REACTOR`,
   'h.objQueen':`OBJECTIVE: KILL THE QUEEN`,'h.objSurvive':`OBJECTIVE: HOLD THE FORTRESS`,
   'h.objNests':`OBJECTIVE: DESTROY THE NESTS`,'h.nests':`NESTS`,
+  'h.objExplore':`OBJECTIVE: EXPLORE THE COLONY`,'h.exploreHint':`Find an access terminal`,'h.terminal':`[E] Use the terminal`,
   'h.objRelay':`OBJECTIVE: HOLD THE RELAY`,'h.transmit':`TRANSMISSION`,'h.relay':`RELAY`,'h.outZone':`⚠ OUT OF ZONE: return to the relay`,
   'h.exitMech':`E: exit the mech`,'h.respawnIn':`RESPAWN IN {0} s`,'h.noRespawn':`NO MORE REINFORCEMENTS: REACTOR DESTROYED`,
   'h.nestsLeft':`Nests: {0}`,'h.boardMech':`[E] Board the mech`,'h.armory':`ARMORY · {0} (stand here to reload)`,
@@ -480,25 +486,27 @@ en:{
   'cine.1':`3099. On the planet Kappa, the Helix mining colony has stopped transmitting.`,
   'cine.2':`A reconnaissance squad is sent to re-establish contact.`,
   'cine.3':`No radio answer. The ship's sensors pick up strange signals around the colony.`,
-  'c.b1.1':`Squad, this is Colonel Hale. The Helix colony has been silent for six days. The shuttle drops you right at its doorstep.`,
-  'c.b1.2':`Copy, Colonel. I don't see anyone... but there are strange brown domes all around the colony.`,
-  'c.b1.3':`Those are nests. They surround the perimeter, and that's no accident. My sensors overload whenever we get close.`,
-  'c.b1.4':`Then destroy them. Three nests around the colony. We'll deal with the radio afterwards. Hale, out.`,
-  'c.r1.start':`Landing zone secure. Three signals on the radar: those are the nests.`,
+  'c.b1.1':`Squad, this is Colonel Hale. The Helix colony has been silent for six days. The shuttle drops you at the base entrance.`,
+  'c.b1.2':`Copy, Colonel. Everything is quiet... too quiet. Moving in.`,
+  'c.b1.3':`No lights, no movement. I'm looking for an access terminal to find out what happened here.`,
+  'c.b1.4':`Make it quick. Find the cause of this radio silence and keep me informed. Hale, out.`,
+  'c.r1.start':`Deserted base. The radio antenna is inside the compound to the east and its doors are shut: step up to a door and press E to open it.`,
+  'c.r1.pc1':`The terminal log is clear: the jamming comes from nests built all around the colony!`,
+  'c.r1.pc2':`The sensors are going wild, they're coming from everywhere! We have to destroy those nests, all of them.`,
   'c.r1.one':`One down. The jamming is weakening.`,
-  'c.r1.two':`Just one left. I can see the colony's rooftops behind the ridge.`,
+  'c.r1.two':`Only one nest left, but something big is moving on the ridge! Get ready.`,
   'c.d1.1':`The nests are down and the jamming has stopped... Colonel, the colony is empty. No trace of the colonists.`,
   'c.d1.2':`Any clue where they went?`,
   'c.d1.3':`Footprints heading south, toward the Vesper lab. The colony's radio relay is damaged, but repairable.`,
   'c.d1.4':`Then restart it. I want a secure line to Vesper, and fast.`,
   'c.b2.1':`The relay is repaired, but it needs four minutes of continuous transmission to lock its signal.`,
   'c.b2.2':`Four minutes... The nests are gone, but the noise will draw in everything that crawls in this sector.`,
-  'c.b2.3':`Without a radio, nobody can help you. Hold the relay, soldiers, and stay inside the zone.`,
+  'c.b2.3':`Without a radio, nobody can help you. Defend the relay, soldiers!`,
   'c.b2.4':`Understood. We'll hold it.`,
-  'c.r2.start':`Transmission started. As long as one of us stays in the zone, the counter keeps running.`,
+  'c.r2.start':`Transmission started. As long as the relay holds, the counter keeps running — and they'll go straight for it.`,
   'c.r2.q1':`A quarter of the transmission done. More and more of them are coming!`,
   'c.r2.half':`Halfway there. Two minutes to go.`,
-  'c.r2.q3':`One more minute, don't let up!`,
+  'c.r2.q3':`Reinforcement chopper inbound. Hold on for one more minute!`,
   'c.r2.low':`The relay is badly damaged! Protect it!`,
   'c.d2.1':`...This is Dr. Ilya Marsh, Helix engineer. Is anyone there? I'm wounded, holed up in a shelter in the Vesper marshes.`,
   'c.d2.2':`We read you, Doctor. What happened at the colony?`,
@@ -544,9 +552,11 @@ function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(see
 const map = Array.from({length:MH},()=>new Uint8Array(MW));
 const FORT = {x0:6,y0:MH-17,x1:17,y1:MH-6};   // forteresse du joueur (en tuiles)
 const NEST = {x:MW-11,y:9};
-const RELAY = {tx:FORT.x1+14,ty:(FORT.y0+FORT.y1)>>1}, RELAY_ZONE = 5*TS, RELAY_TIME = 240;   // mission 2 : relais radio à tenir 4 minutes
+const RELAY = {tx:FORT.x1+14,ty:(FORT.y0+FORT.y1)>>1}, RELAY_ZONE = 5*TS, RELAY_TIME = 240;   // l'antenne de la colonie (missions 1 et 2) ; mission 2 : à défendre 4 minutes
+const YARD = {x0:RELAY.tx-5,y0:RELAY.ty-5,x1:RELAY.tx+5,y1:RELAY.ty+4};   // enceinte de l'antenne : murs et portes
+const TERM = {tx:RELAY.tx-3,ty:RELAY.ty+2};                                 // terminal de la colonie (mission 1)
 let lastGold=-1e9;
-let holes = [], turretSpots = [], turrets = [], armory = null, nests = [], reactor = null, relay = null, mechas = [], helis = [], convoys = [];
+let holes = [], turretSpots = [], turrets = [], armory = null, nests = [], reactor = null, relay = null, term = null, mechas = [], helis = [], convoys = [];
 const BASE={x:0,y:0};   // point de réapparition des joueurs
 
 function genMap(){
@@ -578,11 +588,16 @@ function genMap(){
   if(lair)for(let y=-6;y<=6;y++)for(let x=-6;x<=6;x++) if(x*x+y*y<=36) map[NEST.y+y][NEST.x+x]=0;
   holes=lair?[[NEST.x-4,NEST.y+3],[NEST.x+3,NEST.y+4],[NEST.x+4,NEST.y-3],[NEST.x-3,NEST.y-4]]:[];
   if(MODE==='survive') holes.push([MW-5,MH/2|0],[MW/2|0,4],[MW/2|0,MH-5]);
-  if(MODE==='relay'){
-    holes.push([MW-5,MH/2|0],[MW/2|0,4],[MW-6,8]);   // les aliens arrivent de loin
+  if(MODE==='relay') holes.push([MW-5,MH/2|0],[MW/2|0,4],[MW-6,8]);   // les aliens arrivent de loin
+  if(MODE==='relay'||MODE==='nests'){   // enceinte de l'antenne : murs, une porte vers la base et une au nord (fermées en mission 1)
     const rgy=(FORT.y0+FORT.y1)>>1;
-    for(let x=FORT.x1+1;x<=RELAY.tx;x++){map[rgy][x]=0;map[rgy+1][x]=0}   // chemin depuis la porte est
-    for(let y=-5;y<=5;y++)for(let x=-5;x<=5;x++) if(x*x+y*y<=30){const X=RELAY.tx+x,Y=RELAY.ty+y;if(X>0&&Y>0&&X<MW-1&&Y<MH-1)map[Y][X]=0}
+    for(let x=FORT.x1+1;x<YARD.x0;x++){map[rgy][x]=0;map[rgy+1][x]=0}   // chemin depuis la porte est de la base
+    for(let y=YARD.y0-1;y<=YARD.y1+1;y++)for(let x=YARD.x0-1;x<=YARD.x1+1;x++)map[y][x]=0;
+    for(let x=YARD.x0;x<=YARD.x1;x++){map[YARD.y0][x]=2;map[YARD.y1][x]=2}
+    for(let y=YARD.y0;y<=YARD.y1;y++){map[y][YARD.x0]=2;map[y][YARD.x1]=2}
+    map[rgy][YARD.x0]=map[rgy+1][YARD.x0]=MODE==='relay'?7:6;           // porte ouest (en mission 2 on est déjà passé)
+    map[YARD.y0][RELAY.tx]=map[YARD.y0][RELAY.tx+1]=6;                  // porte nord
+    for(let y=YARD.y0-4;y<YARD.y0;y++){map[y][RELAY.tx]=0;map[y][RELAY.tx+1]=0}
   }
   for(const [x,y] of holes){ for(let d=-1;d<=1;d++)for(let e=-1;e<=1;e++){const X=x+d,Y=y+e;if(map[Y]&&map[Y][X]!==undefined&&map[Y][X]>=2)map[Y][X]=0}; map[y][x]=4; }
   // tourelles de la base : près des deux portes, à l'intérieur de la forteresse
@@ -594,8 +609,10 @@ function genMap(){
     const nr=rng(WORLD.seed*7+13),want=MODE==='relay'?0:MODE==='nests'?3:MODE==='survive'?7:9,fcx=(FORT.x0+FORT.x1)/2,fcy=(FORT.y0+FORT.y1)/2;nests=[];
     for(let tr=0;tr<800&&nests.length<want;tr++){
       const tx=3+(nr()*(MW-6)|0),ty=3+(nr()*(MH-6)|0);
-      if(Math.hypot(tx-fcx,ty-fcy)<20||Math.hypot(tx-NEST.x,ty-NEST.y)<12||holes.some(h=>Math.hypot(h[0]-tx,h[1]-ty)<6))continue;
-      if(nests.some(n=>Math.hypot(n.tx-tx,n.ty-ty)<13))continue;
+      const far=MODE==='nests';   // mission 1 : nids loin de la base, de l'antenne et les uns des autres
+      if(Math.hypot(tx-fcx,ty-fcy)<(far?26:20)||Math.hypot(tx-NEST.x,ty-NEST.y)<12||holes.some(h=>Math.hypot(h[0]-tx,h[1]-ty)<6))continue;
+      if(far&&Math.hypot(tx-RELAY.tx,ty-RELAY.ty)<16)continue;
+      if(nests.some(n=>Math.hypot(n.tx-tx,n.ty-ty)<(far?(tr<500?24:17):13)))continue;
       nests.push({id:nests.length,tx,ty,x:tx*TS+TS/2,y:ty*TS+TS/2,r:15,hp:110,maxhp:110,hurt:0,t:4+nr()*10,dead:false});
     }
     for(const n of nests)for(let y=-2;y<=2;y++)for(let x=-2;x<=2;x++)if(x*x+y*y<=5){const X=n.tx+x,Y=n.ty+y;if(X>0&&Y>0&&X<MW-1&&Y<MH-1)map[Y][X]=0}
@@ -604,7 +621,7 @@ function genMap(){
   for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){
     const t=map[y][x],border=x===0||y===0||x===MW-1||y===MH-1;
     let hp=0;
-    if(t===2)hp=border?-1:(x>=FORT.x0&&x<=FORT.x1&&y>=FORT.y0&&y<=FORT.y1)?120:60;
+    if(t===2)hp=border?-1:((x>=FORT.x0&&x<=FORT.x1&&y>=FORT.y0&&y<=FORT.y1)||inYard(x,y))?120:60;
     else if(t===3)hp=-1;
     else if(t===6||t===7)hp=150;
     else if(t===8)hp=130;
@@ -700,6 +717,7 @@ function mk(w,h,fn){const c=document.createElement('canvas');c.width=w;c.height=
 const spr={};
 const hash=(x,y)=>{let h=(x*374761393+y*668265263)|0;h=(h^(h>>>13))*1274126177|0;return (h^(h>>>16))>>>0};
 const inFort=(x,y)=>x>=FORT.x0&&x<=FORT.x1&&y>=FORT.y0&&y<=FORT.y1;
+const inYard=(x,y)=>(MODE==='nests'||MODE==='relay')&&x>=YARD.x0&&x<=YARD.x1&&y>=YARD.y0&&y<=YARD.y1;
 const WALL_H=11;   // hauteur de la face avant des murs (effet de relief)
 
 const rr_=rng(11);
@@ -900,7 +918,7 @@ let player, allies, aliens, bullets, corpses, fx, texts;
 let time, over, msgText, fieldNest, fieldFort, fieldTimer, queen, drops, spitT;
 let uid=0, player2=null, me=null;     // player = joueur 1 (hôte / solo), player2 = joueur 2 (invité), me = soldat contrôlé ici
 let spawnT, reinfT, queenSpawnT, bruteT, shake;
-let deaths = 0;   // morts cumulées des joueurs (décide du rang en campagne)
+let deaths = 0, ltT = -1;   // ltT : délai avant le retour de Wren (lieutenant IA) si elle tombe   // morts cumulées des joueurs (décide du rang en campagne)
 let grenades, shells, bonuses, bonusT;
 
 // ---- réseau : état partagé et file d'événements visuels (hôte -> invité) ----
@@ -930,6 +948,7 @@ function refreshPlayerFields(){
 }
 function objTile(){ // case visée par les alliés qui « avancent » : le nid de la reine, ou le nid vivant le plus proche (mission 1)
   if(MODE==='nests'){
+    if(!CAMP.s.pc)return{x:(FORT.x0+FORT.x1)>>1,y:(FORT.y0+FORT.y1)>>1};   // tant que le terminal n'est pas utilisé, rien à attaquer
     const ref=humans()[0]||player;let b=null,bd=1e9;
     for(const n of nests)if(!n.dead){const d=Math.hypot(n.x-ref.x,n.y-ref.y);if(d<bd){bd=d;b=n}}
     if(b)return{x:b.tx,y:b.ty};
@@ -1030,6 +1049,7 @@ const WIDX=['pistol','smg','shotgun','flame','rocket'];
 const ammoOnMap=()=>bonuses.filter(b=>b.type==='ammo'||WEAPONS[b.type]).length;   // caisses et armes au sol (plafonnées)
 const lowOnAmmo=h=>h.weapon==='pistol'||h.ammo<WEAPONS[h.weapon].cap*.12;
 function addBonus(x,y,type,ammo){
+  if(!type&&(MODE==='nests'||MODE==='relay'))return;   // missions 1 et 2 : on est isolé, pas de renforts ni de bonus au hasard
   if(!type){let r=Math.random();
     if(allies.length<3&&Math.random()<.4)r=.7+Math.random()*.27;   // peu d'alliés : renforts plus probables
     type=r<.06?'bombard':r<.17?'grenades':r<.37?'medkit':r<.49?'ammo':r<.55?'smg':r<.60?'shotgun':r<.64?'flame':r<.67?'rocket':r<.84?'bronze':r<.97?'silver':'gold';
@@ -1093,9 +1113,17 @@ function spit(e,tgt,dmg){ // crachat d'acide : lent, tue les soldats, ronge les 
   const a=Math.atan2(tgt.y-e.y,tgt.x-e.x)+(e.type==='queen'?0:(Math.random()-.5)*.34);snd('spit',e.x,e.y);
   bullets.push({x:e.x+Math.cos(a)*e.r,y:e.y+Math.sin(a)*e.r,vx:Math.cos(a)*250,vy:Math.sin(a)*250,life:2,dmg,team:1,acid:true});
 }
+function usePC(p){ // le journal de la colonie : les nids se réveillent et une première vague tombe sur l'escouade
+  CAMP.s.pc=1;fieldDirty=true;snd('pickup',p.x,p.y);
+  radio('wren','r1.pc1');radio('rook','r1.pc2');
+  const place=(cx,cy,r0,r1)=>{for(let k=0;k<20;k++){const a=Math.random()*6.28,r=r0+Math.random()*(r1-r0),x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;if(!hitsWall(x,y,10)){spawnAlien('scout',x,y);return}}};
+  for(const h of humans())for(let i=0;i<4;i++)place(h.x,h.y,250,340);
+  for(const n of nests)for(let i=0;i<3;i++)place(n.x,n.y,20,70);
+}
 function tryDoor(p=player){ // E près d'une porte : ouvre / ferme ; près d'alliés : change leur ordre
   if(!p||over||p.hp<=0)return;
   if(p.mech){ejectMech(p,false);return}
+  if(term&&!CAMP.s.pc&&dist(term,p)<56){usePC(p);return}   // mission 1 : le terminal révèle l'origine du silence radio
   const px=Math.floor(p.x/TS),py=Math.floor(p.y/TS);let best=null,bd=44;
   for(let ty=py-2;ty<=py+2;ty++)for(let tx=px-2;tx<=px+2;tx++){
     const t=map[ty]&&map[ty][tx];if(t!==6&&t!==7)continue;
@@ -1192,21 +1220,36 @@ function resetWorld(){ // commun à l'hôte, au solo et à l'invité
   turrets=turretSpots.map(([tx,ty])=>({tx,ty,cd:0,face:-1.5,flashT:0}));
   BASE.x=fx0;BASE.y=fy0;
   reactor=MODE==='survive'?{id:'rx',x:(FORT.x0+3)*TS+TS/2,y:(FORT.y1-3)*TS+TS/2,r:16,hp:600,maxhp:600,hurt:0,isReactor:true,dead:false,alertT:0}:null;
-  relay=MODE==='relay'?{id:'rl',x:(RELAY.tx+.5)*TS,y:(RELAY.ty+.5)*TS,r:18,hp:500,maxhp:500,hurt:0,isReactor:true,isRelay:true,dead:false,alertT:0,warnT:4,prog:0}:null;
+  relay=(MODE==='relay'||MODE==='nests')?{id:'rl',x:(RELAY.tx+.5)*TS,y:(RELAY.ty+.5)*TS,r:18,hp:600,maxhp:600,hurt:0,isReactor:true,isRelay:true,static:MODE==='nests',dead:false,alertT:0,prog:0}:null;   // mission 1 : simple décor (antenne éteinte)
+  term=MODE==='nests'?{x:(TERM.tx+.5)*TS,y:(TERM.ty+.5)*TS}:null;
   deaths=0;CAMP.shown=false;hideResult();
   return {fx0,fy0};
 }
 function init(){
   const {fx0,fy0}=resetWorld();
-  for(let i=0;i<6;i++)allies.push(newSoldier(fx0-60+(i%3)*40,fy0+30+(i/3|0)*34,false));
+  const nStart=MODE==='nests'?0:MODE==='relay'?4:6;   // mission 1 : personne, on retrouve des soldats isolés ; mission 2 : ceux qui nous ont rejoints
+  for(let i=0;i<nStart;i++)allies.push(newSoldier(fx0-60+(i%3)*40,fy0+30+(i/3|0)*34,false));
+  ltT=-1;if(CAMP.on&&!player2)spawnLt(fx0,fy0);   // solo : Wren est le lieutenant IA
+  if(MODE==='nests')scatterSurvivors();
   bonusT=8;spawnT=3;reinfT=18;queenSpawnT=3;bruteT=10;spitT=12;CAMP.s={};
   addBonus((FORT.x0+3)*TS+TS/2,(FORT.y0+3)*TS+TS/2,'smg',80);addBonus((FORT.x0+5)*TS+TS/2,(FORT.y0+3)*TS+TS/2,'shotgun',16);
   if(MODE==='queen'){queen={id:++uid,type:'queen',x:NEST.x*TS+TS/2,y:NEST.y*TS+TS/2,r:ALIEN.queen.r,hp:ALIEN.queen.hp,maxhp:ALIEN.queen.hp,cd:0,hurt:0};aliens.push(queen)}
-  if(MODE==='nests')for(const n of nests)for(let i=0;i<4;i++)spawnAlien('scout',n.x+(Math.random()-.5)*70,n.y+(Math.random()-.5)*70);   // quelques gardes autour de chaque nid
   fieldDirty=false;refreshFields();fieldTimer=0;
   NET.evq=[];NET.in2={mx:0,my:0,aim:0,fire:false,t:0};
 }
 
+function spawnLt(x,y){ // Wren en solo : lieutenant IA, nous suit et tire, revient à la base quelques secondes après sa chute
+  const a=newSoldier(x+36,y+10,false);a.lt=true;a.hp=a.maxhp=30;a.ammo=99999;a.weapon='smg';a.order='follow';allies.push(a);return a;
+}
+function scatterSurvivors(){ // mission 1 : des soldats isolés dans la colonie, ils nous rejoignent quand on s'approche
+  const r=rng(WORLD.seed*3+5);let n=0;
+  for(let tr=0;tr<800&&n<5;tr++){
+    const tx=4+(r()*(MW-8)|0),ty=4+(r()*(MH-8)|0),x=tx*TS+TS/2,y=ty*TS+TS/2;
+    if(Math.hypot(tx-(FORT.x0+FORT.x1)/2,ty-(FORT.y0+FORT.y1)/2)<14||inYard(tx,ty)||hitsWall(x,y,14))continue;
+    if(nests.some(nn=>Math.hypot(nn.tx-tx,nn.ty-ty)<9)||allies.some(a=>a.iso&&Math.hypot(a.x-x,a.y-y)<220))continue;
+    const a=newSoldier(x,y,false);a.iso=true;a.order='hold';a.ammo=30;a.face=r()*6.28;allies.push(a);n++;
+  }
+}
 function spawnAlien(type,x,y){
   if(type!=='scout')snd('screech',x,y);
   const d=ALIEN[type];aliens.push({id:++uid,type,x,y,r:d.r,hp:d.hp,maxhp:d.hp,cd:0,hurt:0,ph:Math.random()*6,face:0});
@@ -1278,6 +1321,7 @@ function update(dt){
   // --- alliés (IA basique, ordres : avancer / suivre / tenir) ---
   for(const a of allies){
     a.cd-=dt;a.hurt-=dt;a.inv-=dt;if(a.hp<=0)continue;
+    if(a.iso){for(const h of humans())if(dist(h,a)<110){a.iso=false;a.order='follow';pushText({x:a.x,y:a.y-22,t:1.8,k:'tx.recruit',c:'#9f9'});snd('order',a.x,a.y);break}}   // un soldat isolé rejoint l'escouade
     let tgt=null,bd=330;
     for(const e of aliens)if(e.hp>0){const d=dist(a,e);if(d<bd&&los(a.x,a.y,e.x,e.y)){bd=d;tgt=e}}
     const h=nearestHuman(a),dp=dist(a,h),ord=a.order;
@@ -1315,7 +1359,7 @@ function update(dt){
   }
 
   // --- aliens ---
-  const cand=ss.slice();if(reactor&&reactor.hp>0)cand.push(reactor);if(relay&&relay.hp>0)cand.push(relay);   // ils s'en prennent aussi au réacteur / au relais
+  const cand=ss.slice();if(reactor&&reactor.hp>0)cand.push(reactor);if(relay&&relay.hp>0&&!relay.static)cand.push(relay);   // ils s'en prennent aussi au réacteur / au relais
   for(const e of aliens){
     e.hurt-=dt;e.cd-=dt;e.wcd=(e.wcd||0)-dt;
     if(e.burn>0){e.burn-=dt;e.hp-=7*dt;if(Math.random()<dt*16)burst(e.x,e.y,1,'#ff8a2a',50,.35,3)}
@@ -1324,10 +1368,11 @@ function update(dt){
     e.tT=(e.tT||0)-dt;
     if(!e.tg||e.tg.hp<=0||e.tT<=0){
       e.tT=1.5+Math.random()*2;let tot=0;
-      const ws=cand.map(s=>{const w=(s.isReactor?.8:s.isPlayer?.55:1)/Math.pow(dist(e,s)+80,2);tot+=w;return w});
+      const ws=cand.map(s=>{const w=(s.isRelay?5:s.isReactor?.8:s.isPlayer?.55:1)/Math.pow(dist(e,s)+80,2);tot+=w;return w});
       let rv=Math.random()*tot;e.tg=cand[0];
       for(let i=0;i<cand.length;i++){rv-=ws[i];if(rv<=0){e.tg=cand[i];break}}
     }
+    if(relay&&!relay.static&&relay.hp>0&&e.tg!==relay&&e.type!=='queen'&&dist(e,relay)<520&&los(e.x,e.y,relay.x,relay.y)){e.tg=relay;e.tT=3}   // dès qu'ils voient l'antenne, ils foncent la ronger
     const tgt=e.tg;if(!tgt)continue;
     const bd=dist(e,tgt);
     const seen=bd<(e.type==='queen'?430:300)&&los(e.x,e.y,tgt.x,tgt.y);
@@ -1443,8 +1488,9 @@ function update(dt){
   }
 
   // --- morts ---
-  for(const a of allies)if(a.hp<=0&&!a.dead){a.dead=true;decal(a.x,a.y,18,'#5a0a0a',.55);burst(a.x,a.y,12,'#9a1010',140,.6,3);corpses.push({x:a.x,y:a.y,ammo:a.ammo>16?Math.floor(a.ammo/2):0});pushText({x:a.x,y:a.y-14,t:1.2,k:'tx.allyDown',c:'#aaa'})}
+  for(const a of allies)if(a.hp<=0&&!a.dead){a.dead=true;if(a.lt)ltT=10;decal(a.x,a.y,18,'#5a0a0a',.55);burst(a.x,a.y,12,'#9a1010',140,.6,3);corpses.push({x:a.x,y:a.y,ammo:a.ammo>16?Math.floor(a.ammo/2):0});pushText({x:a.x,y:a.y-14,t:1.2,k:'tx.allyDown',c:'#aaa'})}
   allies=allies.filter(a=>!a.dead);
+  if(ltT>0){ltT-=dt;if(ltT<=0){ltT=-1;spawnLt(BASE.x,BASE.y);pushFx({x:BASE.x+36,y:BASE.y+10,t:.5,t0:.5,r:34,c:'#cfe',boom:true})}}
   for(const e of aliens)if(e.hp<=0&&e.type!=='queen'){snd('dieA',e.x,e.y);if(bonuses.length<10){if(e.type==='brute'&&Math.random()<.25)addBonus(e.x,e.y);else if(Math.random()<(hs.some(lowOnAmmo)?.05:.02)&&ammoOnMap()<3)addBonus(e.x,e.y,'ammo')}burst(e.x,e.y,14,'#8fd02a',150,.6,3);decal(e.x,e.y,e.r*1.6,'#3f6a14',.5)}
   aliens=aliens.filter(e=>e.hp>0||e===queen);
 
@@ -1485,8 +1531,7 @@ function update(dt){
     if(relay.hp>0){
       if(relay.hurt>0&&relay.alertT<=0){relay.alertT=6;pushText({x:relay.x,y:relay.y-56,t:1.6,k:'tx.relayHit',c:'#7fd8ff'})}
       if(relay.hp<relay.maxhp*.4&&Math.random()<dt*6)burst(relay.x+(Math.random()-.5)*20,relay.y-10,1,'#555',30,.9,6,true);
-      if(relayActive()){relay.prog=Math.min(RELAY_TIME,relay.prog+dt)}
-      else if(relay.prog<RELAY_TIME&&humans().length){relay.warnT-=dt;if(relay.warnT<=0){relay.warnT=8;pushText({x:relay.x,y:relay.y-56,t:2,k:'tx.relayZone',c:'#ffd27a'})}}
+      if(!relay.static)relay.prog=Math.min(RELAY_TIME,relay.prog+dt);   // l'antenne émet tant qu'elle tient
     }else if(!relay.dead){
       relay.dead=true;snd('boom',relay.x,relay.y);burst(relay.x,relay.y,30,'#7fd8ff',260,.8,4);burst(relay.x,relay.y,10,'#444',70,1.6,10,true);scorch(relay.x,relay.y,40);
       pushFx({x:relay.x,y:relay.y,t:.5,t0:.5,r:100,c:'#8cf',boom:true});pushText({x:relay.x,y:relay.y-40,t:3,k:'tx.relayDown',c:'#ff7a7a'});
@@ -1525,7 +1570,7 @@ function update(dt){
   // --- spawns ---
   let alive=aliens.filter(e=>e!==queen).length;
   for(const n of nests){   // les nids pondent tant que la limite n'est pas atteinte
-    if(n.dead)continue;
+    if(n.dead||(MODE==='nests'&&!CAMP.s.pc))continue;   // mission 1 : les nids dorment tant que le terminal n'a pas été utilisé
     n.t-=dt;
     if(n.t<=0){
       n.t=(MODE==='survive'?8:MODE==='nests'?7:11)+Math.random()*5;
@@ -1553,12 +1598,12 @@ function update(dt){
       spawnAlien(r<.12+time/1000?'brute':(r<.32&&time>25)?'spitter':'scout',hh[0]*TS+TS/2,hh[1]*TS+TS/2);
     }
   }else if(MODE==='relay'){   // mission 2 : vagues venues du bord de la carte, de plus en plus fournies
-    const rate=Math.max(.8,2.1-time/90)*(player2?.8:1);
+    const rate=Math.max(.5,1.4-time/110)*(player2?.8:1);
     spawnT-=dt;
-    if(spawnT<=0&&alive<46){
+    if(spawnT<=0&&alive<60){
       spawnT=rate;const hh=holes[Math.random()*holes.length|0];
       const r=Math.random();
-      spawnAlien(r<.03+time/2000?'brute':(r<.26&&time>20)?'spitter':'scout',hh[0]*TS+TS/2,hh[1]*TS+TS/2);
+      spawnAlien(r<.06+time/1300?'brute':(r<.32&&time>12)?'spitter':'scout',hh[0]*TS+TS/2,hh[1]*TS+TS/2);
     }
   }
 
@@ -1573,7 +1618,7 @@ function update(dt){
   else if(MODE==='survive'&&time>=SURVIVE_TIME){over=true;msgText='win.survive';snd('victory')}
   else if(MODE==='relay'&&relay.dead){over=true;msgText='lose.relay';snd('defeat')}
   else if(MODE==='relay'&&relay.prog>=RELAY_TIME){over=true;msgText='win.relay';snd('victory')}
-  else if(MODE==='nests'&&nests.every(n=>n.dead)){over=true;msgText='win.nests';snd('victory')}
+  else if(MODE==='nests'&&CAMP.s.pc&&nests.every(n=>n.dead)){over=true;msgText='win.nests';snd('victory')}
 }
 
 // ============ Rendu ============
@@ -1640,28 +1685,35 @@ function drawReactor(){
   if(reactor.hp<reactor.maxhp&&up){const hr=reactor.hp/reactor.maxhp;g.fillStyle='rgba(0,0,0,.7)';g.fillRect(x-22,y-36,44,5);g.fillStyle=hr>.5?'#5cff8a':hr>.25?'#ffc24a':'#ff5a4a';g.fillRect(x-21,y-35,42*hr,3)}
 }
 
-const relayActive=()=>!!relay&&relay.hp>0&&humans().some(h=>dist(h,relay)<RELAY_ZONE);   // un soldat au moins dans la zone du relais
 function drawRelay(){
   if(!relay)return;
-  const x=relay.x-cam.x,y=relay.y-cam.y;if(x<-RELAY_ZONE-60||y<-RELAY_ZONE-90||x>VW+RELAY_ZONE+60||y>VH+RELAY_ZONE+60)return;
-  const up=relay.hp>0,act=up&&relayActive(),pulse=.5+.5*Math.sin(time*3),done=relay.prog>=RELAY_TIME;
-  // zone à tenir
-  g.save();g.setLineDash([10,8]);g.lineDashOffset=-time*16;
-  g.strokeStyle=!up?'rgba(120,120,120,.4)':act?'rgba(120,230,255,.85)':'rgba(255,200,90,.85)';g.lineWidth=2;
-  g.beginPath();g.arc(x,y,RELAY_ZONE,0,7);g.stroke();g.restore();
-  if(up){g.fillStyle=act?'rgba(110,220,255,.07)':'rgba(255,200,90,.05)';g.beginPath();g.arc(x,y,RELAY_ZONE,0,7);g.fill()}
-  if(act&&!done)for(let i=0;i<3;i++){const k=(time*.45+i/3)%1;g.strokeStyle=`rgba(140,230,255,${.45*(1-k)})`;g.lineWidth=2;g.beginPath();g.arc(x,y-40,12+k*RELAY_ZONE*.85,0,7);g.stroke()}
+  const x=relay.x-cam.x,y=relay.y-cam.y;if(x<-200||y<-200||x>VW+200||y>VH+200)return;
+  const up=relay.hp>0,act=up&&!relay.static,pulse=.5+.5*Math.sin(time*3),done=relay.prog>=RELAY_TIME;
+  if(act&&!done)for(let i=0;i<3;i++){const k=(time*.45+i/3)%1;g.strokeStyle=`rgba(140,230,255,${.45*(1-k)})`;g.lineWidth=2;g.beginPath();g.arc(x,y-46,12+k*150,0,7);g.stroke()}
   // socle, mât, parabole
   g.fillStyle='rgba(0,0,0,.4)';g.beginPath();g.ellipse(x+2,y+8,26,11,0,0,7);g.fill();
   hex(x,y,22);g.fillStyle='#2b3140';g.fill();g.strokeStyle='#8fa0c8';g.lineWidth=2;g.stroke();
   hex(x,y,14);g.fillStyle='#141925';g.fill();
   g.strokeStyle=up?'#9fb0d6':'#4a5060';g.lineWidth=3;g.beginPath();g.moveTo(x,y);g.lineTo(x,y-44);g.stroke();
   g.lineWidth=1.4;g.beginPath();for(let i=0;i<4;i++){g.moveTo(x-5,y-8-i*9);g.lineTo(x+5,y-17-i*9)}g.stroke();
-  const dw=Math.cos(up?time*(act?1.6:.5):0)*13;
+  const dw=Math.cos(act?time*1.6:0)*13;
   g.fillStyle=up?'#cfd8ea':'#555b68';g.beginPath();g.ellipse(x,y-46,Math.max(2,Math.abs(dw)),7,-.5,0,7);g.fill();g.strokeStyle='#38405a';g.lineWidth=1.2;g.stroke();
-  g.fillStyle=!up?'#333':done?'#5cff8a':act?(pulse>.5?'#7fe3ff':'#2a8ab0'):(pulse>.5?'#ffc24a':'#6a4a10');g.beginPath();g.arc(x,y-54,3,0,7);g.fill();
+  g.fillStyle=!up?'#333':relay.static?'#3a4658':done?'#5cff8a':(pulse>.5?'#7fe3ff':'#2a8ab0');g.beginPath();g.arc(x,y-54,3,0,7);g.fill();
   if(relay.hurt>0){g.fillStyle='rgba(255,60,60,.3)';hex(x,y,22);g.fill()}
   if(up&&relay.hp<relay.maxhp){const hr=relay.hp/relay.maxhp;g.fillStyle='rgba(0,0,0,.7)';g.fillRect(x-22,y-70,44,5);g.fillStyle=hr>.5?'#5cff8a':hr>.25?'#ffc24a':'#ff5a4a';g.fillRect(x-21,y-69,42*hr,3)}
+}
+function drawTerminal(){ // le poste de la colonie (mission 1)
+  if(!term)return;
+  const x=term.x-cam.x,y=term.y-cam.y;if(x<-80||y<-80||x>VW+80||y>VH+80)return;
+  const used=!!CAMP.s.pc,pulse=.5+.5*Math.sin(time*4);
+  g.fillStyle='rgba(0,0,0,.35)';g.beginPath();g.ellipse(x+2,y+10,20,7,0,0,7);g.fill();
+  g.fillStyle='#39414f';rrect(x-16,y-4,32,16,3);g.fill();g.strokeStyle='#8fa0c8';g.lineWidth=1.5;g.stroke();
+  g.fillStyle='#10151f';rrect(x-11,y-19,22,15,2);g.fill();g.strokeStyle='#5a6684';g.lineWidth=1;g.stroke();
+  g.fillStyle=used?'rgba(100,230,140,.5)':`rgba(110,230,255,${.55+.35*pulse})`;g.fillRect(x-9,y-17,18,11);
+  if(!used){g.fillStyle='rgba(0,40,60,.55)';for(let i=0;i<3;i++)g.fillRect(x-7,y-15+i*3,12-i*2,1.4)}
+  g.fillStyle='#202633';g.fillRect(x-9,y+1,18,5);
+  if(!used)glow(x,y-10,36,'rgba(110,230,255,1)',.35);
+  if(!used&&me.hp>0&&dist(term,me)<130){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,255,255,.92)';g.fillText(T('h.terminal'),x,y+30)}
 }
 
 const cv=document.getElementById('c'),g=cv.getContext('2d');
@@ -1693,7 +1745,7 @@ function drawSoldier(s,p){
   if(s.isPlayer){g.strokeStyle=s===me?'rgba(127,233,255,.6)':'rgba(255,190,110,.6)';g.lineWidth=1.6;g.beginPath();g.ellipse(sx,sy+2,s.mech?26:16,s.mech?21:13,0,0,7);g.stroke()}
   if(s.mech)drawMecha(sx,sy,s.face,mv?s.ph:0,s.hurt>0,false);
   else{g.save();g.translate(sx,sy);g.rotate(s.face);
-  soldierBody(g,p,mv?s.ph:0,weaponOf(s),s.isPlayer?s.fem:(s.id%4===0));
+  soldierBody(g,p,mv?s.ph:0,weaponOf(s),s.isPlayer?s.fem:s.lt?!player.fem:(s.id%4===0));
   g.restore()}
   if(time<(s.flashT||0)){ // flamme de bouche
     const fx_=sx+Math.cos(s.face)*(s.mech?40:30),fy_=sy+Math.sin(s.face)*(s.mech?40:30);
@@ -1763,7 +1815,7 @@ function drawAlien(e){
 
 function updateMinimap(){
   const cols=['#5a5240','#46583a','#8a8f9c','#24558f','#a64cc0',null,'#d9b200','#4c7','#e0603a'];
-  for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmg.fillStyle=inFort(x,y)&&map[y][x]!==2&&map[y][x]!==6&&map[y][x]!==7?'#4a5260':cols[map[y][x]];mmg.fillRect(x,y,1,1)}
+  for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmg.fillStyle=(inFort(x,y)||inYard(x,y))&&map[y][x]!==2&&map[y][x]!==6&&map[y][x]!==7?'#4a5260':cols[map[y][x]];mmg.fillRect(x,y,1,1)}
 }
 
 function draw(){
@@ -1793,7 +1845,7 @@ function draw(){
       if(map[y][x+1]!==3)g.fillRect(px+TS-2,py,2,TS);
     }else if(t===4)g.drawImage(spr.hole,px,py);
     else if(t===7)g.drawImage(spr.doorO,px,py);
-    else if(inFort(x,y)){const i=h%8;g.drawImage(spr.plate[i<5?0:i<6?1:i<7?2:3],px,py)}
+    else if(inFort(x,y)||inYard(x,y)){const i=h%8;g.drawImage(spr.plate[i<5?0:i<6?1:i<7?2:3],px,py)}
     else g.drawImage((t===1?spr.grass:spr.ground)[h&7],px,py);
   }
   // taches persistantes (sang, acide, brûlures)
@@ -1803,7 +1855,7 @@ function draw(){
   // --- murs en relief ---
   for(let y=Math.max(0,y0-1);y<y1;y++)for(let x=x0;x<x1;x++){
     const t=map[y][x];if(t!==2&&t!==6)continue;
-    const px=x*TS-cam.x|0,py=y*TS-cam.y|0,h=hash(x,y),metal=t===6||inFort(x,y);
+    const px=x*TS-cam.x|0,py=y*TS-cam.y|0,h=hash(x,y),metal=t===6||inFort(x,y)||inYard(x,y);
     g.drawImage(t===6?spr.doorC:metal?spr.metal[h%3]:spr.rock[h&3],px,py);
     if(!isWall(x,y-1)){g.fillStyle='rgba(255,255,255,.24)';g.fillRect(px,py,TS,2)}
     if(!isWall(x-1,y)){g.fillStyle='rgba(255,255,255,.12)';g.fillRect(px,py,2,TS)}
@@ -1853,7 +1905,7 @@ function draw(){
     if(hr<1){g.fillStyle='rgba(0,0,0,.7)';g.fillRect(px+2,py-6,TS-4,4);g.fillStyle=hr>.5?'#5cff8a':hr>.25?'#ffc24a':'#ff5a4a';g.fillRect(px+3,py-5,(TS-6)*hr,2)}
   }
   for(const n of nests)drawNest(n);
-  drawReactor();drawRelay();
+  drawReactor();drawRelay();drawTerminal();
   for(const m of mechas){
     const mx_=m.x-cam.x,my_=m.y-cam.y;if(mx_<-60||my_<-60||mx_>VW+60||my_>VH+60)continue;
     const p=.5+.5*Math.sin(time*4);g.strokeStyle='rgba(255,210,60,'+(.3+.4*p)+')';g.lineWidth=2;g.beginPath();g.arc(mx_,my_,27+p*3,0,7);g.stroke();
@@ -1882,7 +1934,8 @@ function draw(){
   for(const e of aliens)drawAlien(e);
   const near=nearestAlly(ORDER_RANGE,me);
   for(const a of allies){
-    drawSoldier(a,PAL.ally);
+    drawSoldier(a,a.lt?PAL.p2:PAL.ally);
+    if(a.lt){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,210,150,.95)';g.fillText(T('n.wren'),a.x-cam.x,a.y-cam.y-34)}
     g.font="bold 12px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle=a.order==='hold'?'#ffcc66':a.order==='follow'?'#66ccff':'#99ee99';
     g.fillText(ORDER_ICON[a.order],a.x-cam.x,a.y-cam.y-(a.hp<a.maxhp?25:18));
     if(near&&dist(a,player)<ORDER_RANGE){g.strokeStyle='rgba(150,200,255,.45)';g.lineWidth=1;g.beginPath();g.arc(a.x-cam.x,a.y-cam.y,15,0,7);g.stroke()}
@@ -1984,6 +2037,7 @@ function draw(){
   for(const n of nests)if(!n.dead)L(n.x,n.y,85,.85);
   if(reactor&&reactor.hp>0)L(reactor.x,reactor.y,130,.9);
   if(relay&&relay.hp>0)L(relay.x,relay.y,RELAY_ZONE*1.2,.9);
+  if(term)L(term.x,term.y,110,.9);
   for(const m of mechas)L(m.x,m.y,80,.85);
   for(const h of helis){L(h.x,h.y,150,.8);if(time<(h.flashT||0))L(h.x,h.y,230,.8)}
   if(!running)L(NEST.x*TS,NEST.y*TS+30,430,.95);   // écran titre : le nid est éclairé
@@ -2065,17 +2119,17 @@ function hud(){
     bar(bx+10,by+19,bw-20,12,time/SURVIVE_TIME,'#6fe3b0','#1f8a5f','',Math.max(0,SURVIVE_TIME-time|0)+' s');
     if(reactor)bar(bx+10,by+34,bw-20,12,reactor.hp/reactor.maxhp,'#7fd8ff','#2a6a9a',T('h.reactor'),Math.max(0,reactor.hp|0));
   }else if(MODE==='nests'){
-    const tot=nests.length,dn=nests.filter(n=>n.dead).length;
-    g.fillText(T('h.objNests'),bx+bw/2,by+14);
-    bar(bx+10,by+19,bw-20,12,tot?dn/tot:1,'#ffb04a','#a8541a',T('h.nests'),dn+' / '+tot);
+    if(!CAMP.s.pc){ // tant que le terminal n'a pas été utilisé, on ne sait pas ce qui se passe
+      g.fillText(T('h.objExplore'),bx+bw/2,by+14);g.font="600 11px 'Segoe UI',sans-serif";g.fillStyle='#9fb2d6';g.fillText(T('h.exploreHint'),bx+bw/2,by+29);
+    }else{
+      const tot=nests.length,dn=nests.filter(n=>n.dead).length;
+      g.fillText(T('h.objNests'),bx+bw/2,by+14);
+      bar(bx+10,by+19,bw-20,12,tot?dn/tot:1,'#ffb04a','#a8541a',T('h.nests'),dn+' / '+tot);
+    }
   }else if(MODE==='relay'&&relay){
     g.fillText(T('h.objRelay'),bx+bw/2,by+14);
     bar(bx+10,by+19,bw-20,12,relay.prog/RELAY_TIME,'#6fe3ff','#1f7a9a',T('h.transmit'),mmss(RELAY_TIME-relay.prog));
     bar(bx+10,by+34,bw-20,12,relay.hp/relay.maxhp,relay.hp<relay.maxhp*.4?'#ff7a5a':'#7fd8ff',relay.hp<relay.maxhp*.4?'#b02a1a':'#2a6a9a',T('h.relay'),Math.max(0,relay.hp|0));
-    if(relay.hp>0&&relay.prog<RELAY_TIME&&!relayActive()&&(time*2|0)%2){
-      g.font="800 15px 'Segoe UI',sans-serif";g.lineWidth=4;g.strokeStyle='rgba(0,0,0,.8)';
-      g.strokeText(T('h.outZone'),w/2,cv.height*.3);g.fillStyle='#ffd27a';g.fillText(T('h.outZone'),w/2,cv.height*.3);
-    }
   }
   if(CAMP.on){ // compteur de morts : il décide du rang final
     const gr=gradeOf(deaths),col={gold:'#ffd23a',silver:'#dfe6f0',bronze:'#d98a4a'}[gr],cy_=by+OH+6;
@@ -2095,12 +2149,12 @@ function hud(){
   for(const e of aliens){g.fillStyle=e.type==='queen'?'#ff5fa0':'#c05cff';const s=e.type==='queen'?5:2;g.fillRect(mx+e.x*sx-s/2,my+e.y*sy-s/2,s,s)}
   for(const a of allies){g.fillStyle='#5cdf4b';g.fillRect(mx+a.x*sx-1.5,my+a.y*sy-1.5,3,3)}
   for(const b of bonuses){g.fillStyle='#ffd34d';g.fillRect(mx+b.x*sx-1.5,my+b.y*sy-1.5,3,3)}
-  for(const n of nests)if(!n.dead){g.fillStyle='#d08a45';g.fillRect(mx+n.x*sx-2,my+n.y*sy-2,4,4)}
+  if(MODE!=='nests'||CAMP.s.pc)for(const n of nests)if(!n.dead){g.fillStyle='#d08a45';g.fillRect(mx+n.x*sx-2,my+n.y*sy-2,4,4)}
   if(reactor&&reactor.hp>0){g.fillStyle='#7fd8ff';g.fillRect(mx+reactor.x*sx-2,my+reactor.y*sy-2,4,4)}
-  if(relay&&relay.hp>0){g.strokeStyle='rgba(127,216,255,.8)';g.lineWidth=1;g.beginPath();g.arc(mx+relay.x*sx,my+relay.y*sy,RELAY_ZONE*sx,0,7);g.stroke();g.fillStyle='#7fd8ff';g.fillRect(mx+relay.x*sx-2,my+relay.y*sy-2,4,4)}
+  if(relay&&relay.hp>0){g.fillStyle='#7fd8ff';g.fillRect(mx+relay.x*sx-2,my+relay.y*sy-2,4,4)}
   for(const m of mechas){g.fillStyle='#ffd23a';g.fillRect(mx+m.x*sx-2.5,my+m.y*sy-2.5,5,5)}
   for(const h of helis){g.fillStyle='#dfe6f0';g.fillRect(mx+h.x*sx-2,my+h.y*sy-2,4,4)}
-  if(nests.length){g.textAlign='right';g.font="600 11px 'Segoe UI',sans-serif";g.fillStyle='#e0b070';g.fillText(T('h.nestsLeft',nests.filter(n=>!n.dead).length),mx+mw,my+mh+16)}
+  if(nests.length&&(MODE!=='nests'||CAMP.s.pc)){g.textAlign='right';g.font="600 11px 'Segoe UI',sans-serif";g.fillStyle='#e0b070';g.fillText(T('h.nestsLeft',nests.filter(n=>!n.dead).length),mx+mw,my+mh+16)}
   for(const hh of [player,player2])if(hh&&hh.hp>0){g.fillStyle=hh===me?((time*4|0)%2?'#fff':'#7fe3ff'):'#ffb15c';g.fillRect(mx+hh.x*sx-2.5,my+hh.y*sy-2.5,5,5)}
   g.strokeStyle='rgba(255,255,255,.55)';g.lineWidth=1;g.strokeRect(mx+cam.x*sx,my+cam.y*sy,VW*sx,VH*sy);
   // aide
@@ -2411,7 +2465,7 @@ function makeSnap(){
     dr:drops.map(d=>[r1(d.x),r1(d.y),r2(d.t),d.n]),
     tu:turrets.map(t=>[r2(t.face),time<t.flashT?1:0]),
     ar:armory.stock|0,
-    ne:nests.map(n=>Math.round(n.hp)),rx:reactor?Math.round(reactor.hp):0,dc:deaths,rl:relay?[Math.round(relay.hp),r1(relay.prog)]:0,
+    ne:nests.map(n=>Math.round(n.hp)),rx:reactor?Math.round(reactor.hp):0,dc:deaths,pc:CAMP.s.pc?1:0,rl:relay?[Math.round(relay.hp),r1(relay.prog)]:0,
     mc:mechas.map(m=>[r1(m.x),r1(m.y),Math.round(m.hp),m.max,r2(m.face),m.rk|0]),he:helis.map(h=>[r1(h.x),r1(h.y),h.vx|0,time<(h.flashT||0)?1:0]),
     tl:[...dirtyT].map(i=>[i,map[(i/MW)|0][i%MW],Math.round(thp[i])]),
     ev:NET.evq,
@@ -2493,7 +2547,7 @@ function applySnap(s){
   helis=(s.he||[]).map(d=>({x:d[0],y:d[1],vx:d[2],flashT:d[3]?time+.05:0}));
   nests.forEach((n,i)=>{const hp=s.ne&&s.ne[i];if(hp!==undefined){if(hp<n.hp)n.hurt=.1;n.hp=hp;n.dead=hp<=0}});
   if(reactor&&s.rx!==undefined){if(s.rx<reactor.hp)reactor.hurt=.2;reactor.hp=s.rx}
-  deaths=s.dc|0;
+  deaths=s.dc|0;CAMP.s.pc=s.pc|0;
   if(relay&&s.rl){if(s.rl[0]<relay.hp)relay.hurt=.2;relay.hp=s.rl[0];relay.prog=s.rl[1];relay.dead=relay.hp<=0}
   for(const [i,t,hp] of s.tl){const y=(i/MW)|0,x=i%MW;map[y][x]=t;thp[i]=hp}
   // événements visuels (particules, taches, explosions, textes, secousses)
@@ -2619,7 +2673,7 @@ const CHARS={
   rook:{skin:'#c98d66',skinD:'#a8704c',hair:'#4a2c14',eye:'#3b6f93',cloth:'#1f4a96',clothD:'#143266',helm:'#2f6fd6',helmL:'#6aa0f2',acc:'#8fe9ff',bg0:'#123246',bg1:'#050f16'},
   wren:{skin:'#f1c6a0',skinD:'#d3a07a',hair:'#e2b24a',eye:'#4c8d55',cloth:'#a55a14',clothD:'#6e3a0a',helm:'#e07a20',helmL:'#ffb868',acc:'#fff0c0',bg0:'#3b240e',bg1:'#120a04'},
   hale:{skin:'#b98262',skinD:'#936248',hair:'#a7adb2',eye:'#2b2b2b',cloth:'#3d4b2d',clothD:'#252f1b',helm:'#000',helmL:'#000',acc:'#e0c050',bg0:'#15281a',bg1:'#040a06'},
-  marsh:{skin:'#e3b594',skinD:'#bf8e6e',hair:'#5a3a22',eye:'#3a4f75',cloth:'#d98a1a',clothD:'#97600c',helm:'#000',helmL:'#000',acc:'#ffffff',bg0:'#2c1e0e',bg1:'#0c0804'},
+  marsh:{skin:'#e3b594',skinD:'#bf8e6e',hair:'#5a3a22',eye:'#3a4f75',cloth:'#e6e9f0',clothD:'#aab1c2',helm:'#000',helmL:'#000',acc:'#ffffff',bg0:'#1b2a3a',bg1:'#070b10'},
 };
 const PORT={};
 const femOf=id=>id==='rook'?DESIGN.p1==='f':id==='wren'?DESIGN.p1==='m':false;
@@ -2652,6 +2706,13 @@ function drawPortrait(c,id,open,fem){
     c.fillStyle=P.clothD;c.beginPath();c.moveTo(28,85);c.lineTo(48,101);c.lineTo(68,85);c.lineTo(63,83);c.lineTo(48,94);c.lineTo(33,83);c.closePath();c.fill();
     c.fillStyle=P.acc;R(70,92,11,3);R(70,97,11,2);c.fillStyle='rgba(0,0,0,.35)';R(14,94,2,18);R(80,94,2,18);
     c.strokeStyle='rgba(0,0,0,.4)';c.lineWidth=1.4;c.beginPath();c.moveTo(48,101);c.lineTo(48,H);c.stroke();
+    c.fillStyle='#1a202c';c.beginPath();c.moveTo(33,80);c.lineTo(63,80);c.lineTo(68,91);c.lineTo(28,91);c.closePath();c.fill();   // gorgerin blindé
+    c.fillStyle=P.acc;c.fillRect(38,84,20,1.6);
+    c.fillStyle='#161b26';c.beginPath();c.ellipse(12,94,17,10,-.4,0,7);c.ellipse(84,94,17,10,.4,0,7);c.fill();                       // épaulières
+    c.strokeStyle=P.acc;c.lineWidth=1.6;c.beginPath();c.ellipse(12,94,17,10,-.4,Math.PI*1.1,Math.PI*1.7);c.ellipse(84,94,17,10,.4,Math.PI*1.3,Math.PI*1.9);c.stroke();
+    c.fillStyle='#b8bcc8';c.beginPath();c.arc(20,90,1.6,0,7);c.arc(76,90,1.6,0,7);c.fill();
+    c.strokeStyle='#2a2218';c.lineWidth=7;c.beginPath();c.moveTo(16,H);c.lineTo(50,97);c.stroke();                                    // bandoulière
+    c.fillStyle='#c9a24a';for(let i=0;i<5;i++)c.fillRect(21+i*6.4,106-i*2.9,2.4,4.4);
   }else if(hale){
     c.fillStyle=P.clothD;c.beginPath();c.moveTo(28,85);c.lineTo(48,100);c.lineTo(68,85);c.lineTo(63,82);c.lineTo(48,92);c.lineTo(33,82);c.closePath();c.fill();
     c.fillStyle='#d8d8c8';c.beginPath();c.moveTo(40,86);c.lineTo(48,99);c.lineTo(56,86);c.lineTo(52,84);c.lineTo(48,90);c.lineTo(44,84);c.closePath();c.fill();   // chemise
@@ -2660,11 +2721,13 @@ function drawPortrait(c,id,open,fem){
     for(const [x,y,col] of [[14,102,'#c0392b'],[20,102,'#2c6fb0'],[26,102,'#e0c050'],[14,106,'#3a9a52'],[20,106,'#c0392b'],[26,106,'#e0c050']]){c.fillStyle=col;R(x,y,5,3)}  // rubans
     c.fillStyle=P.acc;c.beginPath();for(let i=0;i<5;i++){const a=-Math.PI/2+i*Math.PI*.4,r=i%2?2.2:4.6;c.lineTo(32+Math.cos(a)*r*1.0,90+Math.sin(a)*r)}c.closePath();c.fill();   // étoile du col
   }else{
-    // blouson Helix : gros col orange, logo hexagonal
-    c.fillStyle=P.clothD;c.beginPath();c.moveTo(26,86);c.lineTo(40,80);c.lineTo(46,104);c.lineTo(34,98);c.closePath();c.fill();c.beginPath();c.moveTo(70,86);c.lineTo(56,80);c.lineTo(50,104);c.lineTo(62,98);c.closePath();c.fill();
-    c.fillStyle='#e8a636';c.beginPath();c.moveTo(28,85);c.lineTo(41,81);c.lineTo(45,98);c.lineTo(36,94);c.closePath();c.fill();c.beginPath();c.moveTo(68,85);c.lineTo(55,81);c.lineTo(51,98);c.lineTo(60,94);c.closePath();c.fill();
-    c.strokeStyle='#fff';c.lineWidth=1.4;c.beginPath();for(let i=0;i<6;i++){const a=i*Math.PI/3+Math.PI/6;c.lineTo(78+Math.cos(a)*6,98+Math.sin(a)*6)}c.closePath();c.stroke();c.fillStyle='#fff';R(76,95,1.6,6);R(79.4,95,1.6,6);R(76,97.4,5,1.6);
-    c.strokeStyle='rgba(0,0,0,.35)';c.lineWidth=1.4;c.beginPath();c.moveTo(48,100);c.lineTo(48,H);c.stroke();
+    // scientifique : chemise blanche à col ouvert, cravate sombre, badge Helix, stylos dans la poche
+    c.fillStyle=P.clothD;c.beginPath();c.moveTo(30,85);c.lineTo(48,104);c.lineTo(66,85);c.lineTo(62,83);c.lineTo(48,95);c.lineTo(34,83);c.closePath();c.fill();
+    c.fillStyle='#f6f7fa';c.beginPath();c.moveTo(30,85);c.lineTo(40,81);c.lineTo(48,96);c.lineTo(36,99);c.closePath();c.fill();c.beginPath();c.moveTo(66,85);c.lineTo(56,81);c.lineTo(48,96);c.lineTo(60,99);c.closePath();c.fill();
+    c.fillStyle='#2a3350';c.beginPath();c.moveTo(48,93);c.lineTo(44,101);c.lineTo(48,112);c.lineTo(52,101);c.closePath();c.fill();
+    c.fillStyle='#d6dae4';R(66,97,14,14);c.strokeStyle='rgba(0,0,0,.25)';c.lineWidth=1;c.strokeRect(66.5,97.5,13,13);
+    c.fillStyle='#2e6fd0';R(69,93,2,8);c.fillStyle='#c0392b';R(73,94,2,7);c.fillStyle='#222';R(77,95,2,6);
+    c.fillStyle='#fff';R(14,98,12,9);c.strokeStyle='#4a5470';c.strokeRect(14.5,98.5,11,8);c.fillStyle='#d98a1a';R(16,100,4,4);c.fillStyle='#8a90a0';R(21,100,3,1);R(21,102,3,1);
   }
   // tête
   const head=new Path2D();
@@ -2676,7 +2739,7 @@ function drawPortrait(c,id,open,fem){
   gr=c.createLinearGradient(0,60,0,76);gr.addColorStop(0,'rgba(0,0,0,0)');gr.addColorStop(1,'rgba(0,0,0,.2)');c.fillStyle=gr;c.fill(head);
   // joues (femme) / barbe de trois jours (Marsh, Hale)
   if(fem){c.fillStyle='rgba(230,110,110,.18)';c.beginPath();c.ellipse(36,59,5,3,0,0,7);c.ellipse(60,59,5,3,0,0,7);c.fill()}
-  if(marsh||hale){c.fillStyle=hale?'rgba(30,26,22,.16)':'rgba(50,32,20,.3)';for(let i=0;i<(marsh?70:40);i++){const x=32+rn()*32,y=58+rn()*17;if(Math.hypot(x-48,(y-56)*.9)<(marsh?19:17))R(x,y,1,1)}}
+  if(marsh||hale||(sol&&!fem)){c.fillStyle=hale?'rgba(30,26,22,.16)':'rgba(50,32,20,.3)';for(let i=0;i<(marsh?70:40);i++){const x=32+rn()*32,y=58+rn()*17;if(Math.hypot(x-48,(y-56)*.9)<(marsh?19:17))R(x,y,1,1)}}
   if(marsh){c.fillStyle='rgba(70,50,30,.28)';c.beginPath();c.ellipse(60,62,5,3,.4,0,7);c.fill()}   // poussière
   // yeux
   for(const x of [39,57]){
@@ -2689,11 +2752,11 @@ function drawPortrait(c,id,open,fem){
     if(hale||marsh){c.strokeStyle='rgba(60,30,20,.4)';c.lineWidth=1;c.beginPath();c.ellipse(x,51.4,4,1.6,0,.15,Math.PI-.15);c.stroke()}   // cernes
   }
   // sourcils
-  c.strokeStyle=hale?'#6c7276':marsh?'#3e2a18':P.hair;c.lineCap='round';c.lineWidth=hale?2.8:fem?1.5:2.2;
+  c.strokeStyle=hale?'#6c7276':marsh?'#3e2a18':P.hair;c.lineCap='round';c.lineWidth=hale?2.8:fem?2:2.6;
   c.beginPath();
   if(hale){c.moveTo(33,41);c.lineTo(44,45.5);c.moveTo(52,45.5);c.lineTo(63,41)}
   else if(marsh){c.moveTo(33,42);c.lineTo(44,41.4);c.moveTo(52,41.4);c.lineTo(63,43.6)}
-  else{c.moveTo(33.5,fem?43:42.6);c.lineTo(44,fem?41.6:42.2);c.moveTo(52,fem?41.6:42.2);c.lineTo(62.5,fem?43:42.6)}
+  else{c.moveTo(33,41.4);c.lineTo(44,fem?43.6:44.2);c.moveTo(52,fem?43.6:44.2);c.lineTo(63,41.4)}   // sourcils froncés
   c.stroke();
   // nez
   c.strokeStyle='rgba(60,25,10,.34)';c.lineWidth=1.5;c.beginPath();c.moveTo(48.4,48);c.lineTo(46.4,58.4);c.lineTo(50.6,59);c.stroke();
@@ -2704,7 +2767,7 @@ function drawPortrait(c,id,open,fem){
     c.fillStyle='#ece5dc';R(44.2,62.6,7.6,1.8);c.fillStyle='#b04a4a';c.beginPath();c.ellipse(48,67.4,2.6,1.2,0,0,7);c.fill();
   }else{
     c.strokeStyle=fem?'#b4505a':'rgba(50,16,10,.8)';c.lineWidth=fem?2.4:1.9;c.beginPath();
-    if(hale){c.moveTo(41.5,67);c.quadraticCurveTo(48,63.4,54.5,67)}else{c.moveTo(42,65.4);c.quadraticCurveTo(48,fem?67.6:66.6,54,65.4)}
+    if(hale){c.moveTo(41.5,67);c.quadraticCurveTo(48,63.4,54.5,67)}else{c.moveTo(42,66.2);c.quadraticCurveTo(48,fem?67.4:66.8,54,64.2)}   // petit sourire en coin
     c.stroke();
   }
   // coiffure et couvre-chef
@@ -2720,6 +2783,17 @@ function drawPortrait(c,id,open,fem){
     c.strokeStyle='rgba(15,15,20,.75)';c.lineWidth=1.6;c.beginPath();c.moveTo(29,45);c.lineTo(35,70);c.moveTo(67,45);c.lineTo(61,70);c.stroke();   // jugulaire
     c.fillStyle=P.acc;c.beginPath();c.arc(26.5,46,2,0,7);c.fill();            // écouteur
     if(id==='wren'){c.fillStyle='rgba(150,80,40,.35)';for(const [x,y] of [[35,53],[38,55],[41,53.4],[55,53.4],[58,55],[61,53]])R(x,y,1.2,1.2)}   // taches de rousseur
+    // look dur à cuire : peinture de guerre, cicatrice, lunettes tactiques relevées sur le casque
+    c.strokeStyle=id==='wren'?'rgba(25,15,35,.8)':'rgba(10,28,14,.8)';c.lineWidth=2.2;c.lineCap='round';c.beginPath();
+    c.moveTo(33,55);c.lineTo(40,59);c.moveTo(34,58.6);c.lineTo(40.6,62.4);c.moveTo(63,55);c.lineTo(56,59);c.moveTo(62,58.6);c.lineTo(55.4,62.4);c.stroke();
+    for(const [col,w,dx] of [['#8f3f35',1.8,0],['rgba(255,225,215,.5)',.8,1]]){
+      c.strokeStyle=col;c.lineWidth=w;c.beginPath();
+      if(id==='rook'){c.moveTo(35+dx,37.6);c.lineTo(40.5+dx,46.5);c.lineTo(38.4+dx,54)}else{c.moveTo(60.5+dx,56);c.lineTo(64.4+dx,65);c.lineTo(61.4+dx,72.4)}
+      c.stroke();
+    }
+    c.fillStyle='#12161f';c.fillRect(32,26.5,32,8);c.fillStyle='#2a3140';c.fillRect(32,26.5,32,2);
+    c.fillStyle=P.acc;c.beginPath();c.arc(40,30.8,3.6,0,7);c.arc(56,30.8,3.6,0,7);c.fill();
+    c.fillStyle='rgba(255,255,255,.65)';c.fillRect(38.4,29.2,1.8,1.8);c.fillRect(54.4,29.2,1.8,1.8);
   }else if(hale){
     c.fillStyle=P.hair;c.beginPath();c.moveTo(26,44);c.quadraticCurveTo(25,17,48,16);c.quadraticCurveTo(71,17,70,44);c.lineTo(66,34);c.quadraticCurveTo(48,27,30,34);c.closePath();c.fill();   // brosse grise
     c.strokeStyle='rgba(60,64,68,.55)';c.lineWidth=1;for(let i=0;i<9;i++){c.beginPath();c.moveTo(32+i*4,26);c.lineTo(31+i*4.4,19+(i%2)*2);c.stroke()}
@@ -2979,15 +3053,19 @@ function missionTick(){   // répliques radio scriptées (hôte / solo seulement
   const S=CAMP.s;
   if(CAMP.id===1){
     const dn=nests.filter(n=>n.dead).length;
-    if(!S.a&&time>2.5){S.a=1;radio('rook','r1.start')}
-    if(dn>=1&&!S.b){S.b=1;radio('wren','r1.one')}
-    if(dn>=2&&!S.c){S.c=1;radio('rook','r1.two')}
+    if(!S.a&&time>3){S.a=1;radio('wren','r1.start')}
+    if(S.pc&&dn>=1&&!S.b){S.b=1;radio('wren','r1.one')}
+    if(S.pc&&dn>=2&&!S.c){ // après le deuxième nid : des brutes gardent le dernier
+      S.c=1;radio('rook','r1.two');
+      const ln=nests.find(n=>!n.dead);
+      if(ln)for(let i=0;i<2;i++)spawnAlien('brute',ln.x+(Math.random()-.5)*70,ln.y+(Math.random()-.5)*70);
+    }
   }else if(CAMP.id===2&&relay){
     const p=relay.prog/RELAY_TIME;
     if(!S.a&&time>2.5){S.a=1;radio('wren','r2.start')}
     if(p>=.25&&!S.b){S.b=1;radio('rook','r2.q1')}
     if(p>=.5&&!S.c){S.c=1;radio('wren','r2.half')}
-    if(p>=.75&&!S.d){S.d=1;radio('rook','r2.q3')}
+    if(relay.prog>=RELAY_TIME-60&&!S.d){S.d=1;radio('hale','r2.q3');callHeli(humans()[0]||player)}   // il reste une minute : renfort par hélicoptère
     if(relay.hp>0&&relay.hp<relay.maxhp*.4&&!S.e){S.e=1;radio('wren','r2.low')}
   }
 }
@@ -3094,7 +3172,7 @@ function buildDesigns(){
     for(const gd of ['m','f']){
       const b=document.createElement('button');b.className='card dsg'+(DESIGN.p1===gd?' sel':'');
       const cvs=document.createElement('canvas');cvs.width=96;cvs.height=112;cvs.getContext('2d').drawImage(portrait('rook',false,gd==='f'),0,0);
-      b.appendChild(cvs);b.insertAdjacentHTML('beforeend','<b>'+T(gd==='m'?'dMale':'dFemale')+'</b>');
+      b.appendChild(cvs);b.setAttribute('aria-label','Rook');
       b.onclick=()=>{DESIGN.p1=gd;try{localStorage.setItem('nb_design',gd)}catch(e){}buildDesigns()};
       wrap.appendChild(b);
     }
