@@ -558,7 +558,7 @@ function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(see
 
 // Tuiles : 0 sol, 1 herbe, 2 mur/rocher, 3 eau (bloque), 4 trou d'alien
 const map = Array.from({length:MH},()=>new Uint8Array(MW));
-const FORT = {x0:3,y0:MH-26,x1:28,y1:MH-4};   // forteresse du joueur (en tuiles)
+const FORT = {x0:27,y0:19,x1:52,y1:41};   // forteresse du joueur (en tuiles), au centre de la carte : les aliens arrivent de partout
 const NEST = {x:MW-11,y:9};
 const RELAY = {tx:FORT.x1+14,ty:(FORT.y0+FORT.y1)>>1}, RELAY_ZONE = 5*TS, RELAY_TIME = 240;   // l'antenne de la colonie (missions 1 et 2) ; mission 2 : à défendre 4 minutes
 const YARD = {x0:RELAY.tx-5,y0:RELAY.ty-5,x1:RELAY.tx+5,y1:RELAY.ty+4};   // enceinte de l'antenne : murs et portes
@@ -584,12 +584,13 @@ function genMap(){
   for(let y=MH/2|0;y<FORT.y1;y++) carve(FORT.x1+4,y);
   for(let y=NEST.y;y<MH/2+2;y++) carve(NEST.x-2,y);
   // forteresse : zone dégagée + murs avec 2 portes
-  for(let y=FORT.y0-1;y<=FORT.y1+1;y++)for(let x=FORT.x0-1;x<=FORT.x1+1;x++) map[y][x]=0;
+  for(let y=FORT.y0-4;y<=FORT.y1+4;y++)for(let x=FORT.x0-4;x<=FORT.x1+4;x++) map[y][x]=0;   // glacis dégagé tout autour
   for(let x=FORT.x0;x<=FORT.x1;x++){map[FORT.y0][x]=2;map[FORT.y1][x]=2}
   for(let y=FORT.y0;y<=FORT.y1;y++){map[y][FORT.x0]=2;map[y][FORT.x1]=2}
   const gx=(FORT.x0+FORT.x1)>>1, gy=(FORT.y0+FORT.y1)>>1;
   map[FORT.y0][gx]=map[FORT.y0][gx+1]=7;                 // porte nord (ouverte)
   map[gy][FORT.x1]=map[gy+1][FORT.x1]=7;                 // porte est (ouverte)
+  map[FORT.y1][gx]=map[FORT.y1][gx+1]=7;                 // porte sud (ouverte)
   for(let x=FORT.x1+1;x<=FORT.x1+4;x++){map[gy][x]=0;map[gy+1][x]=0}
   for(let y=FORT.y0-4;y<FORT.y0;y++){map[y][gx]=0;map[y][gx+1]=0}
   // château : chemin de ronde (étage, tuile 9) sur les 4 côtés, garde-corps côté cour (tuile 10), tours d'angle crénelées,
@@ -602,7 +603,8 @@ function genMap(){
     for(let y=Y0+1;y<Y1;y++)for(let x=X0+1;x<X1;x++){const e=Math.min(x-X0,X1-x,y-Y0,Y1-y);if(e<=2)map[y][x]=9;else if(e===3)map[y][x]=10}
     for(let y=Y0+1;y<=Y0+3;y++){map[y][gx]=map[y][gx+1]=0;map[y][gx-1]=map[y][gx+2]=10}   // passage de la porte nord
     for(let x=X1-3;x<X1;x++){map[gy][x]=map[gy+1][x]=0;map[gy-1][x]=map[gy+2][x]=10}      // passage de la porte est
-    map[Y0+3][gx-2]=map[Y0+3][gx+3]=9;map[Y1-3][gx]=map[Y1-3][gx+1]=9;map[gy-2][X1-3]=9;   // escaliers (nord, sud, est)
+    for(let y=Y1-3;y<Y1;y++){map[y][gx]=map[y][gx+1]=0;map[y][gx-1]=map[y][gx+2]=10}      // passage de la porte sud
+    map[Y0+3][gx-2]=map[Y0+3][gx+3]=9;map[Y1-3][gx-2]=map[Y1-3][gx+3]=9;map[gy-2][X1-3]=9;   // escaliers (nord, sud, est)
     for(const [cx,cy] of [[X0,Y0],[X1,Y0],[X0,Y1],[X1,Y1]])   // tours d'angle : plate-forme 3x3 en saillie, murs crénelés
       for(let y=cy-2;y<=cy+2;y++)for(let x=cx-2;x<=cx+2;x++){
         const out=x<X0||x>X1||y<Y0||y>Y1,edge=Math.abs(x-cx)===2||Math.abs(y-cy)===2;
@@ -632,13 +634,13 @@ function genMap(){
     for(let x=ex+1;x<=ix1;x++)put(x,iy0,5);put(ex+3,iy0+2,8);put(ex+4,iy0+2,8);                  // poste de commandement
     for(let x=ex+1;x<ix1;x++)put(x,ny+1,7);for(let x=ex+1;x<=ix1;x++)put(x,sy-1,7);put(ix1,gy,21);put(ix1,gy+1,21);   // sas
     put(ex+2,sy+1,6);put(ex+4,sy+1,6);put(ex+2,iy1,6);put(ex+4,iy1,6);put(ix1,sy+2,1);          // dortoir
-    put(ix0+6,iy1,1);put(ex-1,iy1,1);put(ex-1,iy1-1,1);                                         // cour
+    put(wx+1,iy1-3,1);put(ex-1,iy1-3,1);put(ex-1,iy1-4,1);                                      // cour
   }
   // nid de la reine (reine / survie). En campagne : pas de repaire, mais des nids à détruire (mission 1) ou un relais à tenir (mission 2)
   const lair=MODE==='queen'||MODE==='survive';
   if(lair)for(let y=-6;y<=6;y++)for(let x=-6;x<=6;x++) if(x*x+y*y<=36) map[NEST.y+y][NEST.x+x]=0;
   holes=lair?[[NEST.x-4,NEST.y+3],[NEST.x+3,NEST.y+4],[NEST.x+4,NEST.y-3],[NEST.x-3,NEST.y-4]]:[];
-  if(MODE==='survive') holes.push([MW-5,MH/2|0],[MW/2|0,4],[MW/2|0,MH-5]);
+  if(MODE==='survive') holes.push([MW-5,MH/2|0],[MW/2|0,4],[MW/2|0,MH-5],[4,MH/2|0],[6,MH-6]);
   if(MODE==='relay') holes.push([31,4],[62,4],[MW-5,20],[MW-5,48],[56,MH-5],[38,MH-5],[5,24]);   // les aliens arrivent de tous les côtés
   if(MODE==='relay'||MODE==='nests'){   // enceinte de l'antenne : murs, une porte vers la base et une au nord (fermées en mission 1)
     const rgy=(FORT.y0+FORT.y1)>>1;
@@ -678,14 +680,17 @@ function genMap(){
     else if(t===8)hp=130;
     else if(t===11)hp=60;   // mobilier
     thp[y*MW+x]=thpMax[y*MW+x]=hp;
+    dopen[y*MW+x]=t===7?1:0;
   }
 }
 // 2 rocher/mur, 3 eau, 6 porte fermée (7 = porte ouverte, traversable)
 const thp=new Float32Array(MW*MH), thpMax=new Float32Array(MW*MH);
-const deco=new Uint8Array(MW*MH), cren=new Uint8Array(MW*MH);   // mobilier de la base, muraille crénelée
+const deco=new Uint8Array(MW*MH), cren=new Uint8Array(MW*MH), dopen=new Float32Array(MW*MH);   // dopen : ouverture affichée des portes (animation)
+let doorDt=0,doorLT=0;   // mobilier de la base, muraille crénelée
 let ROOMS=[];   // salles de la base
 let fieldDirty=false;
 const solidT=(tx,ty)=>tx<0||ty<0||tx>=MW||ty>=MH||map[ty][tx]===2||map[ty][tx]===3||map[ty][tx]===6||map[ty][tx]===8||map[ty][tx]===10||map[ty][tx]===11;
+const shotT=(tx,ty)=>solidT(tx,ty)&&!(map[ty]&&map[ty][tx]===3);   // ce qui arrête un tir : l'eau ne l'arrête pas
 const onDeck=s=>{const r=map[Math.floor(s.y/TS)];return !!r&&r[Math.floor(s.x/TS)]===9};   // sur un étage ?
 function damageTile(tx,ty,dmg){
   if(!solidT(tx,ty)||tx<=0||ty<=0||tx>=MW-1||ty>=MH-1)return;
@@ -707,21 +712,20 @@ function doorGroup(x0,y0){
   return grp;
 }
 const setDoors=(grp,open)=>{grp.forEach(([x,y])=>{map[y][x]=open?7:6;dirtyT.add(y*MW+x)});fieldDirty=true};
-function hitsWall(x,y,r,al){   // al : un alien ne monte pas aux étages
+function hitsWall(x,y,r){
   const x0=Math.floor((x-r)/TS),x1=Math.floor((x+r)/TS),y0=Math.floor((y-r)/TS),y1=Math.floor((y+r)/TS);
-  for(let ty=y0;ty<=y1;ty++)for(let tx=x0;tx<=x1;tx++)if(solidT(tx,ty)||(al&&map[ty][tx]===9))return true;
+  for(let ty=y0;ty<=y1;ty++)for(let tx=x0;tx<=x1;tx++)if(solidT(tx,ty))return true;
   return false;
 }
-function los(ax,ay,bx,by,hi){
+function los(ax,ay,bx,by,hi,shot){   // shot : ligne de tir (l'eau ne la coupe pas)
   if(hi)return true;   // depuis un étage, on voit par-dessus les murs
-  const d=Math.hypot(bx-ax,by-ay),n=Math.ceil(d/10);
-  for(let i=1;i<n;i++){const t=i/n;if(solidT(Math.floor((ax+(bx-ax)*t)/TS),Math.floor((ay+(by-ay)*t)/TS)))return false}
+  const d=Math.hypot(bx-ax,by-ay),n=Math.ceil(d/10),st=shot?shotT:solidT;
+  for(let i=1;i<n;i++){const t=i/n;if(st(Math.floor((ax+(bx-ax)*t)/TS),Math.floor((ay+(by-ay)*t)/TS)))return false}
   return true;
 }
 function tryMove(e,dx,dy){
-  const al=!!e.type;
-  if(!hitsWall(e.x+dx,e.y,e.r,al))e.x+=dx;
-  if(!hitsWall(e.x,e.y+dy,e.r,al))e.y+=dy;
+  if(!hitsWall(e.x+dx,e.y,e.r))e.x+=dx;
+  if(!hitsWall(e.x,e.y+dy,e.r))e.y+=dy;
 }
 
 // ============ Champs de navigation (BFS) ============
@@ -731,7 +735,7 @@ function cfAlien(x,y){
   if(x<0||y<0||x>=MW||y>=MH)return -1;
   const t=map[y][x];
   if(t===2)return thp[y*MW+x]<0?-1:12;
-  if(t===3||t===9||t===10)return -1;   // les aliens ne montent pas aux étages
+  if(t===3||t===10)return -1;   // les aliens montent aux étages par les escaliers (pas par-dessus les garde-corps)
   return t===6||t===8||t===11?12:1;
 }
 function cfAlly(x,y){
@@ -936,6 +940,28 @@ function drawRail(px,py,x,y,h){ // garde-corps du chemin de ronde : parapet bas 
     g.fillStyle='#2a303c';for(let k=3;k<TS;k+=10)g.fillRect(px+c-3,py+k,7,2);
   }
 }
+function drawDoor(px,py,x,y){ // porte coulissante : les battants glissent dans le mur à l'ouverture
+  const k=y*MW+x,want=map[y][x]===7?1:0;let o=dopen[k];
+  if(o!==want){o=want>o?Math.min(want,o+doorDt*4.5):Math.max(want,o-doorDt*4.5);dopen[k]=o}
+  const at=(X,Y)=>map[Y]&&map[Y][X],wl=t=>t===2||t===6||t===7||t===10||t===11,dr=t=>t===6||t===7;
+  const L=at(x-1,y),R=at(x+1,y),U=at(x,y-1),D=at(x,y+1);
+  const hor=wl(L)&&wl(R)?true:wl(U)&&wl(D)?false:wl(L)||wl(R);
+  const a=hor?L:U,b=hor?R:D,c=TS/2;
+  g.drawImage(spr.plate[0],px,py);
+  const rect=(s,len,w,col)=>{g.fillStyle=col;if(hor)g.fillRect(px+s,py+c-w/2,len,w);else g.fillRect(px+c-w/2,py+s,w,len)};
+  rect(0,TS,16,'rgba(0,0,0,.35)');rect(0,TS,2,'#1a1e26');   // rail au sol
+  const panel=(s,len,lead)=>{   // un battant ; lead = bord d'attaque (bandes de danger)
+    if(len<=.5)return;
+    rect(s,len,12,'#2c313d');rect(s+1,Math.max(0,len-2),10,'#8591a6');rect(s+1,Math.max(0,len-2),2,'#aab4c8');
+    for(let i=2;i<len-3;i+=6)rect(s+i,1,10,'rgba(40,46,60,.35)');
+    const ls=lead>0?s+len-4:s;rect(ls,4,12,'#d9b200');rect(ls+1,1,12,'#1a1a1a');
+  };
+  const len=TS*(1-o);
+  if(dr(a)&&!dr(b))panel(TS-len,len,-1);        // battant qui rentre dans le mur du côté b
+  else if(dr(b)&&!dr(a))panel(0,len,1);         // battant qui rentre du côté a
+  else{panel(0,len/2,1);panel(TS-len/2,len/2,-1)}   // porte simple : deux demi-battants
+  g.fillStyle=want?'#3be07a':'#ff3a3a';g.beginPath();g.arc(hor?px+3:px+c+9,hor?py+c-9:py+3,1.8,0,7);g.fill();
+}
 function drawCrenel(px,py,x,y){ // créneaux : merlons en damier sur le haut de la muraille
   for(const [ox,oy] of ((x+y)&1)?[[2,2],[18,18]]:[[18,2],[2,18]]){
     g.fillStyle='rgba(0,0,0,.35)';g.fillRect(px+ox+2,py+oy+3,12,12);
@@ -1078,20 +1104,12 @@ function addShake(p,v){
   else if(p===player2)ev({k:'sh',v});
 }
 
-function groundTile(px,py){ // case du rez-de-chaussée la plus proche (pour les aliens qui visent quelqu'un à l'étage)
-  if(cfAlien(px,py)>=0)return[px,py];
-  for(let r=1;r<=8;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){
-    if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;
-    if(cfAlien(px+dx,py+dy)>=0)return[px+dx,py+dy];
-  }
-  return[px,py];
-}
 // ---- navigation : un champ par joueur ----
 function refreshPlayerFields(){
   for(const h of [player,player2]){
     if(!h||h.hp<=0)continue;
     const px=Math.floor(h.x/TS),py=Math.floor(h.y/TS);
-    const [gx2,gy2]=groundTile(px,py);h.field=flow(gx2,gy2,cfAlien);h.ffield=flow(px,py,cfAlly);
+    h.field=flow(px,py,cfAlien);h.ffield=flow(px,py,cfAlly);
   }
 }
 function objTile(){ // case visée par les alliés qui « avancent » : le nid de la reine, ou le nid vivant le plus proche (mission 1)
@@ -1488,7 +1506,8 @@ function update(dt){
     a.cd-=dt;a.hurt-=dt;a.inv-=dt;if(a.hp<=0)continue;
     if(a.iso){for(const h of humans())if(dist(h,a)<110){a.iso=false;a.order='follow';pushText({x:a.x,y:a.y-22,t:1.8,k:'tx.recruit',c:'#9f9'});snd('order',a.x,a.y);break}}   // un soldat isolé rejoint l'escouade
     let tgt=null,bd=330;
-    for(const e of aliens)if(e.hp>0){const d=dist(a,e);if(d<bd&&los(a.x,a.y,e.x,e.y,onDeck(a))){bd=d;tgt=e}}
+    for(const e of aliens)if(e.hp>0){const d=dist(a,e);if(d<bd&&los(a.x,a.y,e.x,e.y,onDeck(a),true)){bd=d;tgt=e}}
+    if(!tgt&&(MODE!=='nests'||CAMP.s.pc))for(const n of nests)if(!n.dead){const d=dist(a,n);if(d<bd&&los(a.x,a.y,n.x,n.y,onDeck(a),true)){bd=d;tgt=n}}   // pas d'alien en vue : on tire sur les nids
     const h=nearestHuman(a),dp=dist(a,h.hp>0?h:BASE),ord=a.order;   // si tous les joueurs sont tombés, « suivre » mène à la base
     const toPlayer=(sp)=>{ // rejoint le joueur (ligne droite si dégagé, sinon par le chemin)
       if(h.hp<=0)return descend(fieldBase,a,sp,dt);
@@ -1542,7 +1561,7 @@ function update(dt){
     if(relay&&!relay.static&&relay.hp>0&&e.tg!==relay&&e.type!=='queen'&&dist(e,relay)<520&&los(e.x,e.y,relay.x,relay.y)){e.tg=relay;e.tT=3}   // dès qu'ils voient l'antenne, ils foncent la ronger
     const tgt=e.tg;if(!tgt)continue;
     const bd=dist(e,tgt);
-    const seen=bd<(e.type==='queen'?430:300)&&los(e.x,e.y,tgt.x,tgt.y,onDeck(tgt));
+    const seen=bd<(e.type==='queen'?430:300)&&los(e.x,e.y,tgt.x,tgt.y,onDeck(tgt),true);
     if(e.type==='queen'){if(seen&&e.cd<=0){e.cd=2.2;snd('roar',e.x,e.y);spit(e,tgt,18)}continue}
     e.brk=null;
     if(e.type==='spitter'){
@@ -1582,7 +1601,7 @@ function update(dt){
     let tg=null,bd=320;
     for(const e of aliens)if(e.hp>0){
       const d=Math.hypot(e.x-cx,e.y-cy);
-      if(d<bd){const a=Math.atan2(e.y-cy,e.x-cx);if(los(cx+Math.cos(a)*20,cy+Math.sin(a)*20,e.x,e.y)){bd=d;tg=e}}
+      if(d<bd){const a=Math.atan2(e.y-cy,e.x-cx);if(los(cx+Math.cos(a)*20,cy+Math.sin(a)*20,e.x,e.y,false,true)){bd=d;tg=e}}
     }
     if(tg){
       t.face=Math.atan2(tg.y-cy,tg.x-cx);
@@ -1607,7 +1626,11 @@ function update(dt){
     for(let k=0;k<steps&&!b.dead;k++){
       b.x+=b.vx*dt/steps;b.y+=b.vy*dt/steps;
       const btx=Math.floor(b.x/TS),bty=Math.floor(b.y/TS);
-      if(solidT(btx,bty)&&!(b.hi&&btx>0&&bty>0&&btx<MW-1&&bty<MH-1)){   // un tir parti d'un étage passe par-dessus les murs
+      const inner=btx>0&&bty>0&&btx<MW-1&&bty<MH-1;
+      if(b.hi&&b.team===0&&!b.ov&&inner&&shotT(btx,bty)){   // tir plongeant depuis l'étage : moitié moins de dégâts, et il dévie
+        b.ov=true;b.dmg*=.5;const a=Math.atan2(b.vy,b.vx)+(Math.random()-.5)*.3,s=Math.hypot(b.vx,b.vy);b.vx=Math.cos(a)*s;b.vy=Math.sin(a)*s;
+      }
+      if(shotT(btx,bty)&&!(b.hi&&inner)){   // un tir parti d'un étage passe par-dessus les murs ; tous passent au-dessus de l'eau
         b.dead=true;
         if(b.rocket)explode(b.x,b.y,85,120);
         else if(b.flame)burst(b.x,b.y,2,'#ff9a30',60,.2,2);
@@ -2013,6 +2036,7 @@ function draw(){
   const x0=Math.max(0,cam.x/TS|0),y0=Math.max(0,cam.y/TS|0),x1=Math.min(MW,x0+Math.ceil(VW/TS)+2),y1=Math.min(MH,y0+Math.ceil(VH/TS)+2);
   const wf=(time*3|0)%4;
 
+  {const n=performance.now();doorDt=Math.min(.1,(n-(doorLT||n))/1000);doorLT=n}   // pas de temps pour l'animation des portes
   // --- sol ---
   for(let y=y0;y<y1;y++)for(let x=x0;x<x1;x++){
     const t=map[y][x],px=x*TS-cam.x|0,py=y*TS-cam.y|0,h=hash(x,y);
@@ -2025,7 +2049,7 @@ function draw(){
       if(map[y][x-1]!==3)g.fillRect(px,py,2,TS);
       if(map[y][x+1]!==3)g.fillRect(px+TS-2,py,2,TS);
     }else if(t===4)g.drawImage(spr.hole,px,py);
-    else if(t===7)g.drawImage(spr.doorO,px,py);
+    else if(t===7)drawDoor(px,py,x,y);
     else if(t===9)drawDeck(px,py,x,y,h);
     else if(t===10)drawRail(px,py,x,y,h);
     else if(inFort(x,y)||inYard(x,y)){const i=h%8;g.drawImage(spr.plate[i<5?0:i<6?1:i<7?2:3],px,py)}
@@ -2057,7 +2081,7 @@ function draw(){
   for(let y=Math.max(0,y0-1);y<y1;y++)for(let x=x0;x<x1;x++){
     const t=map[y][x];if(t!==2&&t!==6)continue;
     const px=x*TS-cam.x|0,py=y*TS-cam.y|0,h=hash(x,y),metal=t===6||inFort(x,y)||inYard(x,y),st=cren[y*MW+x];
-    g.drawImage(t===6?spr.doorC:st?spr.stone[h&1]:metal?spr.metal[h%3]:spr.rock[h&3],px,py);
+    if(t===6)drawDoor(px,py,x,y);else g.drawImage(st?spr.stone[h&1]:metal?spr.metal[h%3]:spr.rock[h&3],px,py);
     if(!isWall(x,y-1)){g.fillStyle='rgba(255,255,255,.24)';g.fillRect(px,py,TS,2)}
     if(!isWall(x-1,y)){g.fillStyle='rgba(255,255,255,.12)';g.fillRect(px,py,2,TS)}
     if(!isWall(x+1,y)){g.fillStyle='rgba(0,0,0,.28)';g.fillRect(px+TS-2,py,2,TS)}

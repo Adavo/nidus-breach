@@ -66,7 +66,9 @@ Français et anglais : bouton **FR / EN** en haut à gauche du menu (le choix es
 Rook démarre avec une mitraillette, Lyra avec un fusil à pompe (les munitions se rechargent à l'armurerie ; le pistolet reste le repli). Les tirs de pistolet et de mitraillette dévient légèrement ; le fusil à pompe a un large cône.
 
 ### La base : un château
-La base est un fort avec une **muraille en pierre crénelée** et quatre **tours d'angle**. Un **chemin de ronde** (étage) court sur les quatre côtés, avec des escaliers depuis la cour (nord, sud et est). Depuis l'étage, **les tirs passent par-dessus les murs** (et les alliés y voient aussi par-dessus). Les aliens ne montent pas : la muraille et les garde-corps sont indestructibles, ils n'entrent que par les deux portes ou en rongeant les murs des salles. Les cracheurs, eux, lobent leur acide sur ceux qui sont à l'étage.
+La base est un fort **au centre de la carte** (les aliens arrivent de tous les côtés), avec une **muraille en pierre crénelée**, quatre **tours d'angle** et trois **portes coulissantes** (nord, est, sud ; les battants glissent dans le mur). Un **chemin de ronde** (étage) court sur les quatre côtés, avec des escaliers depuis la cour. Depuis l'étage, **les tirs passent par-dessus les murs**, mais un tir plongeant qui passe au-dessus d'un mur fait **moitié moins de dégâts** et dévie. La muraille et les garde-corps sont indestructibles : les aliens entrent par les portes (ou en rongeant les murs des salles), puis **montent par les escaliers** pour aller chercher ceux qui sont sur le chemin de ronde. Les cracheurs lobent leur acide sur l'étage.
+
+Les tirs passent au-dessus de l'eau. Les alliés et le partenaire IA tirent sur les nids quand aucun alien n'est en vue.
 
 Au rez-de-chaussée, autour de la cour et de l'héliport (point de réapparition) :
 - **Armurerie** : recharge des munitions et deux caisses de munitions.
