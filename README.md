@@ -56,8 +56,8 @@ Le scénario complet est dans [`SCENARIO.txt`](SCENARIO.txt). Menu **Solo** (ou 
 - **Rangs** : **or** si aucune mort, **argent** jusqu'à 3 morts (les deux joueurs cumulés), **bronze** au-delà. Le meilleur rang de chaque mission est mémorisé (navigateur) et chaque mission terminée peut être rejouée depuis l'écran de sélection. Une mission s'ouvre quand la précédente est réussie (`?unlock=1` dans l'adresse ouvre tout, pour tester).
 - En ligne, l'hôte choisit la mission ; les deux joueurs voient l'intro et le briefing, la mission démarre quand les deux sont prêts.
 
-### Soldats : homme ou femme
-Dans les menus Solo et Créer une partie, le **joueur 1** choisit son design (homme ou femme). Le **joueur 2 prend toujours l'autre** : il n'y a jamais deux femmes (ni deux hommes), c'est le joueur 1 qui décide. Les portraits de Rook et Lyra suivent ce choix.
+### Personnages : Rook ou Lyra
+Dans les menus Solo et Créer une partie, le **joueur 1** choisit son personnage : **Rook** (casque bleu) ou **Lyra** (casque orange). Le **joueur 2 incarne toujours l'autre**. En solo, l'autre est le lieutenant IA, qui suit toujours le joueur et n'accepte pas d'ordres. Les cinématiques, dialogues et portraits montrent toujours Rook et Lyra, quel que soit le choix.
 
 ### Langues
 Français et anglais : bouton **FR / EN** en haut à gauche du menu (le choix est mémorisé, la langue du navigateur sert de valeur par défaut). Les textes sont dans l'objet `STR` de `index.html` ; chaque joueur voit le jeu dans sa propre langue, même en ligne.

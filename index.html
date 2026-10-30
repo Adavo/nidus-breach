@@ -170,7 +170,7 @@
 
   <div class="screen" id="s-solo">
     <h2 data-i18n="solo">Solo</h2>
-    <div class="lbl" data-i18n="designLbl">Ton soldat</div>
+    <div class="lbl" data-i18n="designLbl">Ton personnage</div>
     <div class="designs"></div>
     <button id="bCampSolo" data-i18n="campaign" style="margin-top:14px">Campagne</button>
     <button id="bSimple" data-i18n="simple">Partie simple</button>
@@ -186,7 +186,7 @@
 
   <div class="screen" id="s-create">
     <h2 data-i18n="createGame">Créer une partie</h2>
-    <div class="lbl" data-i18n="designLbl">Ton soldat</div>
+    <div class="lbl" data-i18n="designLbl">Ton personnage</div>
     <div class="designs"></div>
     <div class="hint" data-i18n="designHint" style="margin-top:6px;font-size:11.5px"></div>
     <button id="bCampHost" data-i18n="campaign">Campagne</button>
@@ -326,7 +326,7 @@ fr:{
   cancel:`Annuler`,joinBtn:`Rejoindre`,codePh:`CODE`,
   keysPC:`ZQSD bouger · Souris viser · Clic gauche tirer · Clic droit grenade<br>E : porte / ordre aux alliés · Échap : pause`,
   keysTouch:`Joystick gauche : bouger · Joystick droit : viser<br>TIRER · GREN. (grenade) · E : porte / ordres aux alliés · ☰ : pause`,
-  designLbl:`Ton soldat`,designHint:`Ton partenaire jouera avec l'autre design.`,dMale:`Homme`,dFemale:`Femme`,
+  designLbl:`Ton personnage`,designHint:`Ton partenaire jouera l'autre personnage.`,
   soundOn:`Son : activé`,soundOff:`Son : coupé`,
   pause:`PAUSE`,menu:`MENU`,pauseSolo:`La partie est en pause.`,pauseNet:`En ligne : la partie continue pendant que ce menu est ouvert.`,
   music:`Musique`,sfx:`Effets sonores`,resume:`Reprendre`,quit:`Quitter la partie`,
@@ -432,7 +432,7 @@ en:{
   cancel:`Cancel`,joinBtn:`Join`,codePh:`CODE`,
   keysPC:`WASD move · Mouse aim · Left click fire · Right click grenade<br>E: door / ally orders · Esc: pause`,
   keysTouch:`Left stick: move · Right stick: aim<br>FIRE · GREN. (grenade) · E: door / ally orders · ☰: pause`,
-  designLbl:`Your soldier`,designHint:`Your partner will play the other design.`,dMale:`Male`,dFemale:`Female`,
+  designLbl:`Your character`,designHint:`Your partner will play the other character.`,
   soundOn:`Sound: on`,soundOff:`Sound: off`,
   pause:`PAUSE`,menu:`MENU`,pauseSolo:`The game is paused.`,pauseNet:`Online: the game keeps running while this menu is open.`,
   music:`Music`,sfx:`Sound effects`,resume:`Resume`,quit:`Quit game`,
@@ -1934,8 +1934,8 @@ function draw(){
   for(const e of aliens)drawAlien(e);
   const near=nearestAlly(ORDER_RANGE,me);
   for(const a of allies){
-    drawSoldier(a,a.lt?PAL.p2:PAL.ally);
-    if(a.lt){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,210,150,.95)';g.fillText(T('n.lyra'),a.x-cam.x,a.y-cam.y-34)}
+    drawSoldier(a,a.lt?(player.fem?PAL.player:PAL.p2):PAL.ally);
+    if(a.lt){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,210,150,.95)';g.fillText(T(player.fem?'n.rook':'n.lyra'),a.x-cam.x,a.y-cam.y-34)}
     g.font="bold 12px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle=a.order==='hold'?'#ffcc66':a.order==='follow'?'#66ccff':'#99ee99';
     if(!a.lt)g.fillText(ORDER_ICON[a.order],a.x-cam.x,a.y-cam.y-(a.hp<a.maxhp?25:18));
     if(near&&!a.lt&&dist(a,player)<ORDER_RANGE){g.strokeStyle='rgba(150,200,255,.45)';g.lineWidth=1;g.beginPath();g.arc(a.x-cam.x,a.y-cam.y,15,0,7);g.stroke()}
@@ -1943,7 +1943,7 @@ function draw(){
   }
   for(const h of [player,player2]){
     if(!h||h.hp<=0)continue;
-    drawSoldier(h,h===player?PAL.player:PAL.p2);
+    drawSoldier(h,h.fem?PAL.p2:PAL.player);   // Rook : bleu, Lyra : orange, quel que soit le joueur
     if(h!==me){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,210,150,.95)';g.fillText(h===player?'J1':'J2',h.x-cam.x,h.y-cam.y-26)}
   }
 
@@ -2668,7 +2668,7 @@ const setStatus=t=>{statEl.textContent=t||''};
 const sel={world:0,mode:MODE,day:DAY?1:0};
 let setupCtx='solo';   // 'solo' ou 'host' : qui lance la partie simple ?
 // ============ Portraits (dessinés en code, 96×112) ============
-// Rook et Lyra changent de visage selon le design choisi par le joueur 1 : Rook suit son choix, Lyra prend toujours l'autre.
+// Rook est toujours un homme (casque bleu), Lyra toujours une femme (casque orange). Le joueur 1 choisit lequel des deux il incarne, le joueur 2 prend l'autre.
 const CHARS={
   rook:{skin:'#c98d66',skinD:'#a8704c',hair:'#4a2c14',eye:'#3b6f93',cloth:'#1f4a96',clothD:'#143266',helm:'#2f6fd6',helmL:'#6aa0f2',acc:'#8fe9ff',bg0:'#123246',bg1:'#050f16'},
   lyra:{skin:'#f1c6a0',skinD:'#d3a07a',hair:'#e2b24a',eye:'#4c8d55',cloth:'#a55a14',clothD:'#6e3a0a',helm:'#e07a20',helmL:'#ffb868',acc:'#fff0c0',bg0:'#3b240e',bg1:'#120a04'},
@@ -2676,7 +2676,7 @@ const CHARS={
   marsh:{skin:'#e3b594',skinD:'#bf8e6e',hair:'#5a3a22',eye:'#3a4f75',cloth:'#e6e9f0',clothD:'#aab1c2',helm:'#000',helmL:'#000',acc:'#ffffff',bg0:'#1b2a3a',bg1:'#070b10'},
 };
 const PORT={};
-const femOf=id=>id==='rook'?DESIGN.p1==='f':id==='lyra'?DESIGN.p1==='m':false;
+const femOf=id=>id==='lyra';
 function portrait(id,open,fem){
   if(fem===undefined)fem=femOf(id);
   const k=id+(fem?'f':'m')+(open?'o':'c');
@@ -3171,8 +3171,8 @@ function buildDesigns(){
     wrap.innerHTML='';
     for(const gd of ['m','f']){
       const b=document.createElement('button');b.className='card dsg'+(DESIGN.p1===gd?' sel':'');
-      const cvs=document.createElement('canvas');cvs.width=96;cvs.height=112;cvs.getContext('2d').drawImage(portrait('rook',false,gd==='f'),0,0);
-      b.appendChild(cvs);b.setAttribute('aria-label','Rook');
+      const cvs=document.createElement('canvas');cvs.width=96;cvs.height=112;cvs.getContext('2d').drawImage(portrait(gd==='m'?'rook':'lyra',false),0,0);
+      b.appendChild(cvs);b.insertAdjacentHTML('beforeend','<b>'+T(gd==='m'?'n.rook':'n.lyra')+'</b>');
       b.onclick=()=>{DESIGN.p1=gd;try{localStorage.setItem('nb_design',gd)}catch(e){}buildDesigns()};
       wrap.appendChild(b);
     }
