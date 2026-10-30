@@ -350,6 +350,7 @@ fr:{
   'tx.nestDown':`Nid détruit !`,'tx.reactorHit':`Le réacteur est attaqué !`,'tx.reactorDown':`RÉACTEUR DÉTRUIT : plus de réapparition !`,
   'tx.drop':`Largage !`,'tx.acid':`Acide !`,'tx.partnerLeft':`Partenaire déconnecté`,
   'tx.recruit':`Un soldat rejoint l'escouade`,
+  'tx.ltDown':`{0} est à terre !`,'tx.ltBack':`{0} est de retour`,'tx.turretCarry':`Tourelle prise (E pour la poser)`,'tx.turretDrop':`Tourelle posée`,
   'tx.relayHit':`Le relais est attaqué !`,'tx.relayZone':`Retournez dans la zone du relais !`,'tx.relayDown':`RELAIS DÉTRUIT !`,
   // interface en jeu
   'h.hp':`PV`,'h.mech':`MÉCHA`,'h.cannons':`CANONS`,'h.arms':`ARMES`,'h.grenades':`GRENADES`,'h.rockets':`Roquettes {0}/5 (clic droit)`,
@@ -357,9 +358,11 @@ fr:{
   'h.objQueen':`OBJECTIF : TUER LA REINE`,'h.objSurvive':`OBJECTIF : TENIR LA FORTERESSE`,
   'h.objNests':`OBJECTIF : DÉTRUIRE LES NIDS`,'h.nests':`NIDS`,
   'h.objExplore':`OBJECTIF : EXPLORER LA COLONIE`,'h.exploreHint':`Trouvez un terminal d'accès`,'h.terminal':`[E] Utiliser le terminal`,
+  'h.turretMove':`[E] Déplacer la tourelle`,'h.turretPlace':`[E] Poser la tourelle`,'h.prep':`PRÉPARATION`,
   'h.objRelay':`OBJECTIF : TENIR LE RELAIS`,'h.transmit':`TRANSMISSION`,'h.relay':`RELAIS`,'h.outZone':`⚠ HORS ZONE : retourne au relais`,
   'h.exitMech':`E : descendre du mécha`,'h.respawnIn':`RÉAPPARITION DANS {0} s`,'h.noRespawn':`PLUS DE RENFORTS : RÉACTEUR DÉTRUIT`,
   'h.nestsLeft':`Nids : {0}`,'h.boardMech':`[E] Monter dans le mécha`,'h.armory':`ARMURERIE · {0} (reste dessus pour recharger)`,
+  'rm.armory':`ARMURERIE`,'rm.med':`INFIRMERIE · SOINS`,'rm.engine':`SALLE DES MACHINES`,'rm.cmd':`POSTE DE COMMANDEMENT`,'rm.hall':`SAS D'ENTRÉE`,'rm.bunk':`DORTOIR`,
   'h.orderHint':`[E] ordre : {0} →`,'h.waitPartner':`En attente du partenaire…`,'h.deaths':`Morts : {0} · Rang : {1}`,
   'h.help1':`ZQSD bouger · Souris viser · Clic gauche tirer · Clic droit grenade`,
   'h.help2':`E porte / ordre aux alliés (3 cases) · Passe sur un frère tombé : munitions`,
@@ -407,6 +410,7 @@ fr:{
   'c.b2.2':`Quatre minutes... Les nids sont détruits, mais le bruit va attirer tout ce qui rampe dans le secteur.`,
   'c.b2.3':`Sans radio, personne ne peut vous aider. Défendez le relais, soldats !`,
   'c.b2.4':`Compris. On le tient.`,
+  'c.r2.prep':`Le relais s'initialise : trente secondes avant l'émission. Fortifiez les accès et placez les tourelles !`,
   'c.r2.start':`Émission lancée. Tant que le relais tient, le compteur tourne : ils vont s'acharner dessus.`,
   'c.r2.q1':`Un quart de la transmission. Ils arrivent de plus en plus nombreux !`,
   'c.r2.half':`Mi-parcours. Plus que deux minutes.`,
@@ -453,15 +457,18 @@ en:{
   'tx.nestDown':`Nest destroyed!`,'tx.reactorHit':`The reactor is under attack!`,'tx.reactorDown':`REACTOR DESTROYED: no more respawns!`,
   'tx.drop':`Drop!`,'tx.acid':`Acid!`,'tx.partnerLeft':`Partner disconnected`,
   'tx.recruit':`A soldier joins the squad`,
+  'tx.ltDown':`{0} is down!`,'tx.ltBack':`{0} is back`,'tx.turretCarry':`Turret picked up (E to place it)`,'tx.turretDrop':`Turret placed`,
   'tx.relayHit':`The relay is under attack!`,'tx.relayZone':`Get back to the relay zone!`,'tx.relayDown':`RELAY DESTROYED!`,
   'h.hp':`HP`,'h.mech':`MECH`,'h.cannons':`CANNONS`,'h.arms':`WEAPONS`,'h.grenades':`GRENADES`,'h.rockets':`Rockets {0}/5 (right click)`,
   'h.allies':`ALLIES`,'h.partner':`PARTNER`,'h.time':`TIME`,'h.reactor':`REACTOR`,
   'h.objQueen':`OBJECTIVE: KILL THE QUEEN`,'h.objSurvive':`OBJECTIVE: HOLD THE FORTRESS`,
   'h.objNests':`OBJECTIVE: DESTROY THE NESTS`,'h.nests':`NESTS`,
   'h.objExplore':`OBJECTIVE: EXPLORE THE COLONY`,'h.exploreHint':`Find an access terminal`,'h.terminal':`[E] Use the terminal`,
+  'h.turretMove':`[E] Move the turret`,'h.turretPlace':`[E] Place the turret`,'h.prep':`PREPARATION`,
   'h.objRelay':`OBJECTIVE: HOLD THE RELAY`,'h.transmit':`TRANSMISSION`,'h.relay':`RELAY`,'h.outZone':`⚠ OUT OF ZONE: return to the relay`,
   'h.exitMech':`E: exit the mech`,'h.respawnIn':`RESPAWN IN {0} s`,'h.noRespawn':`NO MORE REINFORCEMENTS: REACTOR DESTROYED`,
   'h.nestsLeft':`Nests: {0}`,'h.boardMech':`[E] Board the mech`,'h.armory':`ARMORY · {0} (stand here to reload)`,
+  'rm.armory':`ARMORY`,'rm.med':`INFIRMARY · HEALING`,'rm.engine':`ENGINE ROOM`,'rm.cmd':`COMMAND POST`,'rm.hall':`ENTRY AIRLOCK`,'rm.bunk':`BARRACKS`,
   'h.orderHint':`[E] order: {0} →`,'h.waitPartner':`Waiting for your partner…`,'h.deaths':`Deaths: {0} · Rank: {1}`,
   'h.help1':`WASD move · Mouse aim · Left click fire · Right click grenade`,
   'h.help2':`E door / ally orders (3 tiles) · Walk over a fallen comrade: ammo`,
@@ -503,6 +510,7 @@ en:{
   'c.b2.2':`Four minutes... The nests are gone, but the noise will draw in everything that crawls in this sector.`,
   'c.b2.3':`Without a radio, nobody can help you. Defend the relay, soldiers!`,
   'c.b2.4':`Understood. We'll hold it.`,
+  'c.r2.prep':`The relay is initializing: thirty seconds before transmission. Fortify the entrances and position the turrets!`,
   'c.r2.start':`Transmission started. As long as the relay holds, the counter keeps running — and they'll go straight for it.`,
   'c.r2.q1':`A quarter of the transmission done. More and more of them are coming!`,
   'c.r2.half':`Halfway there. Two minutes to go.`,
@@ -550,11 +558,12 @@ function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(see
 
 // Tuiles : 0 sol, 1 herbe, 2 mur/rocher, 3 eau (bloque), 4 trou d'alien
 const map = Array.from({length:MH},()=>new Uint8Array(MW));
-const FORT = {x0:6,y0:MH-17,x1:17,y1:MH-6};   // forteresse du joueur (en tuiles)
+const FORT = {x0:3,y0:MH-26,x1:28,y1:MH-4};   // forteresse du joueur (en tuiles)
 const NEST = {x:MW-11,y:9};
 const RELAY = {tx:FORT.x1+14,ty:(FORT.y0+FORT.y1)>>1}, RELAY_ZONE = 5*TS, RELAY_TIME = 240;   // l'antenne de la colonie (missions 1 et 2) ; mission 2 : à défendre 4 minutes
 const YARD = {x0:RELAY.tx-5,y0:RELAY.ty-5,x1:RELAY.tx+5,y1:RELAY.ty+4};   // enceinte de l'antenne : murs et portes
-const TERM = {tx:RELAY.tx-3,ty:RELAY.ty+2};                                 // terminal de la colonie (mission 1)
+const TERM = {tx:RELAY.tx-3,ty:RELAY.ty+2};
+const CORR = {y0:((FORT.y0+FORT.y1)>>1)-1,y1:((FORT.y0+FORT.y1)>>1)+2}, PREP_TIME = 30;   // couloir mural entre la base et l'enceinte ; mission 2 : 30 s de préparation avant les aliens                                 // terminal de la colonie (mission 1)
 let lastGold=-1e9;
 let holes = [], turretSpots = [], turrets = [], armory = null, nests = [], reactor = null, relay = null, term = null, mechas = [], helis = [], convoys = [];
 const BASE={x:0,y:0};   // point de réapparition des joueurs
@@ -583,15 +592,57 @@ function genMap(){
   map[gy][FORT.x1]=map[gy+1][FORT.x1]=7;                 // porte est (ouverte)
   for(let x=FORT.x1+1;x<=FORT.x1+4;x++){map[gy][x]=0;map[gy+1][x]=0}
   for(let y=FORT.y0-4;y<FORT.y0;y++){map[y][gx]=0;map[y][gx+1]=0}
+  // château : chemin de ronde (étage, tuile 9) sur les 4 côtés, garde-corps côté cour (tuile 10), tours d'angle crénelées,
+  // salles au rez-de-chaussée. La muraille (cren) est indestructible : les aliens n'entrent que par les portes ou en rongeant les salles.
+  deco.fill(0);cren.fill(0);ROOMS=[];
+  {
+    const X0=FORT.x0,Y0=FORT.y0,X1=FORT.x1,Y1=FORT.y1;
+    for(let x=X0;x<=X1;x++){if(map[Y0][x]===2)cren[Y0*MW+x]=1;if(map[Y1][x]===2)cren[Y1*MW+x]=1}
+    for(let y=Y0;y<=Y1;y++){if(map[y][X0]===2)cren[y*MW+X0]=1;if(map[y][X1]===2)cren[y*MW+X1]=1}
+    for(let y=Y0+1;y<Y1;y++)for(let x=X0+1;x<X1;x++){const e=Math.min(x-X0,X1-x,y-Y0,Y1-y);if(e<=2)map[y][x]=9;else if(e===3)map[y][x]=10}
+    for(let y=Y0+1;y<=Y0+3;y++){map[y][gx]=map[y][gx+1]=0;map[y][gx-1]=map[y][gx+2]=10}   // passage de la porte nord
+    for(let x=X1-3;x<X1;x++){map[gy][x]=map[gy+1][x]=0;map[gy-1][x]=map[gy+2][x]=10}      // passage de la porte est
+    map[Y0+3][gx-2]=map[Y0+3][gx+3]=9;map[Y1-3][gx]=map[Y1-3][gx+1]=9;map[gy-2][X1-3]=9;   // escaliers (nord, sud, est)
+    for(const [cx,cy] of [[X0,Y0],[X1,Y0],[X0,Y1],[X1,Y1]])   // tours d'angle : plate-forme 3x3 en saillie, murs crénelés
+      for(let y=cy-2;y<=cy+2;y++)for(let x=cx-2;x<=cx+2;x++){
+        const out=x<X0||x>X1||y<Y0||y>Y1,edge=Math.abs(x-cx)===2||Math.abs(y-cy)===2;
+        if(edge&&out){map[y][x]=2;cren[y*MW+x]=1}else{map[y][x]=9;cren[y*MW+x]=0}
+      }
+    // salles : trois à l'ouest, trois à l'est (dont le sas de la porte est), la cour et l'héliport au milieu
+    const ix0=X0+4,ix1=X1-4,iy0=Y0+4,iy1=Y1-4,wx=ix0+5,ex=ix1-5,ny=iy0+4,sy=iy1-4;
+    for(let y=iy0;y<=iy1;y++){map[y][wx]=2;map[y][ex]=2}
+    for(let x=ix0;x<wx;x++){map[ny][x]=2;map[sy][x]=2}
+    for(let x=ex+1;x<=ix1;x++){map[ny][x]=2;map[sy][x]=2}
+    for(const [x,y] of [[wx,iy0+2],[wx,ny+3],[wx,sy+2],[ex,iy0+2],[ex,gy],[ex,gy+1],[ex,sy+2]])map[y][x]=7;
+    ROOMS=[
+      {k:'rm.armory',x0:ix0,y0:iy0,x1:wx-1,y1:ny-1,c:'#c8a83a'},
+      {k:'rm.med',x0:ix0,y0:ny+1,x1:wx-1,y1:sy-1,c:'#e8f6ff',med:true},
+      {k:'rm.engine',x0:ix0,y0:sy+1,x1:wx-1,y1:iy1,c:'#3a8aca'},
+      {k:'rm.cmd',x0:ex+1,y0:iy0,x1:ix1,y1:ny-1,c:'#3aca8a'},
+      {k:'rm.hall',x0:ex+1,y0:ny+1,x1:ix1,y1:sy-1,c:'#ca8a3a'},
+      {k:'rm.bunk',x0:ex+1,y0:sy+1,x1:ix1,y1:iy1,c:'#8a6aca'},
+    ];
+    // mobilier : 1 caisse, 2 râtelier, 3 lit, 4 générateur, 5 console, 6 lits superposés, 7 casiers, 8 table tactique, 9 armoire à pharmacie (solides : tuile 11) ;
+    // 20 croix au sol, 21 bandes de danger (décor au sol)
+    const put=(x,y,k)=>{deco[y*MW+x]=k;if(k<20)map[y][x]=11};
+    for(let x=ix0;x<wx;x++)put(x,iy0,2);put(ix0,iy0+1,1);                                      // armurerie
+    put(ix0,ny+1,3);put(ix0,ny+3,3);put(ix0,ny+5,3);put(wx-1,ny+1,9);put(ix0+2,ny+3,20);          // infirmerie
+    put(ix0,sy+1,4);put(ix0,sy+2,4);put(ix0,iy1,4);put(wx-1,iy1,4);                             // salle des machines
+    if(MODE!=='survive'){put(ix0+2,sy+2,4);put(ix0+2,sy+3,4)}                                    // (en survie, le réacteur est au centre)
+    for(let x=ex+1;x<=ix1;x++)put(x,iy0,5);put(ex+3,iy0+2,8);put(ex+4,iy0+2,8);                  // poste de commandement
+    for(let x=ex+1;x<ix1;x++)put(x,ny+1,7);for(let x=ex+1;x<=ix1;x++)put(x,sy-1,7);put(ix1,gy,21);put(ix1,gy+1,21);   // sas
+    put(ex+2,sy+1,6);put(ex+4,sy+1,6);put(ex+2,iy1,6);put(ex+4,iy1,6);put(ix1,sy+2,1);          // dortoir
+    put(ix0+6,iy1,1);put(ex-1,iy1,1);put(ex-1,iy1-1,1);                                         // cour
+  }
   // nid de la reine (reine / survie). En campagne : pas de repaire, mais des nids à détruire (mission 1) ou un relais à tenir (mission 2)
   const lair=MODE==='queen'||MODE==='survive';
   if(lair)for(let y=-6;y<=6;y++)for(let x=-6;x<=6;x++) if(x*x+y*y<=36) map[NEST.y+y][NEST.x+x]=0;
   holes=lair?[[NEST.x-4,NEST.y+3],[NEST.x+3,NEST.y+4],[NEST.x+4,NEST.y-3],[NEST.x-3,NEST.y-4]]:[];
   if(MODE==='survive') holes.push([MW-5,MH/2|0],[MW/2|0,4],[MW/2|0,MH-5]);
-  if(MODE==='relay') holes.push([MW-5,MH/2|0],[MW/2|0,4],[MW-6,8]);   // les aliens arrivent de loin
+  if(MODE==='relay') holes.push([31,4],[62,4],[MW-5,20],[MW-5,48],[56,MH-5],[38,MH-5],[5,24]);   // les aliens arrivent de tous les côtés
   if(MODE==='relay'||MODE==='nests'){   // enceinte de l'antenne : murs, une porte vers la base et une au nord (fermées en mission 1)
     const rgy=(FORT.y0+FORT.y1)>>1;
-    for(let x=FORT.x1+1;x<YARD.x0;x++){map[rgy][x]=0;map[rgy+1][x]=0}   // chemin depuis la porte est de la base
+    for(let x=FORT.x1+1;x<YARD.x0;x++){for(let y=CORR.y0;y<=CORR.y1;y++)map[y][x]=0;map[CORR.y0][x]=2;map[CORR.y1][x]=2}   // couloir muré entre la base et l'enceinte de l'antenne
     for(let y=YARD.y0-1;y<=YARD.y1+1;y++)for(let x=YARD.x0-1;x<=YARD.x1+1;x++)map[y][x]=0;
     for(let x=YARD.x0;x<=YARD.x1;x++){map[YARD.y0][x]=2;map[YARD.y1][x]=2}
     for(let y=YARD.y0;y<=YARD.y1;y++){map[y][YARD.x0]=2;map[y][YARD.x1]=2}
@@ -602,8 +653,8 @@ function genMap(){
   for(const [x,y] of holes){ for(let d=-1;d<=1;d++)for(let e=-1;e<=1;e++){const X=x+d,Y=y+e;if(map[Y]&&map[Y][X]!==undefined&&map[Y][X]>=2)map[Y][X]=0}; map[y][x]=4; }
   // tourelles de la base : près des deux portes, à l'intérieur de la forteresse
   const tgx=(FORT.x0+FORT.x1)>>1, tgy=(FORT.y0+FORT.y1)>>1;
-  turretSpots=[[tgx-2,FORT.y0],[tgx+3,FORT.y0],[FORT.x1,tgy-2],[FORT.x1,tgy+3]];   // intégrées à la ligne des murs, de part et d'autre des portes
-  turretSpots.forEach(([x,y])=>{map[y][x]=8});
+  turretSpots=[[tgx-3,FORT.y0-2],[tgx+4,FORT.y0-2],[FORT.x1+2,tgy-3],[FORT.x1+2,tgy+4],[FORT.x0-2,tgy],[tgx,FORT.y1+2]];   // posées à l'extérieur des murs, près des deux portes (déplaçables avec E)
+  for(const [x,y] of turretSpots)for(let d=-1;d<=1;d++)for(let e=-1;e<=1;e++){const X=x+d,Y=y+e;if(X>0&&Y>0&&X<MW-1&&Y<MH-1&&(map[Y][X]===2||map[Y][X]===3))map[Y][X]=0}
   // nids pondeurs : petits dômes bruns répartis sur la carte (graine propre -> identiques chez l'invité)
   {
     const nr=rng(WORLD.seed*7+13),want=MODE==='relay'?0:MODE==='nests'?3:MODE==='survive'?7:9,fcx=(FORT.x0+FORT.x1)/2,fcy=(FORT.y0+FORT.y1)/2;nests=[];
@@ -621,17 +672,21 @@ function genMap(){
   for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){
     const t=map[y][x],border=x===0||y===0||x===MW-1||y===MH-1;
     let hp=0;
-    if(t===2)hp=border?-1:((x>=FORT.x0&&x<=FORT.x1&&y>=FORT.y0&&y<=FORT.y1)||inYard(x,y))?120:60;
-    else if(t===3)hp=-1;
+    if(t===2)hp=border||cren[y*MW+x]?-1:((x>=FORT.x0&&x<=FORT.x1&&y>=FORT.y0&&y<=FORT.y1)||inYard(x,y))?120:60;
+    else if(t===3||t===10)hp=-1;   // garde-corps des étages : indestructibles
     else if(t===6||t===7)hp=150;
     else if(t===8)hp=130;
+    else if(t===11)hp=60;   // mobilier
     thp[y*MW+x]=thpMax[y*MW+x]=hp;
   }
 }
 // 2 rocher/mur, 3 eau, 6 porte fermée (7 = porte ouverte, traversable)
 const thp=new Float32Array(MW*MH), thpMax=new Float32Array(MW*MH);
+const deco=new Uint8Array(MW*MH), cren=new Uint8Array(MW*MH);   // mobilier de la base, muraille crénelée
+let ROOMS=[];   // salles de la base
 let fieldDirty=false;
-const solidT=(tx,ty)=>tx<0||ty<0||tx>=MW||ty>=MH||map[ty][tx]===2||map[ty][tx]===3||map[ty][tx]===6||map[ty][tx]===8;
+const solidT=(tx,ty)=>tx<0||ty<0||tx>=MW||ty>=MH||map[ty][tx]===2||map[ty][tx]===3||map[ty][tx]===6||map[ty][tx]===8||map[ty][tx]===10||map[ty][tx]===11;
+const onDeck=s=>{const r=map[Math.floor(s.y/TS)];return !!r&&r[Math.floor(s.x/TS)]===9};   // sur un étage ?
 function damageTile(tx,ty,dmg){
   if(!solidT(tx,ty)||tx<=0||ty<=0||tx>=MW-1||ty>=MH-1)return;
   const k=ty*MW+tx;if(thp[k]<0)return;
@@ -652,19 +707,21 @@ function doorGroup(x0,y0){
   return grp;
 }
 const setDoors=(grp,open)=>{grp.forEach(([x,y])=>{map[y][x]=open?7:6;dirtyT.add(y*MW+x)});fieldDirty=true};
-function hitsWall(x,y,r){
+function hitsWall(x,y,r,al){   // al : un alien ne monte pas aux étages
   const x0=Math.floor((x-r)/TS),x1=Math.floor((x+r)/TS),y0=Math.floor((y-r)/TS),y1=Math.floor((y+r)/TS);
-  for(let ty=y0;ty<=y1;ty++)for(let tx=x0;tx<=x1;tx++)if(solidT(tx,ty))return true;
+  for(let ty=y0;ty<=y1;ty++)for(let tx=x0;tx<=x1;tx++)if(solidT(tx,ty)||(al&&map[ty][tx]===9))return true;
   return false;
 }
-function los(ax,ay,bx,by){
+function los(ax,ay,bx,by,hi){
+  if(hi)return true;   // depuis un étage, on voit par-dessus les murs
   const d=Math.hypot(bx-ax,by-ay),n=Math.ceil(d/10);
   for(let i=1;i<n;i++){const t=i/n;if(solidT(Math.floor((ax+(bx-ax)*t)/TS),Math.floor((ay+(by-ay)*t)/TS)))return false}
   return true;
 }
 function tryMove(e,dx,dy){
-  if(!hitsWall(e.x+dx,e.y,e.r))e.x+=dx;
-  if(!hitsWall(e.x,e.y+dy,e.r))e.y+=dy;
+  const al=!!e.type;
+  if(!hitsWall(e.x+dx,e.y,e.r,al))e.x+=dx;
+  if(!hitsWall(e.x,e.y+dy,e.r,al))e.y+=dy;
 }
 
 // ============ Champs de navigation (BFS) ============
@@ -674,13 +731,13 @@ function cfAlien(x,y){
   if(x<0||y<0||x>=MW||y>=MH)return -1;
   const t=map[y][x];
   if(t===2)return thp[y*MW+x]<0?-1:12;
-  if(t===3)return -1;
-  return t===6||t===8?12:1;
+  if(t===3||t===9||t===10)return -1;   // les aliens ne montent pas aux étages
+  return t===6||t===8||t===11?12:1;
 }
 function cfAlly(x,y){
   if(x<0||y<0||x>=MW||y>=MH)return -1;
   const t=map[y][x];
-  return t===2||t===3||t===6||t===8?-1:1;   // les alliés n'ouvrent pas les portes fermées
+  return t===2||t===3||t===6||t===8||t===10||t===11?-1:1;   // les alliés n'ouvrent pas les portes fermées
 }
 function flow(sx,sy,cf){ // Dijkstra à seaux
   const f=new Int32Array(MW*MH).fill(-1),s=sy*MW+sx,b=[[s]];f[s]=0;
@@ -717,7 +774,7 @@ function mk(w,h,fn){const c=document.createElement('canvas');c.width=w;c.height=
 const spr={};
 const hash=(x,y)=>{let h=(x*374761393+y*668265263)|0;h=(h^(h>>>13))*1274126177|0;return (h^(h>>>16))>>>0};
 const inFort=(x,y)=>x>=FORT.x0&&x<=FORT.x1&&y>=FORT.y0&&y<=FORT.y1;
-const inYard=(x,y)=>(MODE==='nests'||MODE==='relay')&&x>=YARD.x0&&x<=YARD.x1&&y>=YARD.y0&&y<=YARD.y1;
+const inYard=(x,y)=>(MODE==='nests'||MODE==='relay')&&((x>=YARD.x0&&x<=YARD.x1&&y>=YARD.y0&&y<=YARD.y1)||(x>FORT.x1&&x<YARD.x0&&y>=CORR.y0&&y<=CORR.y1));
 const WALL_H=11;   // hauteur de la face avant des murs (effet de relief)
 
 const rr_=rng(11);
@@ -827,6 +884,89 @@ function makeTiles(){
     g.fillStyle='#d9b200';g.fillRect(0,5,TS,1);g.fillRect(0,TS-6,TS,1);
     g.fillStyle='#3be07a';g.beginPath();g.arc(TS-7,2.5,1.8,0,7);g.fill();
   });
+  // étage : palier en caillebotis
+  spr.deck=Array.from({length:2},(_,i)=>mk(TS,TS,(g)=>{
+    const gr=g.createLinearGradient(0,0,TS,TS);gr.addColorStop(0,'#8a98b4');gr.addColorStop(1,'#66738d');g.fillStyle=gr;g.fillRect(0,0,TS,TS);
+    g.strokeStyle='rgba(20,28,44,.45)';g.lineWidth=1;for(let k=4;k<TS;k+=6){g.beginPath();g.moveTo(0,k);g.lineTo(TS,k);g.stroke()}
+    g.fillStyle='rgba(255,255,255,.18)';g.fillRect(0,0,TS,2);g.fillRect(0,0,2,TS);
+    if(i){g.fillStyle='#e0b400';g.fillRect(TS-6,TS-6,3,3)}
+    speckle(g,10,24);
+  }));
+  // muraille du château : pierres de taille
+  spr.stone=Array.from({length:2},(_,i)=>mk(TS,TS,(g)=>{
+    g.fillStyle='#7d7a72';g.fillRect(0,0,TS,TS);g.strokeStyle='rgba(30,28,24,.55)';g.lineWidth=1;
+    for(let r=0;r<4;r++){const y=r*8+.5;g.beginPath();g.moveTo(0,y);g.lineTo(TS,y);g.stroke();for(let x=(r+i)%2?8:0;x<TS;x+=16){g.beginPath();g.moveTo(x+.5,y);g.lineTo(x+.5,y+8);g.stroke()}}
+    speckle(g,14,30);
+  }));
+  spr.stoneFront=mk(TS,WALL_H,(g)=>{
+    g.fillStyle='#55524b';g.fillRect(0,0,TS,WALL_H);g.strokeStyle='rgba(20,18,15,.6)';g.lineWidth=1;
+    g.beginPath();g.moveTo(0,5.5);g.lineTo(TS,5.5);g.moveTo(8.5,0);g.lineTo(8.5,5.5);g.moveTo(24.5,0);g.lineTo(24.5,5.5);g.moveTo(16.5,5.5);g.lineTo(16.5,WALL_H);g.stroke();
+    g.fillStyle='rgba(0,0,0,.25)';g.fillRect(0,WALL_H-2,TS,2);
+  });
+}
+function drawDeck(px,py,x,y,h){
+  g.drawImage(spr.deck[h&1],px,py);
+  const at=(X,Y)=>map[Y]&&map[Y][X],gnd=t=>t===0||t===1,up=t=>t===9||t===10;
+  const below=at(x,y+1),above=at(x,y-1),left=at(x-1,y),right=at(x+1,y);
+  if(map[y][x]===9){   // escalier : un palier qui donne sur le sol
+    const dir=gnd(below)?[0,1]:gnd(above)?[0,-1]:gnd(left)?[-1,0]:gnd(right)?[1,0]:null;
+    if(dir){
+      for(let i=0;i<4;i++){
+        g.fillStyle=`rgba(0,0,0,${.06+i*.09})`;
+        if(dir[1]){const yy=dir[1]>0?py+i*8:py+TS-(i+1)*8;g.fillRect(px+2,yy,TS-4,8);g.fillStyle='rgba(255,255,255,.25)';g.fillRect(px+2,dir[1]>0?yy:yy+7,TS-4,1)}
+        else{const xx=dir[0]>0?px+i*8:px+TS-(i+1)*8;g.fillRect(xx,py+2,8,TS-4);g.fillStyle='rgba(255,255,255,.25)';g.fillRect(dir[0]>0?xx:xx+7,py+2,1,TS-4)}
+      }
+      g.fillStyle='#e0b400';if(dir[1]){g.fillRect(px,py,2,TS);g.fillRect(px+TS-2,py,2,TS)}else{g.fillRect(px,py,TS,2);g.fillRect(px,py+TS-2,TS,2)}
+      return;
+    }
+  }
+  if(!up(below)){g.fillStyle='rgba(0,0,0,.42)';g.fillRect(px,py+TS-7,TS,7);g.fillStyle='rgba(255,210,60,.75)';g.fillRect(px,py+TS-7,TS,1.5)}
+  if(!up(left)){g.fillStyle='rgba(0,0,0,.3)';g.fillRect(px,py,2,TS)}
+  if(!up(right)){g.fillStyle='rgba(0,0,0,.3)';g.fillRect(px+TS-2,py,2,TS)}
+}
+function drawRail(px,py,x,y,h){ // garde-corps du chemin de ronde : parapet bas en métal
+  drawDeck(px,py,x,y,h);
+  const r=(X,Y)=>map[Y]&&map[Y][X]===10,ver=r(x,y-1)||r(x,y+1),hor=r(x-1,y)||r(x+1,y)||!ver,c=TS/2;
+  if(hor){
+    g.fillStyle='rgba(0,0,0,.32)';g.fillRect(px,py+c+3,TS,5);g.fillStyle='#4b5568';g.fillRect(px,py+c-2,TS,5);g.fillStyle='#c3cee0';g.fillRect(px,py+c-5,TS,3);
+    g.fillStyle='#2a303c';for(let k=3;k<TS;k+=10)g.fillRect(px+k,py+c-5,2,8);
+  }
+  if(ver){
+    g.fillStyle='rgba(0,0,0,.32)';g.fillRect(px+c+4,py,5,TS);g.fillStyle='#4b5568';g.fillRect(px+c,py,4,TS);g.fillStyle='#c3cee0';g.fillRect(px+c-3,py,3,TS);
+    g.fillStyle='#2a303c';for(let k=3;k<TS;k+=10)g.fillRect(px+c-3,py+k,7,2);
+  }
+}
+function drawCrenel(px,py,x,y){ // créneaux : merlons en damier sur le haut de la muraille
+  for(const [ox,oy] of ((x+y)&1)?[[2,2],[18,18]]:[[18,2],[2,18]]){
+    g.fillStyle='rgba(0,0,0,.35)';g.fillRect(px+ox+2,py+oy+3,12,12);
+    g.fillStyle='#a19d92';g.fillRect(px+ox,py+oy,12,12);
+    g.fillStyle='rgba(255,255,255,.25)';g.fillRect(px+ox,py+oy,12,2);
+    g.fillStyle='rgba(0,0,0,.28)';g.fillRect(px+ox+10,py+oy,2,12);
+  }
+}
+function drawDeco(px,py,k,x,y){ // mobilier de la base (dessiné en code) ; un meuble détruit laisse des débris
+  if(k<20&&map[y][x]!==11){g.fillStyle='rgba(20,18,16,.55)';g.fillRect(px+6,py+10,8,5);g.fillRect(px+17,py+18,9,4);g.fillRect(px+12,py+22,5,4);return}
+  const cx=px+TS/2,cy=py+TS/2,R=(a,b,w,hh,c)=>{g.fillStyle=c;g.fillRect(px+a,py+b,w,hh)};
+  if(k<20)R(5,8,TS-5,TS-6,'rgba(0,0,0,.35)');   // ombre
+  switch(k){
+    case 1:R(3,3,26,24,'#6b6440');R(3,3,26,4,'#8a8456');R(3,14,26,3,'#4f4a2e');R(14,3,3,24,'#4f4a2e');g.strokeStyle='#2e2b1a';g.lineWidth=1;g.strokeRect(px+3.5,py+3.5,25,23);break;
+    case 2:R(2,4,28,20,'#2b3038');R(2,4,28,3,'#4a5260');for(let i=0;i<4;i++){R(5+i*6,7,3,15,'#14171c');R(5+i*6,9,3,3,'#6a5a3a')}break;
+    case 3:R(3,4,26,22,'#8d97a6');R(5,6,22,18,'#eef2f6');R(5,6,22,5,'#ffffff');R(5,13,22,11,'#5a86c0');R(5,13,22,2,'#7aa6e0');break;
+    case 4:{R(2,2,28,26,'#2c343e');R(2,2,28,3,'#4c5866');g.fillStyle='#161b22';g.beginPath();g.arc(cx,cy-1,9,0,7);g.fill();
+      g.strokeStyle='#7d8a9a';g.lineWidth=2;g.beginPath();for(let i=0;i<3;i++){const b=time*9+i*2.09;g.moveTo(cx,cy-1);g.lineTo(cx+Math.cos(b)*8,cy-1+Math.sin(b)*8)}g.stroke();
+      R(24,5,3,3,((time*2|0)+x+y)&1?'#ff4a3a':'#5cff8a');break}
+    case 5:{R(1,2,30,22,'#262c36');R(3,4,26,12,'#0b1a20');g.fillStyle=`rgba(80,230,200,${.55+.25*Math.sin(time*4+x)})`;
+      for(let i=0;i<4;i++)g.fillRect(px+5,py+6+i*3,6+((x*7+i*5+(time*3|0))%14),1.5);
+      R(3,18,26,4,'#3a4250');for(let i=0;i<6;i++)R(5+i*4,19,2,2,i%2?'#ffd34d':'#6fe3ff');break}
+    case 6:R(3,2,26,26,'#4d4a40');R(5,4,22,10,'#8a8460');R(5,4,7,10,'#d8d4c4');R(5,16,22,10,'#77724f');R(5,16,7,10,'#cfcabb');R(27,4,2,22,'#2a2822');break;
+    case 7:R(3,2,26,25,'#6d7684');for(let i=0;i<3;i++){R(4+i*9,3,7,23,'#7f8898');R(5+i*9,6,5,1,'#3a404a');R(5+i*9,8,5,1,'#3a404a');R(9+i*9,14,1,3,'#2a3038')}break;
+    case 8:{const f=.35+.2*Math.sin(time*2.5);R(1,4,30,22,'#1e252e');g.fillStyle=`rgba(90,210,255,${f})`;g.fillRect(px+4,py+7,24,16);
+      g.strokeStyle=`rgba(180,240,255,${f+.3})`;g.lineWidth=1;g.beginPath();g.moveTo(px+6,py+18);g.lineTo(px+12,py+11);g.lineTo(px+18,py+16);g.lineTo(px+26,py+9);g.stroke();
+      if((time*2|0)&1)R(14,13,3,3,'#ff5a4a');break}
+    case 9:R(5,2,22,24,'#e8ecef');R(5,2,22,3,'#ffffff');R(14,7,4,14,'#d33');R(9,12,14,4,'#d33');break;
+    case 20:g.fillStyle='rgba(220,40,40,.3)';g.fillRect(cx-5,py+3,10,TS-6);g.fillRect(px+3,cy-5,TS-6,10);break;
+    case 21:g.fillStyle='rgba(20,20,20,.35)';g.fillRect(px,py,TS,TS);g.fillStyle='rgba(230,190,0,.5)';for(let i=0;i<TS;i+=8)g.fillRect(px+i,py,4,TS);break;
+  }
 }
 makeTiles();
 
@@ -915,10 +1055,10 @@ const ALIEN = {
 
 // ============ État ============
 let player, allies, aliens, bullets, corpses, fx, texts;
-let time, over, msgText, fieldNest, fieldFort, fieldTimer, queen, drops, spitT;
+let time, over, msgText, fieldNest, fieldFort, fieldBase, fieldTimer, queen, drops, spitT;
 let uid=0, player2=null, me=null;     // player = joueur 1 (hôte / solo), player2 = joueur 2 (invité), me = soldat contrôlé ici
 let spawnT, reinfT, queenSpawnT, bruteT, shake;
-let deaths = 0, ltT = -1;   // ltT : délai avant le retour de Lyra (lieutenant IA) si elle tombe   // morts cumulées des joueurs (décide du rang en campagne)
+let deaths = 0, ltT = -1, allDown = false;   // ltT : délai avant le retour de Lyra (lieutenant IA) si elle tombe   // morts cumulées des joueurs (décide du rang en campagne)
 let grenades, shells, bonuses, bonusT;
 
 // ---- réseau : état partagé et file d'événements visuels (hôte -> invité) ----
@@ -938,12 +1078,20 @@ function addShake(p,v){
   else if(p===player2)ev({k:'sh',v});
 }
 
+function groundTile(px,py){ // case du rez-de-chaussée la plus proche (pour les aliens qui visent quelqu'un à l'étage)
+  if(cfAlien(px,py)>=0)return[px,py];
+  for(let r=1;r<=8;r++)for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){
+    if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;
+    if(cfAlien(px+dx,py+dy)>=0)return[px+dx,py+dy];
+  }
+  return[px,py];
+}
 // ---- navigation : un champ par joueur ----
 function refreshPlayerFields(){
   for(const h of [player,player2]){
     if(!h||h.hp<=0)continue;
     const px=Math.floor(h.x/TS),py=Math.floor(h.y/TS);
-    h.field=flow(px,py,cfAlien);h.ffield=flow(px,py,cfAlly);
+    const [gx2,gy2]=groundTile(px,py);h.field=flow(gx2,gy2,cfAlien);h.ffield=flow(px,py,cfAlly);
   }
 }
 function objTile(){ // case visée par les alliés qui « avancent » : le nid de la reine, ou le nid vivant le plus proche (mission 1)
@@ -958,6 +1106,7 @@ function objTile(){ // case visée par les alliés qui « avancent » : le nid d
 function refreshFields(){
   const o=objTile();
   fieldNest=flow(o.x,o.y,cfAlly);
+  fieldBase=flow(Math.floor(BASE.x/TS),Math.floor(BASE.y/TS),cfAlly);   // où l'on réapparaît : les alliés qui suivent nous y attendent
   fieldFort=relay?flow(Math.floor(relay.x/TS),Math.floor(relay.y/TS),cfAlly):flow((FORT.x0+FORT.x1)>>1,(FORT.y0+FORT.y1)>>1,cfAlly);
   if(reactor)reactor.field=flow(Math.floor(reactor.x/TS),Math.floor(reactor.y/TS),cfAlien);
   if(relay)relay.field=flow(Math.floor(relay.x/TS),Math.floor(relay.y/TS),cfAlien);
@@ -993,9 +1142,12 @@ function hurtS(s,dmg){ // dégâts sur un soldat (ou le réacteur, plus résista
   s.hp-=dmg;
 }
 const canRespawn=()=>MODE!=='survive'||!!(reactor&&reactor.hp>0);   // survie : on ne revient que tant que le réacteur tient
+function giveDefault(h){ // Lyra : fusil à pompe, Rook : mitraillette (le pistolet reste le repli sans munitions)
+  if(h.fem){h.weapon='shotgun';h.ammo=24}else{h.weapon='smg';h.ammo=150}
+}
 function respawn(h){
   const i=h===player?0:1;
-  h.x=BASE.x+i*40;h.y=BASE.y;h.hp=h.maxhp;h.weapon='pistol';h.ammo=0;h.grenades=Math.max(h.grenades,2);h.inv=2.5;h.hurt=0;h.dead=false;h.respT=0;h.cd=0;h.mech=null;h.r=9;
+  h.x=BASE.x+i*40;h.y=BASE.y;h.hp=h.maxhp;giveDefault(h);h.grenades=Math.max(h.grenades,2);h.inv=2.5;h.hurt=0;h.dead=false;h.respT=0;h.cd=0;h.mech=null;h.r=9;
   pushFx({x:h.x,y:h.y,t:.5,t0:.5,r:34,c:'#cfe',boom:true});snd('equip',h.x,h.y);pushText({x:h.x,y:h.y-30,t:1.6,k:'tx.respawn',c:'#8cf'});
   refreshPlayerFields();
 }
@@ -1088,22 +1240,22 @@ function pickBonus(b,p=player){
 function fireWeapon(p){
   if(p.mech){ // mécha : deux canons, munitions infinies
     p.cd=.085;const a=p.face,side=(p.mf=!p.mf)?1:-1,ang=a+(Math.random()-.5)*.06;
-    bullets.push({x:p.x+Math.cos(a)*26-Math.sin(a)*9*side,y:p.y+Math.sin(a)*26+Math.cos(a)*9*side,vx:Math.cos(ang)*720,vy:Math.sin(ang)*720,life:.75,dmg:12,team:0});
+    bullets.push({x:p.x+Math.cos(a)*26-Math.sin(a)*9*side,y:p.y+Math.sin(a)*26+Math.cos(a)*9*side,vx:Math.cos(ang)*720,vy:Math.sin(ang)*720,life:.75,dmg:12,team:0,hi:onDeck(p)});
     p.flashT=time+.05;snd('smg',p.x,p.y);addShake(p,1.2);return
   }
   const W=WEAPONS[p.weapon],a=p.face;
   if(!W.inf&&p.ammo<1){p.weapon='pistol';p.ammo=0;return}
   p.cd=W.cd;if(!W.inf)p.ammo-=1;
   switch(p.weapon){
-    case'pistol':shoot(p,a,9,0,.03);break;
-    case'smg':shoot(p,a,10,0,.07);addShake(p,1.5);break;
-    case'shotgun':for(let i=0;i<8;i++)shoot(p,a,7,0,.3,{life:.38,sp:620,mute:i>0});addShake(p,3);break;
+    case'pistol':shoot(p,a,9,0,.11);break;
+    case'smg':shoot(p,a,10,0,.2);addShake(p,1.5);break;
+    case'shotgun':for(let i=0;i<10;i++)shoot(p,a,9,0,.75,{life:.42,sp:620,mute:i>0});addShake(p,5);break;   // cône plus large, plombs plus puissants
     case'flame':{ // jet de flammes : traverse les aliens, les enflamme
       const a2=a+(Math.random()-.5)*.24,v=250+Math.random()*50;
-      bullets.push({x:p.x+Math.cos(a)*20,y:p.y+Math.sin(a)*20,vx:Math.cos(a2)*v,vy:Math.sin(a2)*v,life:.42,dmg:2.2,team:0,flame:true,hit:new Set()});
+      bullets.push({x:p.x+Math.cos(a)*20,y:p.y+Math.sin(a)*20,vx:Math.cos(a2)*v,vy:Math.sin(a2)*v,life:.42,dmg:2.2,team:0,flame:true,hi:onDeck(p),hit:new Set()});
       p.flashT=time+.06;snd('flame',p.x,p.y);break}
     case'rocket':
-      bullets.push({x:p.x+Math.cos(a)*20,y:p.y+Math.sin(a)*20,vx:Math.cos(a)*380,vy:Math.sin(a)*380,life:1.6,dmg:0,team:0,rocket:true});
+      bullets.push({x:p.x+Math.cos(a)*20,y:p.y+Math.sin(a)*20,vx:Math.cos(a)*380,vy:Math.sin(a)*380,life:1.6,dmg:0,team:0,rocket:true,hi:onDeck(p)});
       p.flashT=time+.06;snd('rocket',p.x,p.y);burst(p.x+Math.cos(a)*24,p.y+Math.sin(a)*24,6,'#bbb',90,.5,5,true);addShake(p,3);break;
   }
   if(!W.inf&&p.ammo<1){p.weapon='pistol';p.ammo=0;pushText({x:p.x,y:p.y-24,t:1.4,k:'tx.noAmmo',c:'#f96'})}
@@ -1111,7 +1263,7 @@ function fireWeapon(p){
 
 function spit(e,tgt,dmg){ // crachat d'acide : lent, tue les soldats, ronge les murs
   const a=Math.atan2(tgt.y-e.y,tgt.x-e.x)+(e.type==='queen'?0:(Math.random()-.5)*.34);snd('spit',e.x,e.y);
-  bullets.push({x:e.x+Math.cos(a)*e.r,y:e.y+Math.sin(a)*e.r,vx:Math.cos(a)*250,vy:Math.sin(a)*250,life:2,dmg,team:1,acid:true});
+  bullets.push({x:e.x+Math.cos(a)*e.r,y:e.y+Math.sin(a)*e.r,vx:Math.cos(a)*250,vy:Math.sin(a)*250,life:2,dmg,team:1,acid:true,hi:onDeck(tgt)});
 }
 function usePC(p){ // le journal de la colonie : les nids se réveillent et une première vague tombe sur l'escouade
   CAMP.s.pc=1;fieldDirty=true;snd('pickup',p.x,p.y);
@@ -1120,9 +1272,16 @@ function usePC(p){ // le journal de la colonie : les nids se réveillent et une 
   for(const h of humans())for(let i=0;i<4;i++)place(h.x,h.y,250,340);
   for(const n of nests)for(let i=0;i<3;i++)place(n.x,n.y,20,70);
 }
+function pickTurret(p,t){t.carried=true;t.owner=p;p.carry=t;snd('equip',p.x,p.y);pushText({x:p.x,y:p.y-30,t:1.6,k:'tx.turretCarry',c:'#9cf'})}
+function dropTurret(p){
+  const t=p.carry;if(!t)return;
+  let x=p.x+Math.cos(p.face)*30,y=p.y+Math.sin(p.face)*30;if(hitsWall(x,y,12)){x=p.x;y=p.y}
+  t.x=x;t.y=y;t.carried=false;t.owner=null;p.carry=null;snd('thud',x,y);pushText({x:p.x,y:p.y-30,t:1.2,k:'tx.turretDrop',c:'#9cf'});
+}
 function tryDoor(p=player){ // E près d'une porte : ouvre / ferme ; près d'alliés : change leur ordre
   if(!p||over||p.hp<=0)return;
   if(p.mech){ejectMech(p,false);return}
+  if(p.carry){dropTurret(p);return}   // E : poser la tourelle portée
   if(term&&!CAMP.s.pc&&dist(term,p)<56){usePC(p);return}   // mission 1 : le terminal révèle l'origine du silence radio
   const px=Math.floor(p.x/TS),py=Math.floor(p.y/TS);let best=null,bd=44;
   for(let ty=py-2;ty<=py+2;ty++)for(let tx=px-2;tx<=px+2;tx++){
@@ -1133,7 +1292,8 @@ function tryDoor(p=player){ // E près d'une porte : ouvre / ferme ; près d'all
   }
   const ally=nearestAlly(ORDER_RANGE,p);   // alliés dans la zone, sinon la porte
   const mm=mechas.find(m=>dist(m,p)<54);
-  if(mm&&(!best||dist(mm,p)<=bd)){boardMech(p,mm);return}   // le mécha est prioritaire sur les ordres (les alliés se pressent autour de la base)
+  if(mm&&(!best||dist(mm,p)<=bd)){boardMech(p,mm);return}
+  const tt=turrets.find(t=>!t.carried&&dist(t,p)<54);if(tt&&(!best||dist(tt,p)<=bd)){pickTurret(p,tt);return}   // E près d'une tourelle : on la prend   // le mécha est prioritaire sur les ordres (les alliés se pressent autour de la base)
   if(ally&&(!best||dist(ally,p)<bd)){giveOrder(p);return}
   if(!best)return;
   const opening=map[best[1]][best[0]]===6,grp=doorGroup(best[0],best[1]);
@@ -1185,7 +1345,7 @@ function mechRocket(p){
   if(p.gcd>0)return;
   if(!(p.mech.rk>0)){p.gcd=.8;pushText({x:p.x,y:p.y-28,t:.9,k:'tx.noRockets',c:'#f96'});return}
   p.mech.rk--;p.gcd=1.1;const a=p.face;
-  bullets.push({x:p.x+Math.cos(a)*26,y:p.y+Math.sin(a)*26,vx:Math.cos(a)*400,vy:Math.sin(a)*400,life:1.6,dmg:0,team:0,rocket:true});
+  bullets.push({x:p.x+Math.cos(a)*26,y:p.y+Math.sin(a)*26,vx:Math.cos(a)*400,vy:Math.sin(a)*400,life:1.6,dmg:0,team:0,rocket:true,hi:onDeck(p)});
   p.flashT=time+.06;snd('rocket',p.x,p.y);burst(p.x+Math.cos(a)*30,p.y+Math.sin(a)*30,6,'#bbb',90,.5,5,true);addShake(p,3);
 }
 function callDrop(){ // renfort largué par parachute près d'un joueur
@@ -1212,17 +1372,18 @@ function resetWorld(){ // commun à l'hôte, au solo et à l'invité
   const fx0=((FORT.x0+FORT.x1)/2+0.5)*TS, fy0=((FORT.y0+FORT.y1)/2)*TS;
   player=newSoldier(fx0,fy0,true);
   player2=NET.mode==='solo'?null:newSoldier(fx0+40,fy0,true);
-  player.fem=DESIGN.p1==='f';if(player2)player2.fem=!player.fem;   // jamais deux femmes : le joueur 2 prend l'autre design
+  player.fem=DESIGN.p1==='f';if(player2)player2.fem=!player.fem;
+  giveDefault(player);if(player2)giveDefault(player2);   // jamais deux femmes : le joueur 2 prend l'autre design
   me=NET.mode==='guest'?player2:player;
   allies=[];aliens=[];bullets=[];corpses=[];fx=[];texts=[];grenades=[];shells=[];bonuses=[];drops=[];mechas=[];helis=[];convoys=[];lastGold=-1e9;
   time=0;over=false;msgText='';shake=0;queen=null;
-  armory={x:(FORT.x0+2)*TS+TS/2,y:((FORT.y0+FORT.y1)>>1)*TS+TS/2,stock:160,acc:0};
-  turrets=turretSpots.map(([tx,ty])=>({tx,ty,cd:0,face:-1.5,flashT:0}));
+  armory={x:(FORT.x0+6.5)*TS,y:(FORT.y0+6)*TS,stock:160,acc:0};   // au centre de l'armurerie
+  turrets=turretSpots.map(([tx,ty])=>({x:(tx+.5)*TS,y:(ty+.5)*TS,hp:70,maxhp:70,r:12,cd:0,face:-1.5,flashT:0,hurt:0,carried:false,isTurret:true}));   // fragiles mais efficaces
   BASE.x=fx0;BASE.y=fy0;
-  reactor=MODE==='survive'?{id:'rx',x:(FORT.x0+3)*TS+TS/2,y:(FORT.y1-3)*TS+TS/2,r:16,hp:600,maxhp:600,hurt:0,isReactor:true,dead:false,alertT:0}:null;
+  reactor=MODE==='survive'?{id:'rx',x:(FORT.x0+6.5)*TS,y:(FORT.y1-5)*TS,r:16,hp:600,maxhp:600,hurt:0,isReactor:true,dead:false,alertT:0}:null;
   relay=(MODE==='relay'||MODE==='nests')?{id:'rl',x:(RELAY.tx+.5)*TS,y:(RELAY.ty+.5)*TS,r:18,hp:600,maxhp:600,hurt:0,isReactor:true,isRelay:true,static:MODE==='nests',dead:false,alertT:0,prog:0}:null;   // mission 1 : simple décor (antenne éteinte)
   term=MODE==='nests'?{x:(TERM.tx+.5)*TS,y:(TERM.ty+.5)*TS}:null;
-  deaths=0;CAMP.shown=false;hideResult();
+  deaths=0;allDown=false;CAMP.shown=false;hideResult();
   return {fx0,fy0};
 }
 function init(){
@@ -1232,20 +1393,20 @@ function init(){
   ltT=-1;if(CAMP.on&&!player2)spawnLt(fx0,fy0);   // solo : Lyra est le lieutenant IA
   if(MODE==='nests')scatterSurvivors();
   bonusT=8;spawnT=3;reinfT=18;queenSpawnT=3;bruteT=10;spitT=12;CAMP.s={};
-  addBonus((FORT.x0+3)*TS+TS/2,(FORT.y0+3)*TS+TS/2,'smg',80);addBonus((FORT.x0+5)*TS+TS/2,(FORT.y0+3)*TS+TS/2,'shotgun',16);
+  addBonus((FORT.x0+4.5)*TS,(FORT.y0+7.5)*TS,'ammo');addBonus((FORT.x0+8.5)*TS,(FORT.y0+7.5)*TS,'ammo');   // dans l'armurerie : seulement des munitions
   if(MODE==='queen'){queen={id:++uid,type:'queen',x:NEST.x*TS+TS/2,y:NEST.y*TS+TS/2,r:ALIEN.queen.r,hp:ALIEN.queen.hp,maxhp:ALIEN.queen.hp,cd:0,hurt:0};aliens.push(queen)}
   fieldDirty=false;refreshFields();fieldTimer=0;
   NET.evq=[];NET.in2={mx:0,my:0,aim:0,fire:false,t:0};
 }
 
 function spawnLt(x,y){ // Lyra en solo : lieutenant IA, nous suit et tire, revient à la base quelques secondes après sa chute
-  const a=newSoldier(x+36,y+10,false);a.lt=true;a.hp=a.maxhp=30;a.ammo=99999;a.weapon='smg';a.order='follow';allies.push(a);return a;   // ordre figé : elle suit toujours
+  const a=newSoldier(x+36,y+10,false);a.lt=true;a.hp=a.maxhp=30;a.ammo=99999;a.weapon=player.fem?'smg':'shotgun';a.order='follow';allies.push(a);return a;   // ordre figé : elle suit toujours
 }
 function scatterSurvivors(){ // mission 1 : des soldats isolés dans la colonie, ils nous rejoignent quand on s'approche
   const r=rng(WORLD.seed*3+5);let n=0;
   for(let tr=0;tr<800&&n<5;tr++){
     const tx=4+(r()*(MW-8)|0),ty=4+(r()*(MH-8)|0),x=tx*TS+TS/2,y=ty*TS+TS/2;
-    if(Math.hypot(tx-(FORT.x0+FORT.x1)/2,ty-(FORT.y0+FORT.y1)/2)<14||inYard(tx,ty)||hitsWall(x,y,14))continue;
+    if(Math.hypot(tx-(FORT.x0+FORT.x1)/2,ty-(FORT.y0+FORT.y1)/2)<19||inYard(tx,ty)||hitsWall(x,y,14))continue;
     if(nests.some(nn=>Math.hypot(nn.tx-tx,nn.ty-ty)<9)||allies.some(a=>a.iso&&Math.hypot(a.x-x,a.y-y)<220))continue;
     const a=newSoldier(x,y,false);a.iso=true;a.order='hold';a.ammo=30;a.face=r()*6.28;allies.push(a);n++;
   }
@@ -1257,7 +1418,7 @@ function spawnAlien(type,x,y){
 function shoot(s,aim,dmg,team,spread,o){
   o=o||{};
   const a=aim+(Math.random()-.5)*spread,sp=o.sp||680;
-  bullets.push({x:s.x+Math.cos(aim)*16,y:s.y+Math.sin(aim)*16,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:o.life||.8,dmg,team});
+  bullets.push({x:s.x+Math.cos(aim)*16,y:s.y+Math.sin(aim)*16,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:o.life||.8,dmg,team,hi:onDeck(s)});
   if(o.mute)return;
   s.flashT=time+.06;snd(weaponOf(s),s.x,s.y);
   burst(s.x+Math.cos(aim)*24,s.y+Math.sin(aim)*24,2,'#ffd070',140,.15,2);
@@ -1282,7 +1443,7 @@ function humanInput(p){ // entrée locale (clavier + souris, ou commandes tactil
 }
 function updateHuman(p,inp,dt){ // déplacement, tir, ramassages d'un joueur (local ou distant)
   if(p.hp>0){
-    const l=Math.max(1,Math.hypot(inp.mx,inp.my)), sp=p.mech?(inp.fire?80:100):(inp.fire?95:125);
+    const l=Math.max(1,Math.hypot(inp.mx,inp.my)), sp=(p.mech?(inp.fire?80:100):(inp.fire?95:125))*(p.carry?.7:1);
     tryMove(p,inp.mx/l*sp*dt,inp.my/l*sp*dt);
     p.face=inp.aim;
     p.cd-=dt;p.gcd-=dt;
@@ -1309,6 +1470,10 @@ function update(dt){
   if(fieldDirty){fieldDirty=false;refreshFields();fieldTimer=.35}
   else if(fieldTimer<=0){fieldTimer=.35;refreshPlayerFields()}
   armory.stock=Math.min(160,armory.stock+2*dt);
+  for(const r of ROOMS)if(r.med)for(const s of soldiers()){   // infirmerie : on s'y soigne lentement
+    const tx=Math.floor(s.x/TS),ty=Math.floor(s.y/TS);
+    if(s.hp>0&&s.hp<s.maxhp&&tx>=r.x0&&tx<=r.x1&&ty>=r.y0&&ty<=r.y1){s.hp=Math.min(s.maxhp,s.hp+(s.isPlayer?4:1)*dt);if(Math.random()<dt*3)burst(s.x,s.y-8,1,'#7f7',30,.6,2.5)}
+  }
 
   // --- joueurs ---
   updateHuman(player,humanInput(player),dt);
@@ -1323,9 +1488,10 @@ function update(dt){
     a.cd-=dt;a.hurt-=dt;a.inv-=dt;if(a.hp<=0)continue;
     if(a.iso){for(const h of humans())if(dist(h,a)<110){a.iso=false;a.order='follow';pushText({x:a.x,y:a.y-22,t:1.8,k:'tx.recruit',c:'#9f9'});snd('order',a.x,a.y);break}}   // un soldat isolé rejoint l'escouade
     let tgt=null,bd=330;
-    for(const e of aliens)if(e.hp>0){const d=dist(a,e);if(d<bd&&los(a.x,a.y,e.x,e.y)){bd=d;tgt=e}}
-    const h=nearestHuman(a),dp=dist(a,h),ord=a.order;
+    for(const e of aliens)if(e.hp>0){const d=dist(a,e);if(d<bd&&los(a.x,a.y,e.x,e.y,onDeck(a))){bd=d;tgt=e}}
+    const h=nearestHuman(a),dp=dist(a,h.hp>0?h:BASE),ord=a.order;   // si tous les joueurs sont tombés, « suivre » mène à la base
     const toPlayer=(sp)=>{ // rejoint le joueur (ligne droite si dégagé, sinon par le chemin)
+      if(h.hp<=0)return descend(fieldBase,a,sp,dt);
       if(h.hp>0&&los(a.x,a.y,h.x,h.y)){const an=Math.atan2(h.y-a.y,h.x-a.x);tryMove(a,Math.cos(an)*sp*dt,Math.sin(an)*sp*dt);return an}
       return descend(h.ffield,a,sp,dt);
     };
@@ -1359,7 +1525,8 @@ function update(dt){
   }
 
   // --- aliens ---
-  const cand=ss.slice();if(reactor&&reactor.hp>0)cand.push(reactor);if(relay&&relay.hp>0&&!relay.static)cand.push(relay);   // ils s'en prennent aussi au réacteur / au relais
+  const cand=ss.slice();for(const t of turrets)if(t.hp>0&&!t.carried)cand.push(t);   // les tourelles sont des cibles
+  if(reactor&&reactor.hp>0)cand.push(reactor);if(relay&&relay.hp>0&&!relay.static)cand.push(relay);   // ils s'en prennent aussi au réacteur / au relais
   for(const e of aliens){
     e.hurt-=dt;e.cd-=dt;e.wcd=(e.wcd||0)-dt;
     if(e.burn>0){e.burn-=dt;e.hp-=7*dt;if(Math.random()<dt*16)burst(e.x,e.y,1,'#ff8a2a',50,.35,3)}
@@ -1375,7 +1542,7 @@ function update(dt){
     if(relay&&!relay.static&&relay.hp>0&&e.tg!==relay&&e.type!=='queen'&&dist(e,relay)<520&&los(e.x,e.y,relay.x,relay.y)){e.tg=relay;e.tT=3}   // dès qu'ils voient l'antenne, ils foncent la ronger
     const tgt=e.tg;if(!tgt)continue;
     const bd=dist(e,tgt);
-    const seen=bd<(e.type==='queen'?430:300)&&los(e.x,e.y,tgt.x,tgt.y);
+    const seen=bd<(e.type==='queen'?430:300)&&los(e.x,e.y,tgt.x,tgt.y,onDeck(tgt));
     if(e.type==='queen'){if(seen&&e.cd<=0){e.cd=2.2;snd('roar',e.x,e.y);spit(e,tgt,18)}continue}
     e.brk=null;
     if(e.type==='spitter'){
@@ -1396,8 +1563,6 @@ function update(dt){
     if(e.brk&&e.wcd<=0&&Math.hypot(e.brk.tx*TS+TS/2-e.x,e.brk.ty*TS+TS/2-e.y)<e.r+TS*.8){
       e.wcd=.8;damageTile(e.brk.tx,e.brk.ty,d.dmg*1.5);
     }
-    if(e.wcd<=0)for(const t of turrets)  // ils s'en prennent aussi aux tourelles qu'ils frôlent
-      if(map[t.ty][t.tx]===8&&Math.hypot(t.tx*TS+TS/2-e.x,t.ty*TS+TS/2-e.y)<e.r+TS*.8){e.wcd=.8;damageTile(t.tx,t.ty,d.dmg*1.2);break}
     if(e.type!=='spitter'&&bd<e.r+tgt.r+6&&e.cd<=0&&!((tgt.inv||0)>0)){   // courte invulnérabilité après un coup : un essaim ne fond plus un soldat en une seconde
       e.cd=d.cd;hurtS(tgt,d.dmg);tgt.hurt=.2;tgt.inv=tgt.isPlayer?.35:.4;snd('bite',tgt.x,tgt.y);burst(tgt.x,tgt.y,7,'#b01010',110,.5,2.6);decal(tgt.x,tgt.y,10,'#5a0a0a',.35);
       if(tgt.isPlayer)addShake(tgt,5);
@@ -1409,10 +1574,11 @@ function update(dt){
     if(l>0&&l<m){const p=(m-l)/2/l;tryMove(a,-dx*p,-dy*p);tryMove(b,dx*p,dy*p)}
   }
 
-  // --- tourelles : tirent sur les aliens en vue ---
+  // --- tourelles : tirent sur les aliens en vue (on les porte avec E) ---
   for(const t of turrets){
-    if(map[t.ty][t.tx]!==8)continue;
-    const cx=t.tx*TS+TS/2,cy=t.ty*TS+TS/2;t.cd-=dt;
+    t.hurt-=dt;
+    if(t.carried){const o=t.owner;if(!o||o.hp<=0){t.carried=false;t.owner=null;continue}t.x=o.x+Math.cos(o.face)*30;t.y=o.y+Math.sin(o.face)*30;continue}
+    const cx=t.x,cy=t.y;t.cd-=dt;
     let tg=null,bd=320;
     for(const e of aliens)if(e.hp>0){
       const d=Math.hypot(e.x-cx,e.y-cy);
@@ -1427,6 +1593,12 @@ function update(dt){
       }
     }
   }
+  for(let i=turrets.length-1;i>=0;i--){ // tourelle détruite
+    const t=turrets[i];if(t.hp>0)continue;
+    if(t.owner)t.owner.carry=null;
+    snd('boom',t.x,t.y);pushFx({x:t.x,y:t.y,t:.4,t0:.4,r:48,c:'#fa4',boom:true});burst(t.x,t.y,22,'#ffb040',260,.7,3);burst(t.x,t.y,6,'#444',50,1.5,11,true);scorch(t.x,t.y,30);
+    pushText({x:t.x,y:t.y-18,t:1.6,k:'tx.turretDown',c:'#ff9966'});turrets.splice(i,1);
+  }
 
   // --- projectiles ---
   for(const b of bullets){
@@ -1435,7 +1607,7 @@ function update(dt){
     for(let k=0;k<steps&&!b.dead;k++){
       b.x+=b.vx*dt/steps;b.y+=b.vy*dt/steps;
       const btx=Math.floor(b.x/TS),bty=Math.floor(b.y/TS);
-      if(solidT(btx,bty)){
+      if(solidT(btx,bty)&&!(b.hi&&btx>0&&bty>0&&btx<MW-1&&bty<MH-1)){   // un tir parti d'un étage passe par-dessus les murs
         b.dead=true;
         if(b.rocket)explode(b.x,b.y,85,120);
         else if(b.flame)burst(b.x,b.y,2,'#ff9a30',60,.2,2);
@@ -1488,9 +1660,9 @@ function update(dt){
   }
 
   // --- morts ---
-  for(const a of allies)if(a.hp<=0&&!a.dead){a.dead=true;if(a.lt)ltT=10;decal(a.x,a.y,18,'#5a0a0a',.55);burst(a.x,a.y,12,'#9a1010',140,.6,3);corpses.push({x:a.x,y:a.y,ammo:a.ammo>16?Math.floor(a.ammo/2):0});pushText({x:a.x,y:a.y-14,t:1.2,k:'tx.allyDown',c:'#aaa'})}
+  for(const a of allies)if(a.hp<=0&&!a.dead){a.dead=true;if(a.lt){ltT=10;snd('ltDown',a.x,a.y);pushText({x:a.x,y:a.y-28,t:2.6,k:'tx.ltDown',a:['@'+(player.fem?'n.rook':'n.lyra')],c:'#ff9a8a'})}decal(a.x,a.y,18,'#5a0a0a',.55);burst(a.x,a.y,12,'#9a1010',140,.6,3);corpses.push({x:a.x,y:a.y,ammo:a.ammo>16?Math.floor(a.ammo/2):0});if(!a.lt)pushText({x:a.x,y:a.y-14,t:1.2,k:'tx.allyDown',c:'#aaa'})}
   allies=allies.filter(a=>!a.dead);
-  if(ltT>0){ltT-=dt;if(ltT<=0){ltT=-1;spawnLt(BASE.x,BASE.y);pushFx({x:BASE.x+36,y:BASE.y+10,t:.5,t0:.5,r:34,c:'#cfe',boom:true})}}
+  if(ltT>0){ltT-=dt;if(ltT<=0){ltT=-1;spawnLt(BASE.x,BASE.y);pushText({x:BASE.x+36,y:BASE.y-10,t:2,k:'tx.ltBack',a:['@'+(player.fem?'n.rook':'n.lyra')],c:'#9cf'});pushFx({x:BASE.x+36,y:BASE.y+10,t:.5,t0:.5,r:34,c:'#cfe',boom:true})}}
   for(const e of aliens)if(e.hp<=0&&e.type!=='queen'){snd('dieA',e.x,e.y);if(bonuses.length<10){if(e.type==='brute'&&Math.random()<.25)addBonus(e.x,e.y);else if(Math.random()<(hs.some(lowOnAmmo)?.05:.02)&&ammoOnMap()<3)addBonus(e.x,e.y,'ammo')}burst(e.x,e.y,14,'#8fd02a',150,.6,3);decal(e.x,e.y,e.r*1.6,'#3f6a14',.5)}
   aliens=aliens.filter(e=>e.hp>0||e===queen);
 
@@ -1498,12 +1670,20 @@ function update(dt){
   for(const h of [player,player2]){
     if(!h||h.hp>0)continue;
     if(!h.dead){
-      h.dead=true;deaths++;h.mech=null;h.r=9;h.respT=RESP_TIME;decal(h.x,h.y,18,'#5a0a0a',.55);burst(h.x,h.y,12,'#9a1010',140,.6,3);corpses.push({x:h.x,y:h.y,ammo:0});
+      h.dead=true;deaths++;if(h.carry){h.carry.carried=false;h.carry.owner=null;h.carry=null}h.mech=null;h.r=9;h.respT=RESP_TIME;decal(h.x,h.y,18,'#5a0a0a',.55);burst(h.x,h.y,12,'#9a1010',140,.6,3);corpses.push({x:h.x,y:h.y,ammo:0});
       if(h.weapon!=='pistol'&&h.ammo>=1)bonuses.push({x:h.x,y:h.y,type:h.weapon,t:0,ammo:Math.floor(h.ammo),cool:time+1.2});
       pushText({x:h.x,y:h.y-20,t:1.6,k:h===player?'tx.selfDown':'tx.partnerDown',c:'#f99'});
     }
     if(canRespawn()){h.respT-=dt;if(h.respT<=0)respawn(h)}
   }
+  // --- tous les joueurs sont tombés : les soldats tiennent la position, quel que soit leur ordre ---
+  if(!humans().length){
+    if(!allDown){
+      allDown=true;const grp=allies.filter(a=>a.hp>0&&!a.lt);
+      grp.forEach(a=>{a.order='hold';a.iso=false});
+      if(grp.length)pushText({x:player.x,y:player.y-40,t:1.8,k:'tx.order',a:['@ord.hold',grp.length],c:'#ffcc66'});
+    }
+  }else allDown=false;
   // --- nids : mort ---
   for(const n of nests){
     n.hurt-=dt;
@@ -1531,7 +1711,7 @@ function update(dt){
     if(relay.hp>0){
       if(relay.hurt>0&&relay.alertT<=0){relay.alertT=6;pushText({x:relay.x,y:relay.y-56,t:1.6,k:'tx.relayHit',c:'#7fd8ff'})}
       if(relay.hp<relay.maxhp*.4&&Math.random()<dt*6)burst(relay.x+(Math.random()-.5)*20,relay.y-10,1,'#555',30,.9,6,true);
-      if(!relay.static)relay.prog=Math.min(RELAY_TIME,relay.prog+dt);   // l'antenne émet tant qu'elle tient
+      if(!relay.static&&time>=PREP_TIME)relay.prog=Math.min(RELAY_TIME,relay.prog+dt);   // l'antenne émet tant qu'elle tient
     }else if(!relay.dead){
       relay.dead=true;snd('boom',relay.x,relay.y);burst(relay.x,relay.y,30,'#7fd8ff',260,.8,4);burst(relay.x,relay.y,10,'#444',70,1.6,10,true);scorch(relay.x,relay.y,40);
       pushFx({x:relay.x,y:relay.y,t:.5,t0:.5,r:100,c:'#8cf',boom:true});pushText({x:relay.x,y:relay.y-40,t:3,k:'tx.relayDown',c:'#ff7a7a'});
@@ -1599,8 +1779,8 @@ function update(dt){
     }
   }else if(MODE==='relay'){   // mission 2 : vagues venues du bord de la carte, de plus en plus fournies
     const rate=Math.max(.5,1.4-time/110)*(player2?.8:1);
-    spawnT-=dt;
-    if(spawnT<=0&&alive<60){
+    if(time>=PREP_TIME)spawnT-=dt;   // 30 s de préparation avant l'arrivée des aliens
+    if(spawnT<=0&&time>=PREP_TIME&&alive<60){
       spawnT=rate;const hh=holes[Math.random()*holes.length|0];
       const r=Math.random();
       spawnAlien(r<.06+time/1300?'brute':(r<.32&&time>12)?'spitter':'scout',hh[0]*TS+TS/2,hh[1]*TS+TS/2);
@@ -1739,7 +1919,8 @@ function cut(x,y,r,a){ // trou de lumière dans l'obscurité
 const isWall=(x,y)=>{const t=map[y]&&map[y][x];return t===2||t===6||t===8};
 
 function drawSoldier(s,p){
-  const sx=s.x-cam.x,sy=s.y-cam.y;
+  const lift=onDeck(s)?6:0;   // à l'étage : légèrement surélevé
+  const sx=s.x-cam.x,sy=s.y-cam.y-lift;
   const mv=Math.hypot(s.x-(s.px??s.x),s.y-(s.py??s.y))>.15;s.px=s.x;s.py=s.y;
   s.ph=(s.ph||0)+(mv?.32:0);
   if(s.isPlayer){g.strokeStyle=s===me?'rgba(127,233,255,.6)':'rgba(255,190,110,.6)';g.lineWidth=1.6;g.beginPath();g.ellipse(sx,sy+2,s.mech?26:16,s.mech?21:13,0,0,7);g.stroke()}
@@ -1814,8 +1995,8 @@ function drawAlien(e){
 }
 
 function updateMinimap(){
-  const cols=['#5a5240','#46583a','#8a8f9c','#24558f','#a64cc0',null,'#d9b200','#4c7','#e0603a'];
-  for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmg.fillStyle=(inFort(x,y)||inYard(x,y))&&map[y][x]!==2&&map[y][x]!==6&&map[y][x]!==7?'#4a5260':cols[map[y][x]];mmg.fillRect(x,y,1,1)}
+  const cols=['#5a5240','#46583a','#8a8f9c','#24558f','#a64cc0',null,'#d9b200','#4c7','#e0603a','#7d8aa8','#c9d4ec','#8a7a5a'];
+  for(let y=0;y<MH;y++)for(let x=0;x<MW;x++){mmg.fillStyle=(inFort(x,y)||inYard(x,y))&&map[y][x]!==2&&map[y][x]!==6&&map[y][x]!==7&&map[y][x]!==9&&map[y][x]!==10?'#4a5260':cols[map[y][x]];mmg.fillRect(x,y,1,1)}
 }
 
 function draw(){
@@ -1845,6 +2026,8 @@ function draw(){
       if(map[y][x+1]!==3)g.fillRect(px+TS-2,py,2,TS);
     }else if(t===4)g.drawImage(spr.hole,px,py);
     else if(t===7)g.drawImage(spr.doorO,px,py);
+    else if(t===9)drawDeck(px,py,x,y,h);
+    else if(t===10)drawRail(px,py,x,y,h);
     else if(inFort(x,y)||inYard(x,y)){const i=h%8;g.drawImage(spr.plate[i<5?0:i<6?1:i<7?2:3],px,py)}
     else g.drawImage((t===1?spr.grass:spr.ground)[h&7],px,py);
   }
@@ -1852,16 +2035,35 @@ function draw(){
   {const sx0=Math.max(0,cam.x),sy0=Math.max(0,cam.y),sw=Math.min(dcv.width-sx0,VW-(sx0-cam.x)),sh=Math.min(dcv.height-sy0,VH-(sy0-cam.y));
    if(sw>0&&sh>0)g.drawImage(dcv,sx0,sy0,sw,sh,sx0-cam.x,sy0-cam.y,sw,sh)}
 
+  // --- salles de la base : sol teinté, héliport, mobilier, nom au pochoir ---
+  for(const r of ROOMS){
+    const rx=r.x0*TS-cam.x,ry=r.y0*TS-cam.y,rw=(r.x1-r.x0+1)*TS,rh=(r.y1-r.y0+1)*TS;
+    if(rx>VW||ry>VH||rx+rw<0||ry+rh<0)continue;
+    g.globalAlpha=.12;g.fillStyle=r.c;g.fillRect(rx,ry,rw,rh);g.globalAlpha=1;
+  }
+  {const hx=BASE.x-cam.x,hy=BASE.y-cam.y;   // héliport de la cour (point de réapparition)
+   if(hx>-60&&hy>-60&&hx<VW+60&&hy<VH+60){
+    g.strokeStyle='rgba(255,210,60,.5)';g.lineWidth=3;g.beginPath();g.arc(hx,hy,40,0,7);g.stroke();g.lineWidth=1;g.beginPath();g.arc(hx,hy,34,0,7);g.stroke();
+    g.fillStyle='rgba(255,255,255,.32)';g.fillRect(hx-12,hy-14,5,28);g.fillRect(hx+7,hy-14,5,28);g.fillRect(hx-7,hy-2.5,14,5);
+  }}
+  for(let y=y0;y<y1;y++)for(let x=x0;x<x1;x++){const k=deco[y*MW+x];if(k)drawDeco(x*TS-cam.x|0,y*TS-cam.y|0,k,x,y)}
+  g.font="800 9px 'Segoe UI',sans-serif";g.textAlign='center';
+  for(const r of ROOMS){
+    const rx=r.x0*TS-cam.x,ry=r.y0*TS-cam.y,rw=(r.x1-r.x0+1)*TS,rh=(r.y1-r.y0+1)*TS;
+    if(rx>VW||ry>VH||rx+rw<0||ry+rh<0)continue;
+    g.fillStyle='rgba(0,0,0,.45)';g.fillText(T(r.k),rx+rw/2+1,ry+rh-4);g.fillStyle='rgba(255,255,255,.55)';g.fillText(T(r.k),rx+rw/2,ry+rh-5);
+  }
   // --- murs en relief ---
   for(let y=Math.max(0,y0-1);y<y1;y++)for(let x=x0;x<x1;x++){
     const t=map[y][x];if(t!==2&&t!==6)continue;
-    const px=x*TS-cam.x|0,py=y*TS-cam.y|0,h=hash(x,y),metal=t===6||inFort(x,y)||inYard(x,y);
-    g.drawImage(t===6?spr.doorC:metal?spr.metal[h%3]:spr.rock[h&3],px,py);
+    const px=x*TS-cam.x|0,py=y*TS-cam.y|0,h=hash(x,y),metal=t===6||inFort(x,y)||inYard(x,y),st=cren[y*MW+x];
+    g.drawImage(t===6?spr.doorC:st?spr.stone[h&1]:metal?spr.metal[h%3]:spr.rock[h&3],px,py);
     if(!isWall(x,y-1)){g.fillStyle='rgba(255,255,255,.24)';g.fillRect(px,py,TS,2)}
     if(!isWall(x-1,y)){g.fillStyle='rgba(255,255,255,.12)';g.fillRect(px,py,2,TS)}
     if(!isWall(x+1,y)){g.fillStyle='rgba(0,0,0,.28)';g.fillRect(px+TS-2,py,2,TS)}
+    if(st)drawCrenel(px,py,x,y);
     if(!isWall(x,y+1)&&y+1<MH){
-      g.drawImage(metal?spr.metalFront:spr.rockFront,px,py+TS);
+      g.drawImage(st?spr.stoneFront:metal?spr.metalFront:spr.rockFront,px,py+TS);
       g.fillStyle='rgba(0,0,0,.2)';g.fillRect(px,py+TS+WALL_H,TS,5);g.fillStyle='rgba(0,0,0,.1)';g.fillRect(px,py+TS+WALL_H+5,TS,4);
     }
     const k=y*MW+x;
@@ -1887,22 +2089,24 @@ function draw(){
    }}
   // --- tourelles ---
   for(const t of turrets){
-    if(map[t.ty][t.tx]!==8)continue;
-    const px=t.tx*TS-cam.x,py=t.ty*TS-cam.y,cx=px+TS/2,cy=py+TS/2,k=t.ty*MW+t.tx,hr=Math.max(0,thp[k]/thpMax[k]);
-    if(cx<-40||cy<-40||cx>VW+40||cy>VH+40)continue;
-    g.drawImage(spr.metal[0],px|0,py|0);   // la tourelle fait partie du mur
-    if(!isWall(t.tx,t.ty+1)){g.drawImage(spr.metalFront,px|0,(py|0)+TS);g.fillStyle='rgba(0,0,0,.2)';g.fillRect(px|0,(py|0)+TS+WALL_H,TS,5)}
-    g.fillStyle='#2b3140';rrect(px+2,py+2,TS-4,TS-4,6);g.fill();
-    g.fillStyle='#4a5470';rrect(px+3,py+3,TS-6,TS-8,5);g.fill();g.strokeStyle='#8fa0c8';g.lineWidth=1;g.stroke();
-    g.save();g.translate(cx,cy);g.rotate(t.face);
+    const cx=t.x-cam.x,cy=t.y-cam.y;if(cx<-40||cy<-40||cx>VW+40||cy>VH+40)continue;
+    const hr=Math.max(0,t.hp/t.maxhp);
+    g.fillStyle='rgba(0,0,0,.4)';g.beginPath();g.ellipse(cx+2,cy+(t.carried?12:8),13,6,0,0,7);g.fill();
+    const lift=t.carried?-4:0;
+    g.strokeStyle='#2b3140';g.lineWidth=3;g.beginPath();g.moveTo(cx-10,cy+9+lift);g.lineTo(cx,cy+lift);g.lineTo(cx+10,cy+9+lift);g.stroke();
+    g.fillStyle='#2b3140';g.beginPath();g.arc(cx,cy+lift,12,0,7);g.fill();g.strokeStyle=t.carried?'#ffd27a':'#8fa0c8';g.lineWidth=1.5;g.stroke();
+    g.save();g.translate(cx,cy+lift);g.rotate(t.face);
     g.fillStyle='#1c2029';g.fillRect(2,-6,20,4);g.fillRect(2,2,20,4);
     g.fillStyle='#596380';g.fillRect(4,-6,10,1.5);g.fillRect(4,2,10,1.5);
     g.fillStyle='#39404f';g.beginPath();g.arc(0,0,9,0,7);g.fill();
     g.fillStyle='#6a76a0';g.beginPath();g.arc(-1,-1,6,0,7);g.fill();
     g.fillStyle=hr>.5?'#5cff8a':hr>.25?'#ffc24a':'#ff5a4a';g.beginPath();g.arc(0,0,2.2,0,7);g.fill();
     g.restore();
-    if(time<t.flashT){const a=t.face;glow(cx+Math.cos(a)*24,cy+Math.sin(a)*24,20,'rgba(255,225,140,1)',1)}
-    if(hr<1){g.fillStyle='rgba(0,0,0,.7)';g.fillRect(px+2,py-6,TS-4,4);g.fillStyle=hr>.5?'#5cff8a':hr>.25?'#ffc24a':'#ff5a4a';g.fillRect(px+3,py-5,(TS-6)*hr,2)}
+    if(t.hurt>0){g.fillStyle='rgba(255,60,60,.35)';g.beginPath();g.arc(cx,cy+lift,13,0,7);g.fill()}
+    if(time<t.flashT){const a=t.face;glow(cx+Math.cos(a)*24,cy+lift+Math.sin(a)*24,20,'rgba(255,225,140,1)',1)}
+    if(hr<1){g.fillStyle='rgba(0,0,0,.7)';g.fillRect(cx-14,cy-24,28,4);g.fillStyle=hr>.5?'#5cff8a':hr>.25?'#ffc24a':'#ff5a4a';g.fillRect(cx-13,cy-23,26*hr,2)}
+    if(!t.carried&&me.hp>0&&dist(t,me)<80&&!turrets.some(o=>o.carried&&dist(o,me)<45)){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,255,255,.9)';g.fillText(T('h.turretMove'),cx,cy+30)}
+    if(t.carried&&dist(t,me)<45){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,226,138,.95)';g.fillText(T('h.turretPlace'),cx,cy+30)}
   }
   for(const n of nests)drawNest(n);
   drawReactor();drawRelay();drawTerminal();
@@ -2034,6 +2238,7 @@ function draw(){
   for(const h of humans()){L(h.x,h.y,340,1);L(h.x+Math.cos(h.face)*130,h.y+Math.sin(h.face)*130,260,.8);if(time<(h.flashT||0))L(h.x,h.y,210,.9)}
   for(const a of allies){L(a.x,a.y,100,.85);if(time<(a.flashT||0))L(a.x,a.y,160,.7)}
   L(armory.x,armory.y,90,.8);
+  for(const r of ROOMS)L((r.x0+r.x1+1)/2*TS,(r.y0+r.y1+1)/2*TS,95,.6);   // les salles sont éclairées
   for(const n of nests)if(!n.dead)L(n.x,n.y,85,.85);
   if(reactor&&reactor.hp>0)L(reactor.x,reactor.y,130,.9);
   if(relay&&relay.hp>0)L(relay.x,relay.y,RELAY_ZONE*1.2,.9);
@@ -2041,7 +2246,7 @@ function draw(){
   for(const m of mechas)L(m.x,m.y,80,.85);
   for(const h of helis){L(h.x,h.y,150,.8);if(time<(h.flashT||0))L(h.x,h.y,230,.8)}
   if(!running)L(NEST.x*TS,NEST.y*TS+30,430,.95);   // écran titre : le nid est éclairé
-  for(const t of turrets)if(map[t.ty][t.tx]===8){L(t.tx*TS+TS/2,t.ty*TS+TS/2,95,.75);if(time<t.flashT)L(t.tx*TS+TS/2,t.ty*TS+TS/2,190,.8)}
+  for(const t of turrets){L(t.x,t.y,95,.75);if(time<t.flashT)L(t.x,t.y,190,.8)}
   for(const e of aliens){if(e.type==='queen')L(e.x,e.y,170,.85);else if(e.type==='spitter')L(e.x,e.y,70,.7)}
   for(const h of holes)L(h[0]*TS+16,h[1]*TS+16,110+Math.sin(time*2+h[0])*14,.9);
   for(const b of bonuses)L(b.x,b.y,70,.9);
@@ -2128,7 +2333,8 @@ function hud(){
     }
   }else if(MODE==='relay'&&relay){
     g.fillText(T('h.objRelay'),bx+bw/2,by+14);
-    bar(bx+10,by+19,bw-20,12,relay.prog/RELAY_TIME,'#6fe3ff','#1f7a9a',T('h.transmit'),mmss(RELAY_TIME-relay.prog));
+    if(time<PREP_TIME)bar(bx+10,by+19,bw-20,12,time/PREP_TIME,'#ffd34d','#b07d10',T('h.prep'),mmss(PREP_TIME-time));
+    else bar(bx+10,by+19,bw-20,12,relay.prog/RELAY_TIME,'#6fe3ff','#1f7a9a',T('h.transmit'),mmss(RELAY_TIME-relay.prog));
     bar(bx+10,by+34,bw-20,12,relay.hp/relay.maxhp,relay.hp<relay.maxhp*.4?'#ff7a5a':'#7fd8ff',relay.hp<relay.maxhp*.4?'#b02a1a':'#2a6a9a',T('h.relay'),Math.max(0,relay.hp|0));
   }
   if(CAMP.on){ // compteur de morts : il décide du rang final
@@ -2276,10 +2482,11 @@ const SFXDEF={
   victory:(t,o)=>{[523,659,784,1047].forEach((f,i)=>osc('triangle',f,f,t+i*.14,.3,.28,o,{send:[{node:AUD.verb,amt:.5}]}))},
   blip:(t,o)=>{osc('square',1100,1100,t,.025,.05,o,{lp:2600})},
   codecCall:(t,o)=>{osc('sine',1500,1500,t,.07,.16,o);osc('sine',1500,1500,t+.11,.07,.16,o);noise(t+.2,.12,.1,o,{type:'highpass',f:3500})},
+  ltDown:(t,o)=>{osc('sawtooth',720,170,t,.55,.32,o,{lp:2400,send:[{node:AUD.verb,amt:.4}]});noise(t,.25,.22,o,{f:900,q:1.2})},
   defeat:(t,o)=>{[392,370,330,262].forEach((f,i)=>osc('sawtooth',f,f*.97,t+i*.3,.5,.22,o,{lp:900,send:[{node:AUD.verb,amt:.6}]}))},
 };
 const SFX_MIN={blip:.02,codecCall:.3,smg:.045,pistol:.1,flame:.09,hitA:.05,dieA:.06,turret:.07,bite:.08,crumble:.1,boom:.05,spit:.1,screech:.25,pickup:.08,acidHit:.06};
-const SFX_RANGE={boom:1100,rocket:800,shotgun:800,roar:1000,siren:900};
+const SFX_RANGE={ltDown:1800,boom:1100,rocket:800,shotgun:800,roar:1000,siren:900};
 function playSfx(n,x,y){ // x,y absents : son non positionnel (plein volume au centre)
   const c=AUD.ctx;if(!c||AUD.muted||c.state!=='running')return;
   const def=SFXDEF[n];if(!def)return;
@@ -2463,7 +2670,7 @@ function makeSnap(){
     bo:bonuses.map(b=>[r1(b.x),r1(b.y),BTYPES.indexOf(b.type),b.ammo|0]),
     co:corpses.map(c=>[r1(c.x),r1(c.y),c.ammo]),
     dr:drops.map(d=>[r1(d.x),r1(d.y),r2(d.t),d.n]),
-    tu:turrets.map(t=>[r2(t.face),time<t.flashT?1:0]),
+    tu:turrets.map(t=>[r1(t.x),r1(t.y),Math.round(t.hp),r2(t.face),time<t.flashT?1:0,t.carried?1:0]),
     ar:armory.stock|0,
     ne:nests.map(n=>Math.round(n.hp)),rx:reactor?Math.round(reactor.hp):0,dc:deaths,pc:CAMP.s.pc?1:0,rl:relay?[Math.round(relay.hp),r1(relay.prog)]:0,
     mc:mechas.map(m=>[r1(m.x),r1(m.y),Math.round(m.hp),m.max,r2(m.face),m.rk|0]),he:helis.map(h=>[r1(h.x),r1(h.y),h.vx|0,time<(h.flashT||0)?1:0]),
@@ -2541,7 +2748,7 @@ function applySnap(s){
   const keep=(map_,list,mkObj)=>{const seen=new Set(),out=[];for(const d of list){const k=d[0]+'_'+d[1];let o=map_.get(k);if(!o){o=mkObj(d);map_.set(k,o)}else Object.assign(o,mkObj(d,o));seen.add(k);out.push(o)}for(const k of map_.keys())if(!seen.has(k))map_.delete(k);return out};
   bonuses=keep(gB,s.bo,(d,o)=>({x:d[0],y:d[1],type:BTYPES[d[2]],ammo:d[3],t:o?o.t:0}));
   corpses=keep(gC,s.co,(d,o)=>({x:d[0],y:d[1],ammo:d[2],rot:o?o.rot:Math.random()*6.28}));
-  turrets.forEach((t,i)=>{const d=s.tu[i];if(d){t.tface=d[0];if(d[1])t.flashT=time+.06}});
+  turrets=(s.tu||[]).map(d=>({x:d[0],y:d[1],hp:d[2],maxhp:70,r:12,face:d[3],flashT:d[4]?time+.06:0,carried:!!d[5],hurt:0}));
   armory.stock=s.ar;
   mechas=(s.mc||[]).map(d=>({x:d[0],y:d[1],hp:d[2],max:d[3],face:d[4],rk:d[5]|0}));
   helis=(s.he||[]).map(d=>({x:d[0],y:d[1],vx:d[2],flashT:d[3]?time+.05:0}));
@@ -3062,7 +3269,8 @@ function missionTick(){   // répliques radio scriptées (hôte / solo seulement
     }
   }else if(CAMP.id===2&&relay){
     const p=relay.prog/RELAY_TIME;
-    if(!S.a&&time>2.5){S.a=1;radio('lyra','r2.start')}
+    if(!S.a&&time>2.5){S.a=1;radio('lyra','r2.prep')}
+    if(!S.s&&time>=PREP_TIME){S.s=1;radio('lyra','r2.start')}
     if(p>=.25&&!S.b){S.b=1;radio('rook','r2.q1')}
     if(p>=.5&&!S.c){S.c=1;radio('lyra','r2.half')}
     if(relay.prog>=RELAY_TIME-60&&!S.d){S.d=1;radio('hale','r2.q3');callHeli(humans()[0]||player)}   // il reste une minute : renfort par hélicoptère

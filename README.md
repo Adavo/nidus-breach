@@ -63,6 +63,22 @@ Dans les menus Solo et Créer une partie, le **joueur 1** choisit son personnage
 Français et anglais : bouton **FR / EN** en haut à gauche du menu (le choix est mémorisé, la langue du navigateur sert de valeur par défaut). Les textes sont dans l'objet `STR` de `index.html` ; chaque joueur voit le jeu dans sa propre langue, même en ligne.
 
 ### Armes
+Rook démarre avec une mitraillette, Lyra avec un fusil à pompe (les munitions se rechargent à l'armurerie ; le pistolet reste le repli). Les tirs de pistolet et de mitraillette dévient légèrement ; le fusil à pompe a un large cône.
+
+### La base : un château
+La base est un fort avec une **muraille en pierre crénelée** et quatre **tours d'angle**. Un **chemin de ronde** (étage) court sur les quatre côtés, avec des escaliers depuis la cour (nord, sud et est). Depuis l'étage, **les tirs passent par-dessus les murs** (et les alliés y voient aussi par-dessus). Les aliens ne montent pas : la muraille et les garde-corps sont indestructibles, ils n'entrent que par les deux portes ou en rongeant les murs des salles. Les cracheurs, eux, lobent leur acide sur ceux qui sont à l'étage.
+
+Au rez-de-chaussée, autour de la cour et de l'héliport (point de réapparition) :
+- **Armurerie** : recharge des munitions et deux caisses de munitions.
+- **Infirmerie** : on y regagne lentement des points de vie (soldats compris).
+- **Salle des machines** : générateurs ; en survie, c'est là qu'est le réacteur.
+- **Poste de commandement**, **sas d'entrée** (porte est) et **dortoir**.
+
+Le mobilier (râteliers, lits, consoles, casiers, caisses…) sert de couvert : il bloque les tirs et les déplacements, et les aliens peuvent le détruire.
+
+### Tourelles
+Les tourelles de la base sont posées à l'extérieur des murs, fragiles mais efficaces : `E` près d'une tourelle la prend (on avance plus lentement), `E` de nouveau la pose.
+
 Pistolet (munitions infinies, arme par défaut), mitraillette, fusil à pompe, lance-flammes, lance-roquettes.
 On équipe une arme en la ramassant ; l'ancienne tombe au sol. Sans munitions, on retombe sur le pistolet.
 
