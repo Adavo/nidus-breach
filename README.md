@@ -57,7 +57,7 @@ Le scénario complet est dans [`SCENARIO.txt`](SCENARIO.txt). Menu **Solo** (ou 
 - En ligne, l'hôte choisit la mission ; les deux joueurs voient l'intro et le briefing, la mission démarre quand les deux sont prêts.
 
 ### Soldats : homme ou femme
-Dans les menus Solo et Créer une partie, le **joueur 1** choisit son design (homme ou femme). Le **joueur 2 prend toujours l'autre** : il n'y a jamais deux femmes (ni deux hommes), c'est le joueur 1 qui décide. Les portraits de Rook et Wren suivent ce choix.
+Dans les menus Solo et Créer une partie, le **joueur 1** choisit son design (homme ou femme). Le **joueur 2 prend toujours l'autre** : il n'y a jamais deux femmes (ni deux hommes), c'est le joueur 1 qui décide. Les portraits de Rook et Lyra suivent ce choix.
 
 ### Langues
 Français et anglais : bouton **FR / EN** en haut à gauche du menu (le choix est mémorisé, la langue du navigateur sert de valeur par défaut). Les textes sont dans l'objet `STR` de `index.html` ; chaque joueur voit le jeu dans sa propre langue, même en ligne.

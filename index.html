@@ -383,7 +383,7 @@ fr:{
   'r.debrief':`Débriefing`,'r.retry':`Rejouer`,'r.missions':`Missions`,'r.quit':`Quitter`,'r.waitHost':`L'hôte choisit la suite…`,
   'g.waitTitle':`En attente`,'g.wait':`L'hôte choisit la prochaine mission…`,
   // personnages
-  'n.rook':`ROOK`,'n.wren':`WREN`,'n.hale':`COLONEL HALE`,'n.marsh':`DR ILYA MARSH`,'cx.hint':`Clic / Entrée : suite`,
+  'n.rook':`ROOK`,'n.lyra':`LYRA`,'n.hale':`COLONEL HALE`,'n.marsh':`DR ILYA MARSH`,'cx.hint':`Clic / Entrée : suite`,
   // introduction
   'cine.1':`3099. Sur la planète Kappa, la colonie minière de la société Helix a cessé d'émettre.`,
   'cine.2':`Un escadron de reconnaissance est envoyé rétablir le contact.`,
@@ -482,7 +482,7 @@ en:{
   'r.timeLeft':`Time left`,'r.held':`Time survived`,'r.reactorLeft':`Reactor left`,
   'r.debrief':`Debriefing`,'r.retry':`Retry`,'r.missions':`Missions`,'r.quit':`Quit`,'r.waitHost':`The host picks what comes next…`,
   'g.waitTitle':`Standing by`,'g.wait':`The host is choosing the next mission…`,
-  'n.rook':`ROOK`,'n.wren':`WREN`,'n.hale':`COLONEL HALE`,'n.marsh':`DR. ILYA MARSH`,'cx.hint':`Click / Enter: next`,
+  'n.rook':`ROOK`,'n.lyra':`LYRA`,'n.hale':`COLONEL HALE`,'n.marsh':`DR. ILYA MARSH`,'cx.hint':`Click / Enter: next`,
   'cine.1':`3099. On the planet Kappa, the Helix mining colony has stopped transmitting.`,
   'cine.2':`A reconnaissance squad is sent to re-establish contact.`,
   'cine.3':`No radio answer. The ship's sensors pick up strange signals around the colony.`,
@@ -918,7 +918,7 @@ let player, allies, aliens, bullets, corpses, fx, texts;
 let time, over, msgText, fieldNest, fieldFort, fieldTimer, queen, drops, spitT;
 let uid=0, player2=null, me=null;     // player = joueur 1 (hôte / solo), player2 = joueur 2 (invité), me = soldat contrôlé ici
 let spawnT, reinfT, queenSpawnT, bruteT, shake;
-let deaths = 0, ltT = -1;   // ltT : délai avant le retour de Wren (lieutenant IA) si elle tombe   // morts cumulées des joueurs (décide du rang en campagne)
+let deaths = 0, ltT = -1;   // ltT : délai avant le retour de Lyra (lieutenant IA) si elle tombe   // morts cumulées des joueurs (décide du rang en campagne)
 let grenades, shells, bonuses, bonusT;
 
 // ---- réseau : état partagé et file d'événements visuels (hôte -> invité) ----
@@ -970,10 +970,10 @@ const ORDERS=['advance','follow','hold'];
 const ordKey=o=>o==='advance'?(MODE==='survive'?'ord.guardFort':MODE==='relay'?'ord.guardRelay':'ord.default'):'ord.'+o;
 const ordTxt=o=>T(ordKey(o));
 const ORDER_ICON={advance:'»',follow:'◎',hold:'■'};
-function nearestAlly(maxD,p=player){let b=null,bd=maxD;for(const a of allies)if(a.hp>0){const d=dist(a,p);if(d<bd){bd=d;b=a}}return b}
+function nearestAlly(maxD,p=player){let b=null,bd=maxD;for(const a of allies)if(a.hp>0&&!a.lt){const d=dist(a,p);if(d<bd){bd=d;b=a}}return b}   // Lyra (IA) n'obéit pas aux ordres : elle suit toujours
 const ORDER_RANGE=3*TS;   // les alliés à moins de 3 cases t'écoutent
 function giveOrder(p=player){ // E : ordre suivant pour tous les alliés dans la zone
-  const group=allies.filter(a=>a.hp>0&&dist(a,p)<ORDER_RANGE);
+  const group=allies.filter(a=>a.hp>0&&!a.lt&&dist(a,p)<ORDER_RANGE);
   if(over||p.hp<=0||!group.length)return;
   const ref=group.reduce((b,a)=>dist(a,p)<dist(b,p)?a:b);
   const next=ORDERS[(ORDERS.indexOf(ref.order)+1)%ORDERS.length];
@@ -1115,7 +1115,7 @@ function spit(e,tgt,dmg){ // crachat d'acide : lent, tue les soldats, ronge les 
 }
 function usePC(p){ // le journal de la colonie : les nids se réveillent et une première vague tombe sur l'escouade
   CAMP.s.pc=1;fieldDirty=true;snd('pickup',p.x,p.y);
-  radio('wren','r1.pc1');radio('rook','r1.pc2');
+  radio('lyra','r1.pc1');radio('rook','r1.pc2');
   const place=(cx,cy,r0,r1)=>{for(let k=0;k<20;k++){const a=Math.random()*6.28,r=r0+Math.random()*(r1-r0),x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;if(!hitsWall(x,y,10)){spawnAlien('scout',x,y);return}}};
   for(const h of humans())for(let i=0;i<4;i++)place(h.x,h.y,250,340);
   for(const n of nests)for(let i=0;i<3;i++)place(n.x,n.y,20,70);
@@ -1229,7 +1229,7 @@ function init(){
   const {fx0,fy0}=resetWorld();
   const nStart=MODE==='nests'?0:MODE==='relay'?4:6;   // mission 1 : personne, on retrouve des soldats isolés ; mission 2 : ceux qui nous ont rejoints
   for(let i=0;i<nStart;i++)allies.push(newSoldier(fx0-60+(i%3)*40,fy0+30+(i/3|0)*34,false));
-  ltT=-1;if(CAMP.on&&!player2)spawnLt(fx0,fy0);   // solo : Wren est le lieutenant IA
+  ltT=-1;if(CAMP.on&&!player2)spawnLt(fx0,fy0);   // solo : Lyra est le lieutenant IA
   if(MODE==='nests')scatterSurvivors();
   bonusT=8;spawnT=3;reinfT=18;queenSpawnT=3;bruteT=10;spitT=12;CAMP.s={};
   addBonus((FORT.x0+3)*TS+TS/2,(FORT.y0+3)*TS+TS/2,'smg',80);addBonus((FORT.x0+5)*TS+TS/2,(FORT.y0+3)*TS+TS/2,'shotgun',16);
@@ -1238,8 +1238,8 @@ function init(){
   NET.evq=[];NET.in2={mx:0,my:0,aim:0,fire:false,t:0};
 }
 
-function spawnLt(x,y){ // Wren en solo : lieutenant IA, nous suit et tire, revient à la base quelques secondes après sa chute
-  const a=newSoldier(x+36,y+10,false);a.lt=true;a.hp=a.maxhp=30;a.ammo=99999;a.weapon='smg';a.order='follow';allies.push(a);return a;
+function spawnLt(x,y){ // Lyra en solo : lieutenant IA, nous suit et tire, revient à la base quelques secondes après sa chute
+  const a=newSoldier(x+36,y+10,false);a.lt=true;a.hp=a.maxhp=30;a.ammo=99999;a.weapon='smg';a.order='follow';allies.push(a);return a;   // ordre figé : elle suit toujours
 }
 function scatterSurvivors(){ // mission 1 : des soldats isolés dans la colonie, ils nous rejoignent quand on s'approche
   const r=rng(WORLD.seed*3+5);let n=0;
@@ -1935,10 +1935,10 @@ function draw(){
   const near=nearestAlly(ORDER_RANGE,me);
   for(const a of allies){
     drawSoldier(a,a.lt?PAL.p2:PAL.ally);
-    if(a.lt){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,210,150,.95)';g.fillText(T('n.wren'),a.x-cam.x,a.y-cam.y-34)}
+    if(a.lt){g.font="600 11px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle='rgba(255,210,150,.95)';g.fillText(T('n.lyra'),a.x-cam.x,a.y-cam.y-34)}
     g.font="bold 12px 'Segoe UI',sans-serif";g.textAlign='center';g.fillStyle=a.order==='hold'?'#ffcc66':a.order==='follow'?'#66ccff':'#99ee99';
-    g.fillText(ORDER_ICON[a.order],a.x-cam.x,a.y-cam.y-(a.hp<a.maxhp?25:18));
-    if(near&&dist(a,player)<ORDER_RANGE){g.strokeStyle='rgba(150,200,255,.45)';g.lineWidth=1;g.beginPath();g.arc(a.x-cam.x,a.y-cam.y,15,0,7);g.stroke()}
+    if(!a.lt)g.fillText(ORDER_ICON[a.order],a.x-cam.x,a.y-cam.y-(a.hp<a.maxhp?25:18));
+    if(near&&!a.lt&&dist(a,player)<ORDER_RANGE){g.strokeStyle='rgba(150,200,255,.45)';g.lineWidth=1;g.beginPath();g.arc(a.x-cam.x,a.y-cam.y,15,0,7);g.stroke()}
     if(a===near){g.fillStyle='rgba(255,255,255,.85)';g.font="11px 'Segoe UI',sans-serif";g.fillText(T('h.orderHint',ordTxt(a.order)),a.x-cam.x,a.y-cam.y+32)}
   }
   for(const h of [player,player2]){
@@ -2668,15 +2668,15 @@ const setStatus=t=>{statEl.textContent=t||''};
 const sel={world:0,mode:MODE,day:DAY?1:0};
 let setupCtx='solo';   // 'solo' ou 'host' : qui lance la partie simple ?
 // ============ Portraits (dessinés en code, 96×112) ============
-// Rook et Wren changent de visage selon le design choisi par le joueur 1 : Rook suit son choix, Wren prend toujours l'autre.
+// Rook et Lyra changent de visage selon le design choisi par le joueur 1 : Rook suit son choix, Lyra prend toujours l'autre.
 const CHARS={
   rook:{skin:'#c98d66',skinD:'#a8704c',hair:'#4a2c14',eye:'#3b6f93',cloth:'#1f4a96',clothD:'#143266',helm:'#2f6fd6',helmL:'#6aa0f2',acc:'#8fe9ff',bg0:'#123246',bg1:'#050f16'},
-  wren:{skin:'#f1c6a0',skinD:'#d3a07a',hair:'#e2b24a',eye:'#4c8d55',cloth:'#a55a14',clothD:'#6e3a0a',helm:'#e07a20',helmL:'#ffb868',acc:'#fff0c0',bg0:'#3b240e',bg1:'#120a04'},
+  lyra:{skin:'#f1c6a0',skinD:'#d3a07a',hair:'#e2b24a',eye:'#4c8d55',cloth:'#a55a14',clothD:'#6e3a0a',helm:'#e07a20',helmL:'#ffb868',acc:'#fff0c0',bg0:'#3b240e',bg1:'#120a04'},
   hale:{skin:'#b98262',skinD:'#936248',hair:'#a7adb2',eye:'#2b2b2b',cloth:'#3d4b2d',clothD:'#252f1b',helm:'#000',helmL:'#000',acc:'#e0c050',bg0:'#15281a',bg1:'#040a06'},
   marsh:{skin:'#e3b594',skinD:'#bf8e6e',hair:'#5a3a22',eye:'#3a4f75',cloth:'#e6e9f0',clothD:'#aab1c2',helm:'#000',helmL:'#000',acc:'#ffffff',bg0:'#1b2a3a',bg1:'#070b10'},
 };
 const PORT={};
-const femOf=id=>id==='rook'?DESIGN.p1==='f':id==='wren'?DESIGN.p1==='m':false;
+const femOf=id=>id==='rook'?DESIGN.p1==='f':id==='lyra'?DESIGN.p1==='m':false;
 function portrait(id,open,fem){
   if(fem===undefined)fem=femOf(id);
   const k=id+(fem?'f':'m')+(open?'o':'c');
@@ -2782,9 +2782,9 @@ function drawPortrait(c,id,open,fem){
     c.fillStyle=P.acc;R(45,15,6,2.4);R(30,35,6,2);R(60,35,6,2);                // bandes lumineuses
     c.strokeStyle='rgba(15,15,20,.75)';c.lineWidth=1.6;c.beginPath();c.moveTo(29,45);c.lineTo(35,70);c.moveTo(67,45);c.lineTo(61,70);c.stroke();   // jugulaire
     c.fillStyle=P.acc;c.beginPath();c.arc(26.5,46,2,0,7);c.fill();            // écouteur
-    if(id==='wren'){c.fillStyle='rgba(150,80,40,.35)';for(const [x,y] of [[35,53],[38,55],[41,53.4],[55,53.4],[58,55],[61,53]])R(x,y,1.2,1.2)}   // taches de rousseur
+    if(id==='lyra'){c.fillStyle='rgba(150,80,40,.35)';for(const [x,y] of [[35,53],[38,55],[41,53.4],[55,53.4],[58,55],[61,53]])R(x,y,1.2,1.2)}   // taches de rousseur
     // look dur à cuire : peinture de guerre, cicatrice, lunettes tactiques relevées sur le casque
-    c.strokeStyle=id==='wren'?'rgba(25,15,35,.8)':'rgba(10,28,14,.8)';c.lineWidth=2.2;c.lineCap='round';c.beginPath();
+    c.strokeStyle=id==='lyra'?'rgba(25,15,35,.8)':'rgba(10,28,14,.8)';c.lineWidth=2.2;c.lineCap='round';c.beginPath();
     c.moveTo(33,55);c.lineTo(40,59);c.moveTo(34,58.6);c.lineTo(40.6,62.4);c.moveTo(63,55);c.lineTo(56,59);c.moveTo(62,58.6);c.lineTo(55.4,62.4);c.stroke();
     for(const [col,w,dx] of [['#8f3f35',1.8,0],['rgba(255,225,215,.5)',.8,1]]){
       c.strokeStyle=col;c.lineWidth=w;c.beginPath();
@@ -2820,7 +2820,7 @@ function drawPortrait(c,id,open,fem){
 const CX={on:false,lines:[],i:0,full:'',pos:0,left:'rook',right:'hale',speaker:'rook',mouth:false,done:null};
 const RD={q:[],cur:null,full:'',pos:0,hold:0,mouth:false};
 const CONTACT={hale:'140.85',marsh:'141.12'};
-const isSquad=w=>w==='rook'||w==='wren';
+const isSquad=w=>w==='rook'||w==='lyra';
 function blitPort(cid,id,open){const c=$(cid).getContext('2d');c.clearRect(0,0,96,112);c.drawImage(portrait(id,open),0,0)}
 function cxDraw(){blitPort('cxL',CX.left,CX.speaker===CX.left&&CX.mouth);blitPort('cxR',CX.right,CX.speaker===CX.right&&CX.mouth)}
 function cxShow(){
@@ -3046,15 +3046,15 @@ const gradeOf=d=>d<=0?'gold':d<=3?'silver':'bronze';
 const unlocked=id=>id<=PLAYABLE&&(id===1||!!PROG.best[id-1]||params.get('unlock')==='1');   // une mission s'ouvre quand la précédente est réussie ; ?unlock=1 ouvre tout (tests)
 const fmtTime=t=>{t=Math.max(0,Math.floor(t));return (t/60|0)+':'+String(t%60).padStart(2,'0')};
 const SCRIPT={   // [qui parle, clé du texte] : briefing avant la mission, débriefing après
-  1:{brief:[['hale','b1.1'],['rook','b1.2'],['wren','b1.3'],['hale','b1.4']],debrief:[['wren','d1.1'],['hale','d1.2'],['rook','d1.3'],['hale','d1.4']]},
-  2:{brief:[['wren','b2.1'],['rook','b2.2'],['hale','b2.3'],['rook','b2.4']],debrief:[['marsh','d2.1'],['rook','d2.2'],['marsh','d2.3'],['hale','d2.4'],['wren','d2.5'],['rook','d2.6']]},
+  1:{brief:[['hale','b1.1'],['rook','b1.2'],['lyra','b1.3'],['hale','b1.4']],debrief:[['lyra','d1.1'],['hale','d1.2'],['rook','d1.3'],['hale','d1.4']]},
+  2:{brief:[['lyra','b2.1'],['rook','b2.2'],['hale','b2.3'],['rook','b2.4']],debrief:[['marsh','d2.1'],['rook','d2.2'],['marsh','d2.3'],['hale','d2.4'],['lyra','d2.5'],['rook','d2.6']]},
 };
 function missionTick(){   // répliques radio scriptées (hôte / solo seulement : l'invité les reçoit par événement)
   const S=CAMP.s;
   if(CAMP.id===1){
     const dn=nests.filter(n=>n.dead).length;
-    if(!S.a&&time>3){S.a=1;radio('wren','r1.start')}
-    if(S.pc&&dn>=1&&!S.b){S.b=1;radio('wren','r1.one')}
+    if(!S.a&&time>3){S.a=1;radio('lyra','r1.start')}
+    if(S.pc&&dn>=1&&!S.b){S.b=1;radio('lyra','r1.one')}
     if(S.pc&&dn>=2&&!S.c){ // après le deuxième nid : des brutes gardent le dernier
       S.c=1;radio('rook','r1.two');
       const ln=nests.find(n=>!n.dead);
@@ -3062,11 +3062,11 @@ function missionTick(){   // répliques radio scriptées (hôte / solo seulement
     }
   }else if(CAMP.id===2&&relay){
     const p=relay.prog/RELAY_TIME;
-    if(!S.a&&time>2.5){S.a=1;radio('wren','r2.start')}
+    if(!S.a&&time>2.5){S.a=1;radio('lyra','r2.start')}
     if(p>=.25&&!S.b){S.b=1;radio('rook','r2.q1')}
-    if(p>=.5&&!S.c){S.c=1;radio('wren','r2.half')}
+    if(p>=.5&&!S.c){S.c=1;radio('lyra','r2.half')}
     if(relay.prog>=RELAY_TIME-60&&!S.d){S.d=1;radio('hale','r2.q3');callHeli(humans()[0]||player)}   // il reste une minute : renfort par hélicoptère
-    if(relay.hp>0&&relay.hp<relay.maxhp*.4&&!S.e){S.e=1;radio('wren','r2.low')}
+    if(relay.hp>0&&relay.hp<relay.maxhp*.4&&!S.e){S.e=1;radio('lyra','r2.low')}
   }
 }
 

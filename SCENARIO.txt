@@ -17,7 +17,7 @@ une raison et un moyen.
 
 PERSONNAGES
 -----------
-- Rook et Wren : les deux soldats (indicatifs, sans genre ni visage). En solo, Wren est le
+- Rook et Lyra : les deux soldats (indicatifs, sans genre ni visage). En solo, Lyra est le
   lieutenant IA.
 - Colonel Hale : le commandement, qui parle par radio. Helix travaille pour l'armee sous ses ordres.
   Il ment depuis le debut : il veut une graine intacte pour faire eclore une reine qu'il pense
@@ -63,7 +63,7 @@ Mission 2 - Relais radio                         [Kappa, jour - Proteger une zon
 
 Mission 3 - Chute ratee                          [Vesper, nuit - Rejoindre - separes puis reunis]
   Pourquoi on y va : on decolle de Kappa vers Marsh.
-  Ce qu'on fait    : la navette est abattue par des cracheurs. Rook et Wren sont separes et se
+  Ce qu'on fait    : la navette est abattue par des cracheurs. Rook et Lyra sont separes et se
                      retrouvent par radio en s'ouvrant des passages.
   Ce qu'on apprend : on est a pied dans le marais. Dans un nid, premiere graine trouvee : un oeuf
                      noir qui bat. Le detecteur de Marsh confirme : elle amplifie la pulsation.
@@ -98,7 +98,7 @@ Mission 7 - La Tenaille                          [Canyon, jour - Reine, objectif
   Pourquoi on y va : la graine volee a eclos. Une jeune reine grandit au Canyon et Hale croit
                      pouvoir la dresser. Il faut la tuer avant qu'elle soit adulte. On y va avec
                      le vehicule tout-terrain du labo.
-  Ce qu'on fait    : Rook attaque la reine par la falaise ; Wren sabote les nids et tient deux
+  Ce qu'on fait    : Rook attaque la reine par la falaise ; Lyra sabote les nids et tient deux
                      interrupteurs pour ouvrir l'acces.
   Ce qu'on apprend : la jeune reine meurt. Dans le journal d'Helix, on lit que Hale a ordonne
                      l'exploitation des graines des le premier jour : tout etait prevu.
@@ -146,11 +146,11 @@ MISE EN SCENE
 
 QUESTIONS OUVERTES
 ------------------
-- Solo : Wren (lieutenant IA) joue sa moitie dans les missions separees (3, 5, 7, 8) avec un delai
+- Solo : Lyra (lieutenant IA) joue sa moitie dans les missions separees (3, 5, 7, 8) avec un delai
   raisonnable.
 - Reapparition : une regle par mission (reacteur, temps, ou aucune sur le boss).
 - Bonus de rang (mecha, helico, convoi) : les garder tels quels ou en faire des recompenses. Le mecha
   serait reserve aux missions 7 (on le trouve au Canyon) et 10. Le convoi colle au vehicule du labo
   (Vesper -> Canyon), l'helico a la mission 8.
 - Fin ouverte : prepare une suite (Hale et la derniere graine), peut etre refermee.
-- Noms (Rook, Wren, Hale, Marsh, Helix) : faciles a changer.
+- Noms (Rook, Lyra, Hale, Marsh, Helix) : faciles a changer.
